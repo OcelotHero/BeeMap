@@ -1,0 +1,925 @@
+{
+ "source": "iNaturalist API v1, observations annotated 'Plant Phenology: Flowering', counted by month",
+ "attribution": "Data: iNaturalist (www.inaturalist.org); aggregated counts of community observations",
+ "fetched": "2026-10-28",
+ "min_obs": 30,
+ "rule": "bloom = months with >=20% of the peak month",
+ "plants": {
+  "salix": {
+   "taxon_id": 55846,
+   "taxon": "Salix caprea",
+   "place": "Germany",
+   "place_id": 7207,
+   "n_obs": 110,
+   "by_month": [
+    0,
+    5,
+    80,
+    19,
+    4,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "months": [
+    3,
+    4
+   ],
+   "peak": [
+    3
+   ],
+   "share": [
+    0.0,
+    0.062,
+    1.0,
+    0.237,
+    0.05,
+    0.013,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.013,
+    0.0
+   ]
+  },
+  "cornus": {
+   "taxon_id": 55858,
+   "taxon": "Cornus mas",
+   "place": "Baden-Württemberg, DE",
+   "place_id": 12870,
+   "n_obs": 69,
+   "by_month": [
+    1,
+    16,
+    48,
+    4,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "months": [
+    2,
+    3
+   ],
+   "peak": [
+    3
+   ],
+   "share": [
+    0.021,
+    0.333,
+    1.0,
+    0.083,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "prunus": {
+   "taxon_id": 55811,
+   "taxon": "Prunus spinosa",
+   "place": "Baden-Württemberg, DE",
+   "place_id": 12870,
+   "n_obs": 43,
+   "by_month": [
+    1,
+    0,
+    21,
+    20,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "months": [
+    3,
+    4
+   ],
+   "peak": [
+    3,
+    4
+   ],
+   "share": [
+    0.048,
+    0.0,
+    1.0,
+    0.952,
+    0.0,
+    0.0,
+    0.0,
+    0.048,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "pulmonaria": {
+   "taxon_id": 1076697,
+   "taxon": "Pulmonaria officinalis",
+   "place": "Baden-Württemberg, DE",
+   "place_id": 12870,
+   "n_obs": 41,
+   "by_month": [
+    0,
+    2,
+    19,
+    19,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "months": [
+    3,
+    4
+   ],
+   "peak": [
+    3,
+    4
+   ],
+   "share": [
+    0.0,
+    0.105,
+    1.0,
+    1.0,
+    0.053,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "taraxacum": {
+   "taxon_id": 47602,
+   "taxon": "Taraxacum officinale",
+   "place": "Baden-Württemberg, DE",
+   "place_id": 12870,
+   "n_obs": 54,
+   "by_month": [
+    1,
+    1,
+    13,
+    28,
+    4,
+    2,
+    3,
+    0,
+    0,
+    2,
+    0,
+    0
+   ],
+   "months": [
+    3,
+    4
+   ],
+   "peak": [
+    4
+   ],
+   "share": [
+    0.036,
+    0.036,
+    0.464,
+    1.0,
+    0.143,
+    0.071,
+    0.107,
+    0.0,
+    0.0,
+    0.071,
+    0.0,
+    0.0
+   ]
+  },
+  "crataegus": {
+   "taxon_id": 1437600,
+   "taxon": "Crataegus monogyna",
+   "place": "Baden-Württemberg, DE",
+   "place_id": 12870,
+   "n_obs": 36,
+   "by_month": [
+    0,
+    0,
+    0,
+    21,
+    15,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "months": [
+    4,
+    5
+   ],
+   "peak": [
+    4,
+    5
+   ],
+   "share": [
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.714,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "salvia": {
+   "taxon_id": 85338,
+   "taxon": "Salvia pratensis",
+   "place": "Baden-Württemberg, DE",
+   "place_id": 12870,
+   "n_obs": 136,
+   "by_month": [
+    0,
+    0,
+    0,
+    14,
+    68,
+    24,
+    8,
+    3,
+    11,
+    6,
+    2,
+    0
+   ],
+   "months": [
+    4,
+    5,
+    6
+   ],
+   "peak": [
+    5
+   ],
+   "share": [
+    0.0,
+    0.0,
+    0.0,
+    0.206,
+    1.0,
+    0.353,
+    0.118,
+    0.044,
+    0.162,
+    0.088,
+    0.029,
+    0.0
+   ]
+  },
+  "lotus": {
+   "taxon_id": 1453363,
+   "taxon": "Lotus corniculatus",
+   "place": "Baden-Württemberg, DE",
+   "place_id": 12870,
+   "n_obs": 70,
+   "by_month": [
+    0,
+    0,
+    0,
+    1,
+    19,
+    22,
+    14,
+    9,
+    3,
+    2,
+    0,
+    0
+   ],
+   "months": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "peak": [
+    5,
+    6,
+    7
+   ],
+   "share": [
+    0.0,
+    0.0,
+    0.0,
+    0.045,
+    0.864,
+    1.0,
+    0.636,
+    0.409,
+    0.136,
+    0.091,
+    0.0,
+    0.0
+   ]
+  },
+  "echium": {
+   "taxon_id": 56174,
+   "taxon": "Echium vulgare",
+   "place": "Baden-Württemberg, DE",
+   "place_id": 12870,
+   "n_obs": 111,
+   "by_month": [
+    0,
+    0,
+    0,
+    1,
+    19,
+    39,
+    22,
+    11,
+    9,
+    7,
+    3,
+    0
+   ],
+   "months": [
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "peak": [
+    6
+   ],
+   "share": [
+    0.0,
+    0.0,
+    0.0,
+    0.026,
+    0.487,
+    1.0,
+    0.564,
+    0.282,
+    0.231,
+    0.179,
+    0.077,
+    0.0
+   ]
+  },
+  "campanula": {
+   "taxon_id": 984576,
+   "taxon": "Campanula rotundifolia",
+   "place": "Baden-Württemberg, DE",
+   "place_id": 12870,
+   "n_obs": 61,
+   "by_month": [
+    0,
+    0,
+    0,
+    0,
+    3,
+    8,
+    17,
+    9,
+    11,
+    10,
+    2,
+    1
+   ],
+   "months": [
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "peak": [
+    7,
+    9
+   ],
+   "share": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.176,
+    0.471,
+    1.0,
+    0.529,
+    0.647,
+    0.588,
+    0.118,
+    0.059
+   ]
+  },
+  "knautia": {
+   "taxon_id": 129115,
+   "taxon": "Knautia arvensis",
+   "place": "Baden-Württemberg, DE",
+   "place_id": 12870,
+   "n_obs": 97,
+   "by_month": [
+    0,
+    0,
+    0,
+    9,
+    46,
+    18,
+    4,
+    7,
+    5,
+    6,
+    1,
+    1
+   ],
+   "months": [
+    5,
+    6
+   ],
+   "peak": [
+    5
+   ],
+   "share": [
+    0.0,
+    0.0,
+    0.0,
+    0.196,
+    1.0,
+    0.391,
+    0.087,
+    0.152,
+    0.109,
+    0.13,
+    0.022,
+    0.022
+   ]
+  },
+  "centaurea": {
+   "taxon_id": 1557115,
+   "taxon": "Centaurea jacea",
+   "place": "Baden-Württemberg, DE",
+   "place_id": 12870,
+   "n_obs": 72,
+   "by_month": [
+    0,
+    0,
+    0,
+    0,
+    10,
+    16,
+    11,
+    8,
+    7,
+    14,
+    6,
+    0
+   ],
+   "months": [
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "peak": [
+    5,
+    6,
+    7,
+    10
+   ],
+   "share": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.625,
+    1.0,
+    0.688,
+    0.5,
+    0.438,
+    0.875,
+    0.375,
+    0.0
+   ]
+  },
+  "thymus": {
+   "taxon_id": 169753,
+   "taxon": "Thymus pulegioides",
+   "place": "Germany",
+   "place_id": 7207,
+   "n_obs": 143,
+   "by_month": [
+    0,
+    0,
+    0,
+    0,
+    4,
+    19,
+    54,
+    26,
+    22,
+    13,
+    2,
+    3
+   ],
+   "months": [
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "peak": [
+    7
+   ],
+   "share": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.074,
+    0.352,
+    1.0,
+    0.481,
+    0.407,
+    0.241,
+    0.037,
+    0.056
+   ]
+  },
+  "origanum": {
+   "taxon_id": 61396,
+   "taxon": "Origanum vulgare",
+   "place": "Baden-Württemberg, DE",
+   "place_id": 12870,
+   "n_obs": 54,
+   "by_month": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    7,
+    31,
+    5,
+    3,
+    7,
+    1,
+    0
+   ],
+   "months": [
+    6,
+    7,
+    10
+   ],
+   "peak": [
+    7
+   ],
+   "share": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.226,
+    1.0,
+    0.161,
+    0.097,
+    0.226,
+    0.032,
+    0.0
+   ]
+  },
+  "hylotelephium": {
+   "taxon_id": 1420906,
+   "taxon": "Hylotelephium telephium",
+   "place": "Germany",
+   "place_id": 7207,
+   "n_obs": 78,
+   "by_month": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    39,
+    31,
+    4,
+    1,
+    0
+   ],
+   "months": [
+    8,
+    9
+   ],
+   "peak": [
+    8,
+    9
+   ],
+   "share": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.026,
+    0.026,
+    0.026,
+    1.0,
+    0.795,
+    0.103,
+    0.026,
+    0.0
+   ]
+  },
+  "aster": {
+   "taxon_id": 333994,
+   "taxon": "Aster amellus",
+   "place": "Germany",
+   "place_id": 7207,
+   "n_obs": 43,
+   "by_month": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    4,
+    10,
+    23,
+    5,
+    1,
+    0
+   ],
+   "months": [
+    8,
+    9,
+    10
+   ],
+   "peak": [
+    9
+   ],
+   "share": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.174,
+    0.435,
+    1.0,
+    0.217,
+    0.043,
+    0.0
+   ]
+  },
+  "hedera": {
+   "taxon_id": 1719371,
+   "taxon": "Hedera helix",
+   "place": "Germany",
+   "place_id": 7207,
+   "n_obs": 182,
+   "by_month": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    2,
+    102,
+    62,
+    10,
+    4
+   ],
+   "months": [
+    9,
+    10
+   ],
+   "peak": [
+    9,
+    10
+   ],
+   "share": [
+    0.0,
+    0.0,
+    0.01,
+    0.0,
+    0.0,
+    0.01,
+    0.0,
+    0.02,
+    1.0,
+    0.608,
+    0.098,
+    0.039
+   ]
+  },
+  "phacelia": {
+   "taxon_id": 58185,
+   "taxon": "Phacelia tanacetifolia",
+   "place": "Baden-Württemberg, DE",
+   "place_id": 12870,
+   "n_obs": 35,
+   "by_month": [
+    0,
+    0,
+    0,
+    1,
+    15,
+    10,
+    3,
+    0,
+    2,
+    2,
+    2,
+    0
+   ],
+   "months": [
+    5,
+    6,
+    7
+   ],
+   "peak": [
+    5,
+    6
+   ],
+   "share": [
+    0.0,
+    0.0,
+    0.0,
+    0.067,
+    1.0,
+    0.667,
+    0.2,
+    0.0,
+    0.133,
+    0.133,
+    0.133,
+    0.0
+   ]
+  },
+  "buckwheat": {
+   "taxon_id": 145601,
+   "taxon": "Fagopyrum esculentum",
+   "place": "Germany",
+   "place_id": 7207,
+   "n_obs": 63,
+   "by_month": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    11,
+    15,
+    14,
+    16,
+    6,
+    0,
+    0
+   ],
+   "months": [
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "peak": [
+    6,
+    7,
+    8,
+    9
+   ],
+   "share": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.062,
+    0.688,
+    0.938,
+    0.875,
+    1.0,
+    0.375,
+    0.0,
+    0.0
+   ]
+  },
+  "sunflower": {
+   "taxon_id": 57983,
+   "taxon": "Helianthus annuus",
+   "place": "Germany",
+   "place_id": 7207,
+   "n_obs": 54,
+   "by_month": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    15,
+    21,
+    15,
+    1,
+    1,
+    0
+   ],
+   "months": [
+    7,
+    8,
+    9
+   ],
+   "peak": [
+    7,
+    8,
+    9
+   ],
+   "share": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.048,
+    0.714,
+    1.0,
+    0.714,
+    0.048,
+    0.048,
+    0.0
+   ]
+  }
+ },
+ "checked": {
+  "salix": "2026-10-28",
+  "cornus": "2026-10-28",
+  "prunus": "2026-10-28",
+  "pulmonaria": "2026-10-28",
+  "taraxacum": "2026-10-28",
+  "crataegus": "2026-10-28",
+  "salvia": "2026-10-28",
+  "lotus": "2026-10-28",
+  "echium": "2026-10-28",
+  "campanula": "2026-10-28",
+  "knautia": "2026-10-28",
+  "centaurea": "2026-10-28",
+  "thymus": "2026-10-28",
+  "tilia": "2026-10-28",
+  "rubus": "2026-10-28",
+  "origanum": "2026-10-28",
+  "hylotelephium": "2026-10-28",
+  "aster": "2026-10-28",
+  "hedera": "2026-10-28",
+  "phacelia": "2026-10-28",
+  "buckwheat": "2026-10-28",
+  "mustard": "2026-10-28",
+  "sunflower": "2026-10-28"
+ },
+ "places": [
+  {
+   "id": 12870,
+   "name": "Baden-Württemberg, DE"
+  },
+  {
+   "id": 7207,
+   "name": "Germany"
+  }
+ ]
+}

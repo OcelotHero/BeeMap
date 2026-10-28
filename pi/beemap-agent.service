@@ -1,0 +1,14 @@
+[Unit]
+Description=BeeMap hornet departure tracker (VespAI)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=pi
+WorkingDirectory=/home/pi/beemap
+ExecStart=/usr/bin/python3 /home/pi/beemap/beemap_agent.py --config /home/pi/beemap/beemap.ini
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

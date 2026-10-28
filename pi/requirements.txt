@@ -1,0 +1,5 @@
+requests>=2.28
+opencv-python-headless>=4.7
+numpy
+# The VespAI model runs on YOLOv5 via torch.hub (already installed if VespAI runs):
+# torch, torchvision, and the ultralytics/yolov5 requirements
