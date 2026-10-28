@@ -1487,6 +1487,7 @@ def summary():
             "planned": c.execute("SELECT COUNT(*) FROM stations WHERE planned=1").fetchone()[0],
             "window_days": WINDOW_DAYS,
             "auth_required": bool(ADMIN_KEY),
+            "carto_key": os.environ.get("BEEMAP_CARTO_KEY", ""),   # optional: CARTO basemaps need a free key
             "reports_enabled": reports_enabled(),
             "nest_reports_pending": c.execute("SELECT COUNT(*) FROM nest_reports WHERE status='pending'").fetchone()[0],
             "plantings_m2": round(c.execute("SELECT COALESCE(SUM(area_m2),0) FROM plantings").fetchone()[0]),

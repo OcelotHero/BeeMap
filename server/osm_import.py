@@ -14,7 +14,9 @@ from pathlib import Path
 import requests
 
 OUT = Path(__file__).with_name("osm_data.json")
-ENDPOINTS = ["https://overpass-api.de/api/interpreter", "https://overpass.kumi.systems/api/interpreter"]
+ENDPOINTS = ["https://overpass-api.de/api/interpreter", "https://lz4.overpass-api.de/api/interpreter",
+             "https://z.overpass-api.de/api/interpreter", "https://overpass.kumi.systems/api/interpreter"]
+MIN_AREAS = 50          # Heilbronn has thousands of mapped areas; far fewer means a broken answer
 HEADERS = {"User-Agent": "BeeMap hackathon prototype (pollinator map, one-off land-cover download)"}
 BBOX = (49.080, 9.120, 49.200, 9.310)          # same as server/ecology.py
 
@@ -248,8 +250,20 @@ def fetch(q: str) -> dict:
         try:
             r = requests.post(url, data={"data": q}, headers=HEADERS, timeout=300)
             if r.status_code == 200:
-                return r.json()
-            last = f"{url}: HTTP {r.status_code} {r.text[:200]}"
+                try:
+                    data = r.json()
+                except ValueError:
+                    last = f"{url}: not JSON ({r.text[:120]!r})"
+                else:
+                    # Overpass answers 200 even when the query timed out or ran
+                    # out of memory: the error is in "remark" and the data is cut short.
+                    remark = str(data.get("remark") or "")
+                    if "error" in remark.lower():
+                        last = f"{url}: {remark[:200]}"
+                    else:
+                        return data
+            else:
+                last = f"{url}: HTTP {r.status_code} {r.text[:200]}"
         except requests.RequestException as e:
             last = f"{url}: {e}"
         print(f"  {last}; trying the next server")
@@ -258,9 +272,14 @@ def fetch(q: str) -> dict:
 
 
 
-def fetch_and_save(include_landscape=False, out=None, data: dict | None = None) -> dict:
+def fetch_and_save(include_landscape=False, out=None, data: dict | None = None, min_areas: int = MIN_AREAS) -> dict:
     out = Path(out or OUT)
-    res = convert(data if data is not None else fetch(query(BBOX)), include_landscape)
+    fetched = data is None
+    res = convert(fetch(query(BBOX)) if fetched else data, include_landscape)
+    if fetched and len(res["landcover"]) < min_areas:
+        # never replace good data with a near-empty answer
+        raise SystemExit(f"OpenStreetMap returned only {len(res['landcover'])} land-cover areas for Heilbronn; "
+                         "keeping the previous map data.")
     tmp = Path(str(out) + ".tmp")
     tmp.write_text(json.dumps(res, ensure_ascii=False, separators=(",", ":")))
     tmp.replace(out)

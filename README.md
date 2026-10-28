@@ -86,6 +86,12 @@ Colony health is the beekeepers' data, so it is **not on the public map**. Opera
 
 These are **indicators to prompt an inspection, not diagnoses.** Thresholds are beekeeping rules of thumb (named constants in `server/health.py`) and haven't been validated against real colonies. Sensor placement matters a lot: a sensor above the brood nest reads very differently from one at the side.
 
+### Background map
+
+The streets, buildings and labels come from **OpenStreetMap's own map tiles** (toned down a little so BeeMap's layers read on top). **Layers → Background map** also offers *OpenStreetMap Humanitarian*, and CARTO's calmer *Voyager* and *Positron* styles if you set a free CARTO key (`BEEMAP_CARTO_KEY=…`, from carto.com/basemaps; CARTO now requires one outside its own platform). If a background's tiles don't load, the page switches to the next one and says so; if none load, it says the browser can't reach the map servers.
+
+*If you see no streets at all:* the browser can't load map tiles. Check that the browser itself is online (in WSL, the Windows browser needs internet, not WSL), that no ad blocker or company proxy blocks `tile.openstreetmap.org`, and try the other background under Layers. OpenStreetMap's tile servers are for light use: fine for a demo, but a public deployment should use a tile provider with a plan (or CARTO with a key).
+
 ### Real map data from OpenStreetMap
 
 The server fetches Heilbronn's actual land cover from **OpenStreetMap** (one Overpass API request, in the background, the first time it starts) and uses it instead of the demo shapes, both for the forage model and for a **Land cover** map layer (**Layers → Land cover**, filterable by kind):
@@ -95,7 +101,7 @@ The server fetches Heilbronn's actual land cover from **OpenStreetMap** (one Ove
 * **wild-bee zones**: nature reserves, natural monuments and protected landscape features. Large landscape protection areas (Landschaftsschutzgebiete) are left out by default because they'd cover half the city; add `--include-landscape` to include them. Protected areas are only a starting point: real wild-bee habitats (sand banks, dry-stone walls, flower-rich verges) need local experts to map them.
 * **place names**: districts and villages, for labels like "Böckingen"
 
-**Fetched on demand:** nothing to download first. Until it arrives (usually under a minute), or without internet, the map uses the demo shapes and says so; failed fetches are retried at most every 10 minutes. It's kept in `server/osm_data.json` and refreshed after 30 days. The land-cover layer loads only the shapes in view as you pan. To refresh by hand: `python3 tools/update_osm_data.py`. Multipolygon outlines split across several ways are joined, and holes (a clearing in a forest) are kept. Map data © OpenStreetMap contributors, under the ODbL; the app shows this credit whenever the data is in use.
+This is **not** the background map: it's the land use and nature areas BeeMap's flower model needs (roads come from the background tiles). **Fetched on demand:** nothing to download first. Overpass sometimes answers "OK" with a timeout inside, or a mirror is busy; BeeMap then tries the next mirror and never replaces good data with a near-empty answer. Until it arrives (usually under a minute), or without internet, the map uses the demo shapes and says so; failed fetches are retried at most every 10 minutes. It's kept in `server/osm_data.json` and refreshed after 30 days. The land-cover layer loads only the shapes in view as you pan. To refresh by hand: `python3 tools/update_osm_data.py`. Multipolygon outlines split across several ways are joined, and holes (a clearing in a forest) are kept. Map data © OpenStreetMap contributors, under the ODbL; the app shows this credit whenever the data is in use.
 
 `BEEMAP_GEODATA=demo ./pitch.sh` keeps the hand-placed demo shapes. `BEEMAP_ONLINE=off` stops all fetching (fully offline demo; the built-in data is used). The pitch script's spot-check example (Wertwiesenpark comes out amber) was written for those, so with real data the verdicts can differ: Wertwiesenpark's demo wild-bee meadow isn't a protected area in OpenStreetMap. Delete `server/osm_data.json` to switch back to the demo data.
 
@@ -129,6 +135,9 @@ The Pi pairs the two: when VespAI sees a hornet leave, the heading track that st
 What it changes: reports that fit are **checked first** (the admin list puts them on top); a photo check that is **75% sure** confirms a report that fits (*photo check + flight lines*), instead of the 90% needed on its own; a nest area with a **confirmed** fitting report is shown as **located** with a pin, and drops out of smart-hive planning; marking that report **removed** also closes its nest area, so its departures stop counting. On the map, dotted lines join reports to the area they fit, and popups name the hives whose flight lines back them up.
 
 **Installing a model.** BeeMap ships **no trained model**: put an ONNX image classifier at `server/models/nest_classifier.onnx` with its class names in `nest_classifier.labels.txt` (default `asian_hornet_nest, european_hornet_nest, wasp_nest, not_a_nest`), input 1×3×224×224 RGB, ImageNet-normalised, then `pip install onnxruntime` and run `python3 tools/admin.py reports-recheck` to check the waiting reports. Training one needs a labelled set of nest photos for each class (for example from beekeeping associations, the city's own confirmed reports, and research-grade iNaturalist observations of nests). Fine-tune a small pretrained network (e.g. MobileNet or EfficientNet), and check its accuracy on photos it never saw before trusting the 90% threshold. The wiring is tested with tiny stand-in models through real ONNX Runtime (`server/tests/test_nest_reports.py`). Switch reporting off with `python3 tools/admin.py reports off`.
+
+
+**Documentation:** see [doc/](doc/README.md): description, architecture, repository structure, algorithms, API, data sources, hardware, operations, privacy and security, testing, design decisions, and limitations and roadmap.
 
 ## Run the pitch demo
 

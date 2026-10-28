@@ -1,0 +1,67 @@
+# Hardware: smart hives and SensoBoxes
+
+## Smart hive (Raspberry Pi)
+
+| Part | Purpose | Notes |
+|---|---|---|
+| Raspberry Pi 4 or 5 | Runs `pi/beemap_agent.py` | The Pi 5 has two camera ports |
+| Detection camera | VespAI YOLOv5 at the entrance or bait station | `camera = picamera2:0`, or `opencv:0` (USB), or `file:<video>` for tests |
+| Heading camera | Follows the departing hornet (motion only, no AI) | *sky*: fisheye looking up (all directions). *horizon*: looking outward (more precise, but only within its field of view) |
+| In-hive sensor | Temperature and humidity | `bme280` (I²C, 0x76/0x77), `sht31` (I²C) or `dht22` (GPIO). Placement matters: above the brood reads very differently from the side. |
+
+### Setup
+
+1. **Register the hive** on the server:
+   `python3 tools/admin.py station-add hive20 "Hive 20, Biberach" 49.105 9.150 --heading 40`.
+   The heading is the compass direction of the heading camera's image *top* (sky mode) or image *centre* (horizon mode). Measure it carefully once: this calibration limits precision more than the cameras do.
+2. **Copy the config:** `pi/beemap.example.ini` → `beemap.ini`. Fill in `server`, `station_id` and `token` (from `python3 tools/admin.py station-token hive20`), and put the VespAI weights at `models/vespai.pt`.
+3. **Install the dependencies:** `pip install -r pi/requirements.txt`, plus the VespAI / YOLOv5 dependencies (torch), plus your sensor's library.
+4. **Test the connection:** `python3 beemap_agent.py --config beemap.ini --test`.
+5. **Start on boot:** copy `beemap-agent.service` to `/etc/systemd/system/`, then `systemctl enable --now beemap-agent`.
+
+`--simulate` runs without cameras or a model, sending fake hornets towards `sim_nest_bearing`.
+
+### Configuration (`[beemap]` in `beemap.ini`)
+
+| Key | Default | Meaning |
+|---|---|---|
+| `server`, `station_id`, `token` | (required) | Where to send data, and as which hive |
+| `weights`, `target_class`, `min_confidence` | `models/vespai.pt`, `velutina`, 0.6 | VespAI model and the class to track |
+| `camera`, `width`, `height`, `fps` | `picamera2`, 1280, 720, 10 | Detection camera |
+| `lost_after_s`, `min_track_points`, `max_jump` | 0.6, 4, 0.25 | When a track counts as "left", and tracking limits |
+| `heading_camera` | `none` | `picamera2:1`, `opencv:1`, a file, or `none` (single-camera station) |
+| `heading_mode`, `heading_hfov`, `heading_flip` | `sky`, 120, false | Heading camera geometry |
+| `heading_width`, `heading_height`, `heading_fps` | 1280, 720, 30 | Heading camera resolution |
+| `match_window_s` | 3 | How soon after leaving the heading track must start |
+| `min_blob_px`, `max_blob_px` | 6, 6000 | Motion blob size for hornets (heading camera) |
+| `hive_sensor`, `hive_sensor_addr`, `hive_sensor_pin` | `none`, 0x76, D4 | In-hive sensor |
+| `entrance_roi` | `0,0.55,1,1` | Entrance area in the detection image (fractions), for activity counting |
+| `bee_blob_min_px`, `bee_blob_max_px` | 20, 3000 | Motion blob size for bees |
+| `hive_post_s`, `heartbeat_s` | 300, 60 | Upload intervals |
+| `send_live_frame`, `queue_dir` | true, `queue` | Calibration frame with heartbeats; offline queue folder |
+
+### What the Pi sends
+
+- **Detections:** snapshot, detection confidence, track, relative heading and its uncertainty (or the single-camera exit angle), and an event ID so retries aren't counted twice. Queued on disk when offline.
+- **Heartbeat** every minute: status (fps, Pi temperature, queue length, heading-camera statistics), plus a frame kept privately on the server. The reply carries the current heading calibration.
+- **In-hive readings** every 5 minutes: average entrance activity (bees in view), hive temperature and humidity. Kept in memory and retried if sending fails.
+
+Entrance activity is a **relative** number: each colony is compared only with itself, so camera position doesn't matter as long as it stays put.
+
+## SensoBox
+
+The sensor box measures air pressure, humidity, light/UV and temperature today; a pollen sensor is planned. **The pollen sensor needs to identify pollen types**: total counts are mostly grass, birch and pine and can't show bee food, so BeeMap doesn't use them for the flower map.
+
+1. **Register:** `python3 tools/admin.py box-add sb-boeckingen "Böckingen Rathaus" 49.133 9.183 [--station hive2-boeckingen]`. Linking a box to a smart hive makes it that hive's outside weather.
+2. **Get the token:** `python3 tools/admin.py box-token sb-boeckingen`.
+3. **Post readings,** one at a time or in batches (every field optional):
+
+```bash
+curl -X POST http://SERVER:8000/api/sensoboxes/sb-boeckingen/readings \
+  -H "X-Box-Token: <token>" -H "Content-Type: application/json" \
+  -d '{"readings": [{"ts": "2026-05-04T12:00:00Z", "temp_c": 17.2, "humidity": 61,
+       "pressure_hpa": 1016.4, "lux": 42000, "uv_index": 4.1,
+       "pollen_total": 210.5, "pollen": {"salix": 12, "rosaceae": 30, "poaceae": 160}}]}'
+```
+
+`pollen` is in grains/m³ by type, using lower-case family or genus names (`salix`, `tilia`, `rosaceae`, `brassicaceae`, `poaceae`, `betula`, …).

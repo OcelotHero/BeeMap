@@ -100,9 +100,46 @@ const on = (k) => ST.layers[k].on;
 /* ================================================================ map */
 const map = L.map('map', { zoomControl: false, attributionControl: true, preferCanvas: false }).setView(AREA.center, AREA.zoom);
 L.control.zoom({ position: 'topright' }).addTo(map);
-L.tileLayer('https://{s}.basemap.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-  maxZoom: 19, subdomains: 'abcd', attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-}).addTo(map);
+/* ---------------------------------------------------------------- background map
+   OpenStreetMap's own tiles by default (roads, buildings, labels; free with
+   attribution). CARTO's calmer styles need a free key (BEEMAP_CARTO_KEY).
+   If a background map's tiles fail, switch to the next one and say so. */
+const OSM_ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+const BASEMAPS = {
+  osm: { label: 'OpenStreetMap', url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', opts: { maxZoom: 19, attribution: OSM_ATTR, className: 'bm-osm' } },
+  hot: { label: 'OpenStreetMap Humanitarian', url: 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+    opts: { maxZoom: 19, subdomains: 'abc', attribution: `${OSM_ATTR}, style &copy; Humanitarian OpenStreetMap Team, hosted by OpenStreetMap France`, className: 'bm-osm' } },
+  voyager: { label: 'CARTO Voyager', needsKey: true, url: 'https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png?key={key}',
+    opts: { maxZoom: 19, attribution: `${OSM_ATTR} &copy; <a href="https://carto.com/attributions">CARTO</a>` } },
+  positron: { label: 'CARTO Positron (light)', needsKey: true, url: 'https://basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}.png?key={key}',
+    opts: { maxZoom: 19, attribution: `${OSM_ATTR} &copy; <a href="https://carto.com/attributions">CARTO</a>` } },
+};
+const BASE = { key: 'osm', layer: null, tried: new Set(), msg: '', timer: null };
+const baseAvailable = () => Object.keys(BASEMAPS).filter((k) => !BASEMAPS[k].needsKey || D.summary?.carto_key);
+function setBase(k, { auto = false } = {}) {
+  if (!BASEMAPS[k] || (BASEMAPS[k].needsKey && !D.summary?.carto_key)) k = 'osm';
+  if (!auto) { BASE.tried.clear(); BASE.msg = ''; }
+  if (BASE.layer) map.removeLayer(BASE.layer);
+  const b = BASEMAPS[k];
+  const layer = L.tileLayer(b.url, { ...b.opts, key: D.summary?.carto_key || '' });
+  const st = { loads: 0, errors: 0 };                  // per layer: no cross-talk between backgrounds
+  BASE.key = k; BASE.layer = layer;
+  const current = () => BASE.layer === layer;          // ignore late events from a layer we already left
+  layer.on('tileload', () => { if (!current()) return; st.loads++; if (BASE.msg && !auto) { BASE.msg = ''; renderStatus(); } });
+  layer.on('tileerror', () => { if (!current()) return; st.errors++; if (!st.loads && st.errors >= 4) baseFailed(k); });
+  layer.addTo(map);
+  clearTimeout(BASE.timer);
+  BASE.timer = setTimeout(() => { if (current() && !st.loads && st.errors) baseFailed(k); }, 10000);
+  if (!auto) saveURL();
+}
+function baseFailed(k) {
+  if (BASE.key !== k || BASE.tried.has(k)) return;
+  BASE.tried.add(k);
+  const next = baseAvailable().find((x) => !BASE.tried.has(x));
+  if (next) { BASE.msg = `The ${BASEMAPS[k].label} background didn’t load; switched to ${BASEMAPS[next].label}.`; setBase(next, { auto: true }); }
+  else { clearTimeout(BASE.timer); BASE.msg = 'The background map (streets, labels) can’t load. This browser may not reach the map servers: check its internet connection.'; }
+  renderStatus();
+}
 [['lc', 350], ['grid', 360], ['zones', 380], ['nests', 400], ['lines', 410], ['pts', 450]].forEach(([n, z]) => { map.createPane(n).style.zIndex = z; });
 const canvasLC = L.canvas({ pane: 'lc', padding: 0.3 });
 const GROUPS = Object.fromEntries(LAYERS.map((l) => [l.key, L.layerGroup().addTo(map)]));
@@ -267,7 +304,7 @@ const DRAW = {
     const kinds = new Set(F('landcover').kinds);
     for (const f of r.features) {
       if (!kinds.has(f.kind)) continue;
-      L.polygon(polyLatLngs(f.polys), { renderer: canvasLC, pane: 'lc', stroke: false, fillColor: LC_COLORS[f.kind] || '#ccc', fillOpacity: f.kind === 'urban' || f.kind === 'arable' ? 0.35 : 0.55 })
+      L.polygon(polyLatLngs(f.polys), { renderer: canvasLC, pane: 'lc', stroke: false, fillColor: LC_COLORS[f.kind] || '#ccc', fillOpacity: f.kind === 'urban' || f.kind === 'arable' ? 0.18 : 0.42 })
         .bindTooltip(`${LC_NAMES[f.kind] || f.kind}${f.name ? ': ' + esc(f.name) : ''}`, { sticky: true }).addTo(g);
     }
     for (const l of r.lines || []) {
@@ -322,12 +359,15 @@ function boxPopup(b) {
 /* ---------------------------------------------------------------- layers panel + legend */
 function renderLayers() {
   const box = $('#layers'), groups = [...new Set(LAYERS.map((l) => l.group))];
-  box.innerHTML = `<div class="row" style="justify-content:space-between"><b>Layers</b><button class="iconbtn" id="lclose" aria-label="Close layers">✕</button></div>` + groups.map((g) => `
+  box.innerHTML = `<div class="row" style="justify-content:space-between"><b>Layers</b><button class="iconbtn" id="lclose" aria-label="Close layers">✕</button></div>
+    <div class="lgroup"><span class="eyebrow">Background map</span><div class="filters">${baseAvailable().map((k) => `<button class="chip" data-base="${k}" aria-pressed="${BASE.key === k}">${BASEMAPS[k].label}</button>`).join('')}</div>
+      ${D.summary?.carto_key ? '' : '<span class="src">CARTO’s lighter styles need a free key: set BEEMAP_CARTO_KEY on the server.</span>'}</div>` + groups.map((g) => `
     <div class="lgroup"><span class="eyebrow">${g}</span>${LAYERS.filter((l) => l.group === g).map((l) => `
       <div class="lrow ${on(l.key) ? 'on' : ''}"><label><input type="checkbox" data-layer="${l.key}" ${on(l.key) ? 'checked' : ''}><i class="sw" style="background:${l.sw}"></i>${l.label}</label>
       ${on(l.key) && l.filters ? `<div class="lfilters">${l.filters.map((f) => filterHTML(l.key, f)).join('')}</div>` : ''}</div>`).join('')}</div>`).join('') +
     `<span class="src">${dataSources()}</span>`;
   box.querySelector('#lclose').onclick = () => toggleLayersBox(false);
+  box.querySelectorAll('[data-base]').forEach((b) => (b.onclick = () => { setBase(b.dataset.base); renderLayers(); renderStatus(); }));
   box.querySelectorAll('[data-layer]').forEach((c) => (c.onchange = () => { ST.layers[c.dataset.layer].on = c.checked; renderLayers(); drawLayer(c.dataset.layer); renderLegend(); saveURL(); }));
   wireFilters(box);
 }
@@ -377,8 +417,8 @@ async function loadStatus() {
   if (['loading'].includes(D.status.osm.state) || D.status.bloom.state === 'loading') statusTimer = setTimeout(loadStatus, 4000);
 }
 function renderStatus() {
-  const s = D.status, parts = [];
-  if (!s) return;
+  const s = D.status || { osm: {}, bloom: {} }, parts = [];
+  if (BASE.msg) parts.push(BASE.msg);
   if (s.osm.state === 'loading') parts.push('<span class="spin"></span>Loading land cover from OpenStreetMap…');
   else if (s.osm.state === 'failed') parts.push('Couldn’t reach OpenStreetMap; using demo map data. Will retry.');
   if (s.bloom.state === 'loading') parts.push(`<span class="spin"></span>Flowering times from iNaturalist: ${s.bloom.checked} of ${s.bloom.total} plants`);
@@ -689,6 +729,7 @@ function saveURL() {
     const c = map.getCenter(), p = new URLSearchParams();
     p.set('map', `${c.lat.toFixed(5)},${c.lng.toFixed(5)},${map.getZoom()}`);
     p.set('layers', LAYERS.filter((l) => on(l.key)).map((l) => l.key).join(','));
+    if (BASE.key !== 'osm') p.set('base', BASE.key);
     if (ST.tab !== 'overview') p.set('tab', ST.tab);
     if (on('gaps')) p.set('month', F('gaps').month);
     if (ST.at) p.set('at', `${ST.at[0].toFixed(5)},${ST.at[1].toFixed(5)}`);
@@ -699,6 +740,7 @@ function loadURL() {
   const p = new URLSearchParams(location.hash.slice(1));
   if (p.get('map')) { const [a, b, z] = p.get('map').split(',').map(Number); if (!isNaN(a)) map.setView([a, b], z || AREA.zoom); }
   if (p.has('layers')) { const ks = p.get('layers').split(','); LAYERS.forEach((l) => (ST.layers[l.key].on = ks.includes(l.key))); }
+  BASE.want = p.get('base') || 'osm';
   if (p.get('tab') && PANELS[p.get('tab')]) ST.tab = p.get('tab');
   if (p.get('month')) F('gaps').month = p.get('month');
   return p.get('at') ? p.get('at').split(',').map(Number) : null;
@@ -756,6 +798,7 @@ setInterval(() => refreshSoon(['hornets']), 120000);   // fallback if live updat
 (async () => {
   const at = loadURL();
   try { await loadAll(); } catch (e) { toast(e.message, true); }
+  setBase(BASE.want || 'osm');
   loadStatus();
   drawAll();
   renderReportBtn();

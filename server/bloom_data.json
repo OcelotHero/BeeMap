@@ -885,6 +885,133 @@
     0.048,
     0.0
    ]
+  },
+  "trifolium": {
+   "taxon_id": 51875,
+   "taxon": "Trifolium pratense",
+   "place": "Baden-Württemberg, DE",
+   "place_id": 12870,
+   "n_obs": 133,
+   "by_month": [
+    0,
+    0,
+    0,
+    11,
+    62,
+    16,
+    10,
+    5,
+    10,
+    15,
+    4,
+    0
+   ],
+   "months": [
+    5,
+    6,
+    10
+   ],
+   "peak": [
+    5
+   ],
+   "share": [
+    0.0,
+    0.0,
+    0.0,
+    0.177,
+    1.0,
+    0.258,
+    0.161,
+    0.081,
+    0.161,
+    0.242,
+    0.065,
+    0.0
+   ]
+  },
+  "onobrychis": {
+   "taxon_id": 55441,
+   "taxon": "Onobrychis viciifolia",
+   "place": "Baden-Württemberg, DE",
+   "place_id": 12870,
+   "n_obs": 54,
+   "by_month": [
+    0,
+    0,
+    0,
+    2,
+    36,
+    14,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "months": [
+    5,
+    6
+   ],
+   "peak": [
+    5
+   ],
+   "share": [
+    0.0,
+    0.0,
+    0.0,
+    0.056,
+    1.0,
+    0.389,
+    0.028,
+    0.028,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "fruit": {
+   "taxon_id": 469472,
+   "taxon": "Malus domestica",
+   "place": "Germany",
+   "place_id": 7207,
+   "n_obs": 41,
+   "by_month": [
+    0,
+    0,
+    0,
+    30,
+    8,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0
+   ],
+   "months": [
+    4,
+    5
+   ],
+   "peak": [
+    4
+   ],
+   "share": [
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.267,
+    0.0,
+    0.0,
+    0.0,
+    0.1,
+    0.0,
+    0.0,
+    0.0
+   ]
   }
  },
  "checked": {
@@ -910,7 +1037,12 @@
   "phacelia": "2026-10-28",
   "buckwheat": "2026-10-28",
   "mustard": "2026-10-28",
-  "sunflower": "2026-10-28"
+  "sunflower": "2026-10-28",
+  "trifolium": "2026-10-28",
+  "onobrychis": "2026-10-28",
+  "fieldbean": "2026-10-28",
+  "regio_mix": "2026-10-28",
+  "fruit": "2026-10-28"
  },
  "places": [
   {

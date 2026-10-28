@@ -195,3 +195,6 @@ dialog label small { font-weight: 400; }
 .seg.wrap { flex-wrap: wrap; }
 .seg.wrap button { flex: 1 1 auto; min-width: 30%; padding: 0 8px; }
 .safety { background: var(--hornet-tint-2); color: var(--hornet-ink); border-radius: 10px; padding: 8px 12px; font-size: 13px; font-weight: 600; }
+
+/* OpenStreetMap's own tiles are colourful: tone them down so BeeMap's layers read on top */
+.leaflet-layer.bm-osm { filter: saturate(0.55) brightness(1.04) contrast(0.95); }

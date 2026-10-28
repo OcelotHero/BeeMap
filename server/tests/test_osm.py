@@ -68,5 +68,34 @@ def test_osm():
     geodata.load("demo"); ecology._world = None
 
 
+
+
+def test_overpass_errors():
+    """Overpass answers 200 with a 'remark' when a query times out; mirrors may be busy or send HTML."""
+    import osm_import as O
+    class R:
+        def __init__(s, code, j=None, text=""): s.status_code, s._j, s.text = code, j, text
+        def json(s):
+            if s._j is None: raise ValueError
+            return s._j
+    answers = [R(200, {"remark": "runtime error: Query timed out in \"query\" at line 3 after 241 seconds.", "elements": []}),
+               R(429, text="Too Many Requests"), R(200, None, "<html>busy</html>"), R(200, {"elements": [{"type": "node"}]})]
+    calls = []
+    real_post, real_fetch = O.requests.post, O.fetch
+    O.requests.post = lambda url, **k: (calls.append(url), answers[len(calls) - 1])[1]
+    try:
+        assert O.fetch("q") == {"elements": [{"type": "node"}]} and len(calls) == 4
+        O.fetch = lambda q: {"elements": []}
+        try:
+            O.fetch_and_save(out=os.path.join(tempfile.mkdtemp(), "x.json"))
+            raise AssertionError("an empty answer must not replace the map data")
+        except SystemExit:
+            pass
+    finally:
+        O.requests.post, O.fetch = real_post, real_fetch
+    print("osm: Overpass timeouts hidden in 200 answers, busy mirrors and empty answers are all caught")
+
+
 if __name__ == "__main__":
     test_osm()
+    test_overpass_errors()
