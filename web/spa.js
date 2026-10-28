@@ -59,7 +59,8 @@ const NR_HEIGHT = { reach: 'within reach (under 2 m)', '2-5m': '2–5 m up', 'ab
 const NR_SIZE = { fist: 'smaller than a fist', football: 'about football-sized', bigger: 'bigger than a football', unknown: 'size unknown' };
 const NR_STATUS = { pending: ['Waiting for a check', 'amber', '#C98A0B', '?'], asian_hornet: ['Asian hornet nest', 'red', '#C2481B', '!'],
   other_species: ['Not an Asian hornet', 'green', '#2F6B45', '✓'], not_found: ['Not found', 'grey', '#7C877F', '–'], removed: ['Removed', 'green', '#2F6B45', '✓'] };
-const D = { reports: [], summary: {}, stations: [], detections: [], nests: [], lines: [], eco: null, boxes: [], planning: null, landcover: null, plants: null, live: false };
+const D = { reports: [], summary: {}, stations: [], detections: [], nests: [], lines: [], eco: null, boxes: [], planning: null, landcover: null, plants: null, live: false,
+  city: {} };   // city = results of the data pipeline (pipeline/): Bee Balance, sightings, street heat, flight hours
 const ST = {
   tab: 'overview', at: null,             // at = clicked place [lat, lon]
   layers: {},                            // key -> { on, f: {filters} }
@@ -77,9 +78,16 @@ const LAYERS = [
     filters: [{ key: 'status', type: 'multi', options: [['suspected', 'Suspected'], ['assigned', 'Team on it'], ['removed', 'Removed']], value: ['suspected', 'assigned'] }] },
   { key: 'reports', group: 'Asian hornets', label: 'Reported nests', on: true, sw: '#C98A0B;border-radius:50%;border:2px solid #fff',
     filters: [{ key: 'status', type: 'multi', options: [['pending', 'Waiting for a check'], ['asian_hornet', 'Asian hornet nest'], ['other_species', 'Other species'], ['not_found', 'Not found'], ['removed', 'Removed']], value: ['pending', 'asian_hornet'] }] },
+  { key: 'sightings', group: 'Asian hornets', label: 'Public sightings (GBIF)', on: false, sw: '#7A2E12;border-radius:50%;border:1.5px solid #fff',
+    filters: [{ key: 'species', type: 'multi', options: [['Vespa velutina', 'Asian hornet'], ['Vespa crabro', 'European hornet'], ['Apis mellifera', 'Honey bee']], value: ['Vespa velutina'] },
+      { key: 'since', type: 'select', label: 'Since', options: [['2014', '2014'], ['2023', '2023'], ['2025', '2025'], ['2026', '2026']], value: '2023' }] },
   { key: 'hives', group: 'Bees', label: 'Hives', on: true, sw: '#18211A',
     filters: [{ key: 'types', type: 'multi', options: [['smart', 'Smart hives'], ['planned', 'Planned'], ['registered', 'Registered apiaries']], value: ['smart', 'planned', 'registered'] },
       { key: 'radius', type: 'check', label: '800 m forage radius', value: false }] },
+  { key: 'balance', group: 'Bees', label: 'Bee Balance (250 m)', on: false, sw: 'linear-gradient(90deg,#2F6B45,#C98A0B,#C2481B)',
+    filters: [{ key: 'measure', type: 'select', label: 'Food for', options: [['1500', 'Honeybees (1.5 km)'], ['300', 'Wild bees (300 m)']], value: '1500' },
+      { key: 'cats', type: 'multi', options: [['green', 'Hive-ready'], ['yellow', 'Plant first'], ['red', 'No extra hives']], value: ['green', 'yellow', 'red'] },
+      { key: 'schools', type: 'check', label: 'Schools', value: true }] },
   { key: 'wild', group: 'Bees', label: 'Wild-bee zones', on: true, sw: 'rgba(47,107,69,.45);border:1.5px solid #2F6B45' },
   { key: 'spots', group: 'Bees', label: 'Good hive spots', on: false, sw: 'linear-gradient(90deg,#2F6B45,#C98A0B,#C2481B)' },
   { key: 'sites', group: 'Bees', label: 'Suggested smart-hive sites', on: false, sw: '#F2C230;border-radius:50%;border:2px solid #18211A' },
@@ -91,7 +99,13 @@ const LAYERS = [
   { key: 'boxes', group: 'Sensors', label: 'SensoBoxes', on: true, sw: '#2F6B45;border-radius:3px',
     filters: [{ key: 'kind', type: 'select', label: 'Show', options: [['all', 'All boxes'], ['pollen', 'With pollen sensor'], ['weather', 'Weather only']], value: 'all' },
       { key: 'range', type: 'check', label: 'Where they correct the map', value: false }] },
+  { key: 'heat', group: 'Sensors', label: 'Street heat (walks)', on: false, sw: 'linear-gradient(90deg,#3B7DB8,#F4F1EA,#C2481B)' },
 ];
+const BB = { green: ['#2F6B45', 'Hive-ready', 'green'], yellow: ['#C98A0B', 'Plant first', 'amber'], red: ['#C2481B', 'No extra hives', 'red'] };
+const WB = { green: 'Most wild-bee food (top quarter)', yellow: 'Some wild-bee food', red: 'Least wild-bee food (bottom quarter)' };
+const SP = { 'Vespa velutina': ['#7A2E12', 'Asian hornet'], 'Vespa crabro': ['#B07A2A', 'European hornet'], 'Apis mellifera': ['#E0B43A', 'Honey bee'] };
+const pct = (x) => (x == null ? '–' : Math.round(x * 100) + '%');
+const signed = (d) => `${d > 0 ? '+' : ''}${d.toFixed(1)}`;
 const LBY = Object.fromEntries(LAYERS.map((l) => [l.key, l]));
 LAYERS.forEach((l) => (ST.layers[l.key] = { on: l.on, f: Object.fromEntries((l.filters || []).map((f) => [f.key, Array.isArray(f.value) ? [...f.value] : f.value])) }));
 const F = (k) => ST.layers[k].f;
@@ -105,6 +119,7 @@ L.tileLayer('https://{s}.basemap.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 }).addTo(map);
 [['lc', 350], ['grid', 360], ['zones', 380], ['nests', 400], ['lines', 410], ['pts', 450]].forEach(([n, z]) => { map.createPane(n).style.zIndex = z; });
 const canvasLC = L.canvas({ pane: 'lc', padding: 0.3 });
+const canvasGrid = L.canvas({ pane: 'grid', padding: 0.3 });
 const GROUPS = Object.fromEntries(LAYERS.map((l) => [l.key, L.layerGroup().addTo(map)]));
 const gridCache = {};
 let placeMarker = null;
@@ -276,8 +291,56 @@ const DRAW = {
     }
   },
   async gaps(g) { g.addLayer(await grid('gap', +F('gaps').month)); },
+  balance(g) {
+    const b = D.city.balance;
+    if (!b) throw new Error('No Bee Balance data yet: run "make balance" in pipeline/.');
+    const f = F('balance'), cats = new Set(f.cats);
+    for (const c of b.cells) {
+      const k = cellCat(c, f.measure);
+      if (!cats.has(k)) continue;
+      L.rectangle(square(c[0], c[1], b.cell_m), { renderer: canvasGrid, pane: 'grid', stroke: false, fillColor: BB[k][0], fillOpacity: 0.32 })
+        .bindTooltip(`<b>${f.measure === '300' ? WB[k] : BB[k][1]}</b><br>Bee food within 1.5 km: ${pct(c[2])} · within 300 m: ${pct(c[3])}${c[5] != null ? `<br>Street heat ${signed(c[5])} °C` : ''}`, { sticky: true }).addTo(g);
+    }
+    if (f.schools) for (const s of D.city.places?.schools || []) {
+      L.circleMarker([s.lat, s.lon], { pane: 'pts', radius: 5.5, color: '#fff', weight: 2, fillColor: BB[s.category][0], fillOpacity: 1 })
+        .bindPopup(`<div class="pop"><span class="eyebrow">School · Bee Balance</span><b>${esc(s.name)}</b><span>${BB[s.category][1]}</span><span class="muted">Bee food within 1.5 km: ${pct(s.food_1500)} · within 300 m: ${pct(s.food_300)}</span></div>`).addTo(g);
+    }
+  },
+  sightings(g) {
+    const S = D.city.sightings;
+    if (!S) throw new Error('No public sightings yet: run "make hornets" in pipeline/.');
+    const f = F('sightings'), sp = new Set(f.species), since = +f.since;
+    for (const p of S.sightings) {
+      if (!sp.has(p.species) || (p.year || 0) < since) continue;
+      L.circleMarker([p.lat, p.lon], { pane: 'pts', radius: p.species === 'Vespa velutina' ? 5.5 : 4, color: '#fff', weight: 1.2, fillColor: (SP[p.species] || ['#555'])[0], fillOpacity: 0.9 })
+        .bindPopup(() => `<div class="pop"><span class="eyebrow">Public sighting · ${esc(p.source)}</span><b>${esc(p.common)}</b><span class="muted">${esc(p.date || p.year || '')}${p.locality ? ' · ' + esc(p.locality) : ''}</span>
+          <span class="muted">Position to about ${p.uncertainty_m ? Math.round(p.uncertainty_m) + ' m' : 'unknown precision'}${p.license ? ' · licence ' + esc(p.license) : ''}. Not checked by the city.</span>${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">Record on GBIF</a>` : ''}</div>`).addTo(g);
+    }
+  },
+  heat(g) {
+    const H = D.city.heat;
+    if (!H) throw new Error('No street heat yet: run "make walks" in pipeline/.');
+    for (const [la, lo, d, n] of H.cells) {
+      L.rectangle(square(la, lo, H.cell_m), { renderer: canvasGrid, pane: 'grid', stroke: false, fillColor: d >= 0 ? '#C2481B' : '#3B7DB8', fillOpacity: 0.15 + 0.55 * Math.min(1, Math.abs(d) / 3) })
+        .bindTooltip(`<b>${signed(d)} °C</b> compared with the walk’s average<br>${n} readings, 1–3 Sep 2026`, { sticky: true }).addTo(g);
+    }
+  },
   async spots(g) { g.addLayer(await grid('hive', 0)); },
 };
+function square(lat, lon, m) {
+  const dl = m / 2 / M, dn = m / 2 / (M * Math.cos(lat * Math.PI / 180));
+  return [[lat - dl, lon - dn], [lat + dl, lon + dn]];
+}
+function cellCat(c, measure) {          // 300 m: city quarters of wild-bee food; 1.5 km: the pipeline's verdict
+  if (measure !== '300') return c[4];
+  const [lo, hi] = D.city.balance.q300;
+  return c[3] >= hi ? 'green' : c[3] < lo ? 'red' : 'yellow';
+}
+function nearestCell(cells, lat, lon, maxM) {
+  let best = null;
+  for (const c of cells) { const d = distBearing([lat, lon], [c[0], c[1]]).d; if (!best || d < best.d) best = { c, d }; }
+  return best && best.d <= maxM ? best.c : null;
+}
 async function grid(kind, month) {
   const key = `${kind}:${month}`;
   if (!gridCache[key]) {
@@ -359,6 +422,11 @@ function renderLegend() {
   const items = LAYERS.filter((l) => on(l.key)).map((l) => `<span><i style="background:${l.sw}"></i>${l.label}${l.key === 'gaps' ? ' · ' + MONTHS[+F('gaps').month - 1] : ''}</span>`);
   if (on('gaps')) items.push('<span><i style="background:#C2481B"></i>far too few</span><span><i style="background:#C98A0B"></i>short</span><span><i style="background:rgba(47,107,69,.5)"></i>enough</span>');
   if (on('spots')) items.push('<span><i style="background:rgba(47,107,69,.6)"></i>good</span><span><i style="background:rgba(201,138,11,.6)"></i>with changes</span><span><i style="background:rgba(194,72,27,.6)"></i>not recommended</span>');
+  if (on('balance')) items.push(F('balance').measure === '300'
+    ? '<span><i style="background:rgba(47,107,69,.6)"></i>most wild-bee food</span><span><i style="background:rgba(201,138,11,.6)"></i>some</span><span><i style="background:rgba(194,72,27,.6)"></i>least</span>'
+    : '<span><i style="background:rgba(47,107,69,.6)"></i>hive-ready</span><span><i style="background:rgba(201,138,11,.6)"></i>plant first</span><span><i style="background:rgba(194,72,27,.6)"></i>no extra hives</span>');
+  if (on('sightings')) items.push(F('sightings').species.map((k) => `<span><i style="background:${SP[k][0]};border-radius:50%"></i>${SP[k][1]} (GBIF)</span>`).join(''));
+  if (on('heat')) items.push('<span><i style="background:#3B7DB8"></i>cooler street</span><span><i style="background:#C2481B"></i>hotter street</span>');
   $('#legend').innerHTML = items.join('');
 }
 function dataSources() {
@@ -367,7 +435,9 @@ function dataSources() {
     ? `Land cover and wild-bee zones: demo shapes${st?.osm?.state === 'loading' ? ' while OpenStreetMap data loads' : ''}.`
     : `Land cover and nature areas: ${esc(s.attribution)}, fetched ${esc(s.fetched)}.`;
   const bloom = st?.bloom?.observed ? ` Bloom times: iNaturalist flowering photos for ${st.bloom.observed} of ${st.bloom.total} plants.` : '';
-  return `${land}${bloom} Apiary register: demo data. Base map © OpenStreetMap contributors, © CARTO.`;
+  const city = D.city.balance ? ' Bee Balance, street heat and flight hours: the BeeMap data pipeline (OpenStreetMap via OpenFreeMap, Open-Meteo, summer-school dataloggers).' : '';
+  const gbif = D.city.sightings ? ` Public sightings: GBIF (iNaturalist, naturgucker, Observation.org), fetched ${esc(D.city.sightings.summary?.fetched || '')}.` : '';
+  return `${land}${bloom}${city}${gbif} Apiary register: demo data. Base map © OpenStreetMap contributors, © CARTO.`;
 }
 let statusTimer;
 async function loadStatus() {
@@ -440,6 +510,7 @@ const PANELS = {
       <h3>Nest areas</h3>${chips('nests', 'status')}
       <div class="list">${nests.length ? nests.map((n) => `<button class="item" data-fly="${n.lat},${n.lon},16"><span class="body"><span class="row" style="justify-content:space-between"><b>${esc(nestPlace(n))}</b>${nestBadge(n)}</span>
         <span class="muted">± ${Math.round(n.radius_m)} m · ${n.n_departures} departures, ${n.n_observers} ${n.n_observers === 1 ? 'spot' : 'hives'}</span></span></button>`).join('') : '<div class="empty">None with these filters.</div>'}</div>
+      ${sightingsCard()}
       <span class="src">Flight lines: hornets fly home in a nearly straight line, so lines from different hives cross near the nest. The ellipse is where the nest is with about 95% certainty. Never approach a nest yourself.</span>`;
   },
   flowers() {
@@ -470,6 +541,7 @@ const PANELS = {
         return `<button class="item" data-fly="${s.lat},${s.lon},16"><span class="body"><span class="row" style="justify-content:space-between"><b>${esc(s.name)}</b>${s.planned ? '<span class="badge grey">Planned</span>' : s.online ? '<span class="badge green">● Online</span>' : '<span class="badge grey">Offline</span>'}</span>
         <span class="muted">${s.planned ? 'Smart hive not installed yet' : `${v} hornet visit${v === 1 ? '' : 's'} in 7 days`}</span></span></button>`; }).join('') || '<div class="empty">None with these filters.</div>'}</div>
       ${t.includes('registered') ? `<div class="card"><span><b>${reg.length}</b> registered apiaries (${reg.reduce((a, b) => a + b.colonies, 0)} colonies), shown to about 100 m.</span></div>` : ''}
+      ${balanceCard()}
       <div class="card"><h3>Is this a good place for a hive?</h3><span class="muted">Click the map: the check looks at wild-bee zones, other apiaries within 800 m, flowers through the season and hornet nests. Switch on <b>Good hive spots</b> under Layers for the whole city.</span>
         <button class="btn ghost sm" data-layeron="spots" style="align-self:flex-start">Show good hive spots</button></div>
       <div class="card"><h3>Where would new smart hives help?</h3><span class="muted">Sites where a new camera hive would turn a hornet’s direction into a nest location.</span>
@@ -483,9 +555,59 @@ const PANELS = {
         return `<button class="item" data-fly="${b.lat},${b.lon},15"><span class="body"><span class="row" style="justify-content:space-between"><b>${esc(b.name)}</b>${hasPollen(b) ? '<span class="badge green">Pollen + weather</span>' : '<span class="badge grey">Weather</span>'}</span>
         <span class="muted">${L_.temp_c != null ? `${(+L_.temp_c).toFixed(1)} °C · ${Math.round(L_.humidity ?? 0)}% · ` : ''}${b.flight_share_7d != null ? `bees could fly ${Math.round(b.flight_share_7d * 100)}% of daylight this week` : 'no recent data'}</span>
         ${hasPollen(b) ? monthBars(b.monthly) : ''}</span></button>`; }).join('') || '<div class="empty">None with these filters.</div>'}</div>
-      <span class="src">Most airborne pollen is grass, birch and pine, which bees hardly use, so only pollen sensors that tell types apart change the flower map.</span>`;
+      <span class="src">Most airborne pollen is grass, birch and pine, which bees hardly use, so only pollen sensors that tell types apart change the flower map.</span>
+      ${studyCard()}${flightCard()}${heatCard()}`;
   },
 };
+function balanceCard() {
+  const b = D.city.balance;
+  if (!b) return '';
+  const P = D.city.places || {}, sh = b.shares || {};
+  const ready = (P.schools || []).filter((s) => s.category === 'green').sort((x, y) => y.food_1500 - x.food_1500);
+  const lean = (P.neighbourhoods || []).slice().sort((x, y) => x.food_300 - y.food_300).slice(0, 4);
+  return `<div class="card"><h3>Bee Balance: is there food for a hive?</h3><span class="muted">Every 250 m square of Heilbronn, by the share of bee food within 1.5 km (how far honeybees fly) and 300 m (wild bees).</span>
+    <div class="stats"><div class="stat"><span>Hive-ready</span><span class="n">${pct(sh.green)}</span></div><div class="stat"><span>Plant first</span><span class="n">${pct(sh.yellow)}</span></div>
+      <div class="stat"><span>No extra hives</span><span class="n">${pct(sh.red)}</span></div><div class="stat"><span>Schools ready for a hive</span><span class="n">${ready.length}/${(P.schools || []).length}</span></div></div>
+    ${ready.length ? `<span class="eyebrow">Schools with enough food for a hive</span><div class="list">${ready.map((s) => `<button class="item" data-fly="${s.lat},${s.lon},15"><span class="body"><b>${esc(s.name)}</b><span class="muted">${pct(s.food_1500)} bee food within 1.5 km</span></span></button>`).join('')}</div>` : ''}
+    ${lean.length ? `<span class="muted" style="font-size:12px">Least wild-bee food within 300 m: ${lean.map((n) => esc(n.name)).join(', ')}. Plant there first.</span>` : ''}
+    ${b.hive ? `<span class="muted" style="font-size:12px">The OpenSpace hives: ${pct(b.hive.forage_1500)} bee food within 1.5 km; ${Math.round(b.hive.pct_cells_with_more_food)}% of the city has more.</span>` : ''}
+    <button class="btn ghost sm" data-layeron="balance" style="align-self:flex-start">Show the Bee Balance map</button></div>`;
+}
+function sightingsCard() {
+  const S = D.city.sightings;
+  if (!S) return '';
+  const by = S.summary.asian_by_year || {}, st = S.summary.state_asian_by_year || {}, near = (S.summary.nearest_asian || [])[0];
+  return `<h3>Public sightings</h3><div class="card"><span class="muted">Asian hornets reported on iNaturalist, naturgucker and Observation.org (via GBIF) around Heilbronn, by year.</span>
+    <dl class="facts">${Object.keys(by).sort().map((y) => `<dt>${y}</dt><dd>${by[y]} around Heilbronn · ${st[y] ?? '–'} in Baden-Württemberg</dd>`).join('')}</dl>
+    ${near ? `<span class="muted" style="font-size:12px">Nearest to the OpenSpace hives: ${near.km.toFixed(1)} km away, ${esc(near.date)}. ${S.summary.asian_within_3km ?? 0} records within 3 km.</span>` : ''}
+    <button class="btn ghost sm" data-layeron="sightings" style="align-self:flex-start">Show public sightings</button><span class="src">Fetched ${esc(S.summary.fetched || '')}. Records are as reported, not checked by the city.</span></div>`;
+}
+function flightCard() {
+  const f = D.city.flight;
+  if (!f) return '';
+  const mx = Math.max(...f.cities.map((c) => c.humidity), 1), months = Array(12).fill(null);
+  f.heilbronn_months.forEach((m) => (months[m.month - 1] = m.humidity));
+  return `<div class="card"><h3>Bee flight hours, ${f.year}</h3><span class="muted">Hours in the year that were warm, dry, calm and bright enough for bees to forage.</span>
+    ${f.cities.map((c) => `<div class="row" style="gap:8px;font-size:12px"><span style="width:80px">${esc(c.city)}</span><span style="flex:1;height:8px;border-radius:4px;background:#ECEEE7"><span style="display:block;height:8px;border-radius:4px;width:${(c.humidity / mx * 100).toFixed(1)}%;background:${c.city === 'Heilbronn' ? '#18211A' : '#9AA39C'}"></span></span><span class="mono" style="width:44px;text-align:right">${c.humidity}</span></div>`).join('')}
+    <span class="eyebrow">Heilbronn by month</span>${monthBars(months)}<span class="src">${esc(f.note)}</span></div>`;
+}
+function heatCard() {
+  const H = D.city.heat;
+  if (!H) return '';
+  const ds = H.cells.map((c) => c[2]);
+  return `<div class="card"><h3>Street heat</h3><span class="muted">Temperature loggers carried through the city on 1–3 Sep 2026. ${H.cells.length} spots of 100 m, from ${signed(Math.min(...ds))} to ${signed(Math.max(...ds))} °C against each walk’s average.</span>
+    <button class="btn ghost sm" data-layeron="heat" style="align-self:flex-start">Show street heat</button><span class="src">${esc(H.note)}</span></div>`;
+}
+function studyCard() {
+  const S = D.city.study;
+  if (!S) return '';
+  const NAMES = { out_temp: 'Temperature', out_humidity: 'Humidity', pm25: 'Fine dust (PM2.5)', pressure: 'Air pressure' };
+  const hs = S.hours.slice().sort((a, b) => b.activity - a.activity), top = hs[0], low = hs[hs.length - 1];
+  return `<div class="card"><h3>Measured at the OpenSpace hives</h3><span class="muted">A bee detector on the hive camera counted entrance traffic. How it moved with the weather (rank correlation):</span>
+    <dl class="facts">${S.correlations.map((c) => `<dt>${NAMES[c.variable] || esc(c.variable)}</dt><dd>${c.spearman_r > 0 ? '+' : ''}${c.spearman_r.toFixed(2)}${c.p < 0.05 ? '' : ' (not significant)'}</dd>`).join('')}</dl>
+    ${top ? `<span class="muted" style="font-size:12px">Busiest hour: ${Math.round(top.activity)} detections a minute at ${top.out_temp} °C and ${top.out_humidity}% humidity. Quietest: ${Math.round(low.activity)} at ${low.out_temp} °C and ${low.out_humidity}%.</span>` : ''}
+    <span class="src">${esc(S.note)}</span></div>`;
+}
 const PLANT_SETTINGS = {};
 ST.plantFilter = { setting: 'any', month: 'any', native: false };
 function bloomSrc() {
@@ -533,7 +655,7 @@ async function openPlace(lat, lon, { fly = false } = {}) {
       <button class="iconbtn" id="pl-close" aria-label="Close">✕</button></div></div>
     <div id="pl-flowers" class="card"><span class="muted">Looking at the flowers around here…</span></div>
     <div id="pl-hive" class="card"><span class="muted">Checking this spot for hives…</span></div>
-    <div id="pl-hornets"></div><div id="pl-box"></div><div id="pl-site"></div>`;
+    <div id="pl-balance"></div><div id="pl-hornets"></div><div id="pl-box"></div><div id="pl-site"></div>`;
   openSheet();
   $('#pl-close').onclick = () => { closePlace(); renderPanel(); saveURL(); };
   $('#pl-share').onclick = async () => { try { await navigator.clipboard.writeText(location.href); toast('Link copied.'); } catch { toast('Copy the address bar to share this spot.'); } };
@@ -542,6 +664,7 @@ async function openPlace(lat, lon, { fly = false } = {}) {
   api(`/api/eco/place?lat=${lat}&lon=${lon}`).then((p) => { if (still()) $('#pl-name').textContent = p.place; }).catch(() => { if (still()) $('#pl-name').textContent = 'Heilbronn'; });
   placeFlowers(lat, lon, 'garden', false, still);
   api(`/api/eco/spot?lat=${lat}&lon=${lon}&colonies=2`).then((s) => still() && placeHive(s)).catch((e) => still() && ($('#pl-hive').innerHTML = `<span class="muted">${esc(e.message)}</span>`));
+  placeBalance(lat, lon);
   placeHornets(lat, lon);
   placeBox(lat, lon);
   api('/api/planning/evaluate', { method: 'POST', body: { lat, lon } }).then((ev) => still() && placeSite(ev)).catch(() => { });
@@ -577,6 +700,18 @@ function placeHive(s) {
     ${s.checks.map((c) => `<div class="ck"><i class="${c.status}">${ic[c.status]}</i><span><b>${esc(c.title)}</b><small>${esc(c.detail)}</small></span></div>`).join('')}
     ${alt ? `<button class="btn ghost sm" id="pl-alt" style="align-self:flex-start">Show the ${alt.verdict === 'green' ? 'green' : 'better'} spot ${fmtDist(alt.distance_m)} ${alt.direction}</button>` : ''}`;
   if (alt) $('#pl-alt').onclick = () => openPlace(alt.lat, alt.lon, { fly: true });
+}
+function placeBalance(lat, lon) {
+  const b = D.city.balance, el = $('#pl-balance');
+  const c = b && nearestCell(b.cells, lat, lon, b.cell_m * 0.75);
+  if (!c) { el.innerHTML = ''; return; }
+  const k = c[4], [lo, hi] = b.q300, th = b.thresholds || {};
+  const wild = c[3] >= hi ? 'among the most in the city' : c[3] < lo ? 'among the least in the city' : 'about average for the city';
+  const hc = D.city.heat && nearestCell(D.city.heat.cells, lat, lon, 80);
+  el.innerHTML = `<div class="card"><span class="eyebrow">Bee Balance · this 250 m square</span>
+    <div class="verdict"><span class="v ${BB[k][2]}">${k === 'green' ? '✓' : k === 'red' ? '✕' : '▲'}</span><span><span class="vlabel">${BB[k][1]}</span><br><b>${pct(c[2])} of the land within 1.5 km is bee food</b></span></div>
+    <span class="muted" style="font-size:12px">For wild bees, which fly about 300 m: ${pct(c[3])}, ${wild}.${hc ? ` Street heat measured here: ${signed(hc[2])} °C against the walk’s average.` : ''}</span>
+    <span class="src">A second opinion from the data pipeline, with a wider 1.5 km range than the spot check above: OpenStreetMap land use weighted by bee food, split into city quarters (hive-ready from ${pct(th.green)}, plant first from ${pct(th.yellow)}).</span></div>`;
 }
 function placeHornets(lat, lon) {
   const since = now() - 14 * 86400;
@@ -721,7 +856,13 @@ function renderReportBtn() { $('#reportbtn').hidden = !D.summary.reports_enabled
 async function loadEco() { [D.eco, D.boxes] = await Promise.all([api('/api/eco/layers'), api('/api/sensoboxes')]); }
 async function loadHornets() { [D.detections, D.nests, D.lines, D.stations] = await Promise.all([api('/api/detections?limit=1000'), api('/api/nests?include_removed=true'), api('/api/lines'), api('/api/stations')]); }
 async function loadReports() { D.reports = await api('/api/nest-reports'); }
-async function loadAll() { D.summary = await api('/api/summary'); await Promise.all([loadHornets(), loadEco(), loadReports()]); }
+async function loadCity() {
+  const P = { balance: '/api/city/balance', places: '/api/city/places', sightings: '/api/city/sightings', heat: '/api/city/heat', flight: '/api/city/flight-hours', study: '/api/city/study' };
+  await Promise.all(Object.entries(P).map(async ([k, path]) => { try { D.city[k] = await api(path); } catch { D.city[k] = null; } }));
+  const b = D.city.balance;
+  if (b) { const v = b.cells.map((c) => c[3]).sort((x, y) => x - y); b.q300 = [v[Math.floor(v.length * 0.25)], v[Math.floor(v.length * 0.75)]]; }
+}
+async function loadAll() { D.summary = await api('/api/summary'); await Promise.all([loadHornets(), loadEco(), loadReports(), loadCity()]); }
 let pending = new Set(), refreshT;
 function refreshSoon(what) {
   what.forEach((w) => pending.add(w));

@@ -1,0 +1,4 @@
+station,walk_points,walk_delta_vs_walk_median,station_daytime_offset_vs_model,station_offset_vs_hive_station
+Innenstadt,4343,0.6,3.72,1.95
+THW Heilbronn,30,-0.75,2.6,0.83
+experimenta Sternwarte,4506,-0.29,2.13,0.36

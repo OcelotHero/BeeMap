@@ -130,6 +130,31 @@ What it changes: reports that fit are **checked first** (the admin list puts the
 
 **Installing a model.** BeeMap ships **no trained model**: put an ONNX image classifier at `server/models/nest_classifier.onnx` with its class names in `nest_classifier.labels.txt` (default `asian_hornet_nest, european_hornet_nest, wasp_nest, not_a_nest`), input 1×3×224×224 RGB, ImageNet-normalised, then `pip install onnxruntime` and run `python3 tools/admin.py reports-recheck` to check the waiting reports. Training one needs a labelled set of nest photos for each class (for example from beekeeping associations, the city's own confirmed reports, and research-grade iNaturalist observations of nests). Fine-tune a small pretrained network (e.g. MobileNet or EfficientNet), and check its accuracy on photos it never saw before trusting the 90% threshold. The wiring is tested with tiny stand-in models through real ONNX Runtime (`server/tests/test_nest_reports.py`). Switch reporting off with `python3 tools/admin.py reports off`.
 
+## Data pipeline: real measurements behind the map
+
+`pipeline/` is the analysis that used to live in the separate `bee-commute-tracker` repo. It does the heavy, offline work and writes small result files to `pipeline/output/`. The server reads those files (`server/citydata.py`, standard library only) and serves them under `/api/city/*`. It re-reads a file when it changes, so rerunning a step updates the map without a restart.
+
+```bash
+cd pipeline
+python3.11 -m venv .venv && .venv/bin/pip install -r requirements.txt   # pandas, scipy, ultralytics…: heavier than the server
+make help          # every step
+make all           # fetch → … → balance → hornets → beemap (the detector training alone takes ~1.5 h)
+make beemap        # just send the latest hive sensors to a running server (BEEMAP=http://host:8000)
+```
+
+| On the map | Pipeline step | What it is |
+|---|---|---|
+| **Layers → Bee Balance (250 m)**, Hives tab card, place card | `make balance` | Every 250 m square: share of bee food within 1.5 km (honeybees) and 300 m (wild bees) from OpenStreetMap land use, verdict hive-ready / plant first / no extra hives (city quarters). Schools and neighbourhoods get their square's verdict. A second opinion next to the 800 m spot check. |
+| **Layers → Public sightings (GBIF)**, Hornets tab card | `make hornets` | Asian hornet, European hornet and honey bee records from iNaturalist, naturgucker and Observation.org, 22 km around Heilbronn. As reported; not checked by the city. |
+| **Layers → Street heat (walks)**, Sensors tab card, place card | `make walks` | Summer-school datalogger walks (1–3 Sep 2026) on 100 m cells, each walk against its own median. |
+| Sensors tab: **Bee flight hours** | `make validate` | Rule model on Open-Meteo 2025 weather, with the humidity term the hive camera supports; Heilbronn by month and 8 cities. |
+| Sensors tab: **Measured at the OpenSpace hives** | `make count`, `make analyse` | YOLOv8n bee detector on the hive camera (mAP50 0.80); traffic vs weather over 6 hourly bins. |
+| **Colony health** (`tools/admin.py health`) | `make analyse`, `make beemap` | The real BeeHappy sensors of the three OpenSpace hives (inside temperature and humidity, June 2025 →) and the hive's SenseCAP weather station, sent through the normal upload API: the colonies go to station `hornet-pi` as `Beehive No.1–3`, the weather station becomes SensoBox `openspace-weather`. |
+
+**Several colonies per station.** Hive readings now carry an optional `hive` name, so one station (an apiary) can report several colonies. `GET /api/admin/health` lists each colony, and `/api/admin/health/<station>?hive=<name>` shows one. Readings without a name work as before.
+
+What's not in git: raw data (`pipeline/data/`, ~1.3 GB), training runs, model weights and the pinned YOLOv5 are fetched or rebuilt by `make`. The small results the server reads stay in `pipeline/output/`.
+
 ## Run the pitch demo
 
 Needs Python 3.10+.
@@ -179,6 +204,15 @@ The map and fonts load from the internet. Everything else runs offline.
 | `tools/demo.py` | Demo city with simulated hornets. |
 
 Connecting a real Pi: in the app go to **Hive cameras > Add station** and enter which way the heading camera faces (sky: the top edge of its picture; horizon: the centre of its picture). Copy the Pi config into `pi/beemap.ini`, set the `heading_*` lines (see `beemap.example.ini`), put the VespAI weights at `pi/models/vespai.pt`, then run `python3 beemap_agent.py --test` and install `beemap-agent.service`.
+
+**A Raspberry Pi 4 with a Camera Module 3** (the HornTrac station, tested 28 Oct 2026). These settings come from getting VespAI to run on that hardware:
+
+* **Use the pinned YOLOv5.** The VespAI weights only load with YOLOv5 at commit `23701eac`, so the current GitHub version fails. Check that commit out on the Pi and set `yolov5_dir` to it. On torch 2.6 or newer, the agent sets `TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD` itself.
+* **Set `min_confidence = 0.8`**, which is VespAI's own field setting. At 0.5 the model boxes hair, flowers and bottles. It is only reliable on its training view, looking straight down at a plain bait board, and it misses close-ups and busy scenes.
+* **Camera:** `camera = picamera2:0` with `autofocus = true`. Use `rotate = 90 | 180 | 270` if the camera is mounted sideways, and set the heading in the app after rotating.
+* **Speed:** on a Pi 4 CPU the model runs at about 1 frame per second. That's enough to log a hornet at a bait station, but the exit direction is rough. A Pi 5 or a second heading camera does better.
+* **Live view:** `stream_port = 8080` shows the camera with VespAI's boxes at `http://<pi>:8080/` for aiming. It has no login, so leave it at 0 outside a trusted network.
+* **Python environment:** make it with `python3 -m venv --system-site-packages`, so Picamera2 from apt is visible. Install the CPU build of torch with `pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu`, because the default ARM build pulls in gigabytes of unused GPU libraries. Install OpenCV from apt with `sudo apt install python3-opencv`, so it matches the system numpy.
 
 ## How well it works (simulation, `server/tests/`)
 

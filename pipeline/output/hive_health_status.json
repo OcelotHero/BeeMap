@@ -1,0 +1,23 @@
+{
+  "Beehive No.1": {
+    "last_hour": "2026-10-27T13:00:00+01:00",
+    "last_temp": 16.8,
+    "flagged_hours_total": 9014,
+    "hours_total": 11280,
+    "level": "red"
+  },
+  "Beehive No.2": {
+    "last_hour": "2026-10-27T12:00:00+01:00",
+    "last_temp": 29.0,
+    "flagged_hours_total": 8149,
+    "hours_total": 11314,
+    "level": "red"
+  },
+  "Beehive No.3": {
+    "last_hour": "2026-10-27T13:00:00+01:00",
+    "last_temp": 15.6,
+    "flagged_hours_total": 6290,
+    "hours_total": 11527,
+    "level": "red"
+  }
+}

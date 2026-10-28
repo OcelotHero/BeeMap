@@ -1,0 +1,84 @@
+{
+  "box": {
+    "lat": [
+      49.05,
+      49.25
+    ],
+    "lon": [
+      9.05,
+      9.35
+    ]
+  },
+  "n": {
+    "Asian hornet": 42,
+    "European hornet": 85,
+    "Honey bee": 339
+  },
+  "asian_by_year": {
+    "2023": 4,
+    "2024": 4,
+    "2025": 33,
+    "2026": 1
+  },
+  "european_by_year": {
+    "2014": 2,
+    "2015": 1,
+    "2018": 1,
+    "2019": 1,
+    "2020": 4,
+    "2021": 3,
+    "2022": 12,
+    "2023": 8,
+    "2024": 7,
+    "2025": 34,
+    "2026": 12
+  },
+  "honeybee_by_year": {
+    "2014": 1,
+    "2018": 10,
+    "2019": 20,
+    "2020": 22,
+    "2021": 28,
+    "2022": 38,
+    "2023": 52,
+    "2024": 55,
+    "2025": 61,
+    "2026": 52
+  },
+  "asian_precise": 42,
+  "asian_within_3km": 10,
+  "nearest_asian": [
+    {
+      "date": "2025-11-01",
+      "km": 1.83,
+      "locality": "TK25 Blatt 6821/3 - Neckar / Heilbronn",
+      "precise": true
+    },
+    {
+      "date": "2023-09-20",
+      "km": 1.97,
+      "locality": "TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm",
+      "precise": true
+    },
+    {
+      "date": "2025-05-11",
+      "km": 2.11,
+      "locality": "HN Heilbronn",
+      "precise": true
+    }
+  ],
+  "state_asian_by_year": {
+    "2020": 1,
+    "2022": 15,
+    "2023": 78,
+    "2024": 169,
+    "2025": 507,
+    "2026": 280
+  },
+  "sources": [
+    "NABU|naturgucker",
+    "c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f",
+    "iNaturalist"
+  ],
+  "fetched": "2026-10-27"
+}

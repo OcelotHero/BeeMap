@@ -1,2 +1,21 @@
 __pycache__
 logs
+
+# data pipeline (pipeline/): raw data, training runs, model weights and the pinned
+# YOLOv5 are downloaded or rebuilt by `make`; only the small results the server reads stay
+pipeline/.venv/
+pipeline/data/
+pipeline/runs/
+pipeline/vendor/
+pipeline/models/*.pt
+pipeline/output/*.mp4
+pipeline/output/train_log.txt
+pipeline/output/hornet_live/
+pipeline/output/beemap_sync_state.json
+
+# station camera frames are private (see the privacy note in README)
+server/data/live/
+# the organisers' raw hive sensor series and the walkers' GPS tracks: local only (public repo)
+pipeline/output/hourly.csv
+pipeline/output/hive_health.csv
+pipeline/output/heat_walks_points.csv

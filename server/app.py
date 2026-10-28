@@ -36,6 +36,7 @@ import health as colony
 import nest_classifier
 import correlate
 import ondemand
+import citydata
 
 BASE = Path(__file__).resolve().parent
 DATA = Path(os.environ.get("BEEMAP_DATA", BASE / "data"))
@@ -144,7 +145,8 @@ CREATE TABLE IF NOT EXISTS sensor_readings (
 );
 CREATE INDEX IF NOT EXISTS sr_box_ts ON sensor_readings(box_id, ts);
 CREATE TABLE IF NOT EXISTS hive_readings (
-  station_id TEXT, ts REAL, hive_temp_c REAL, hive_humidity REAL, activity REAL
+  station_id TEXT, ts REAL, hive_temp_c REAL, hive_humidity REAL, activity REAL,
+  hive TEXT DEFAULT ''               -- which colony at the station ('' = the station's only one)
 );
 CREATE INDEX IF NOT EXISTS hr_st_ts ON hive_readings(station_id, ts);
 CREATE TABLE IF NOT EXISTS plantings (
@@ -196,6 +198,9 @@ with db() as c:
     dcols = {r[1] for r in c.execute("PRAGMA table_info(detections)")}
     if "heading_source" not in dcols:
         c.execute("ALTER TABLE detections ADD COLUMN heading_source TEXT")
+    hcols = {r[1] for r in c.execute("PRAGMA table_info(hive_readings)")}
+    if "hive" not in hcols:                           # one station can hold several colonies
+        c.execute("ALTER TABLE hive_readings ADD COLUMN hive TEXT DEFAULT ''")
 
 
 with db() as c:
@@ -1402,27 +1407,40 @@ async def post_readings(box_id: str, payload: dict, x_box_token: str = Header(de
 @app.post("/api/stations/{station_id}/hive")
 async def post_hive_readings(station_id: str, payload: dict, st: dict = Depends(require_station)):
     """In-hive sensors and entrance activity, one reading or {"readings": [...]}:
-    {"ts": unix or ISO, "hive_temp_c": 34.8, "hive_humidity": 58, "activity": 23.5}
-    activity = average number of bees in view at the entrance."""
+    {"ts": unix or ISO, "hive_temp_c": 34.8, "hive_humidity": 58, "activity": 23.5, "hive": "Beehive No.2"}
+    activity = average number of bees in view at the entrance. "hive" names the colony
+    when one station watches several (an apiary); leave it out for a single hive."""
     items = payload.get("readings") if isinstance(payload.get("readings"), list) else [payload]
     if len(items) > 20000:
         raise HTTPException(413, "Send at most 20,000 readings per request.")
     try:
-        rows = [(station_id, _ts(r.get("ts")), r.get("hive_temp_c"), r.get("hive_humidity"), r.get("activity")) for r in items]
+        rows = [(station_id, _ts(r.get("ts")), r.get("hive_temp_c"), r.get("hive_humidity"), r.get("activity"),
+                 str(r.get("hive") or "")[:60]) for r in items]
     except (ValueError, TypeError) as e:
         raise HTTPException(400, f"Bad reading: {e}")
     with db() as c:
-        c.executemany("INSERT INTO hive_readings VALUES (?,?,?,?,?)", rows)
+        c.executemany("INSERT INTO hive_readings (station_id, ts, hive_temp_c, hive_humidity, activity, hive) "
+                      "VALUES (?,?,?,?,?,?)", rows)
         c.execute("UPDATE stations SET last_seen=? WHERE id=?", (time.time(), station_id))
     await hub.send("health_changed", {"station_id": station_id})
     return {"ok": True, "stored": len(rows)}
 
 
-def _health_for(st: dict, now: float | None = None) -> dict:
+def _hives_at(station_id: str, now: float | None = None) -> list[str]:
+    """The colonies a station has recent readings for ('' = its only one)."""
+    since = (now or time.time()) - (colony.WINDOW_DAYS + 1) * 86400
+    with db() as c:
+        hs = [r[0] or "" for r in c.execute("SELECT DISTINCT hive FROM hive_readings WHERE station_id=? AND ts>=? ORDER BY hive",
+                                            (station_id, since))]
+    return hs or [""]
+
+
+def _health_for(st: dict, now: float | None = None, hive: str = "") -> dict:
     now = now or time.time()
     since = now - (colony.WINDOW_DAYS + 1) * 86400
     with db() as c:
-        hive_rows = [dict(r) for r in c.execute("SELECT * FROM hive_readings WHERE station_id=? AND ts>=?", (st["id"], since))]
+        hive_rows = [dict(r) for r in c.execute("SELECT * FROM hive_readings WHERE station_id=? AND COALESCE(hive,'')=? AND ts>=?",
+                                                (st["id"], hive, since))]
         boxes = [dict(b) for b in c.execute("SELECT * FROM sensoboxes")]
         box = next((b for b in boxes if b.get("station_id") == st["id"]), None)
         if not box and boxes and st["lat"] is not None:
@@ -1438,7 +1456,7 @@ def _health_for(st: dict, now: float | None = None) -> dict:
     if cell:
         forage = float(w.ratio[cell[0], cell[1], datetime_month(now) - 1])
     res = colony.analyse(hive_rows, outside, hornets, forage, now)
-    res.update(station_id=st["id"], name=st["name"],
+    res.update(station_id=st["id"], name=f"{st['name']} · {hive}" if hive else st["name"], hive=hive,
                weather_from=None if not box else {"id": box["id"], "name": box["name"], "own": box.get("station_id") == st["id"]})
     return res
 
@@ -1455,20 +1473,75 @@ async def get_health_all():
             sts = [dict(s) for s in c.execute("SELECT * FROM stations WHERE planned=0 ORDER BY name")]
         out = []
         for s in sts:
-            r = _health_for(s)
-            r.pop("series", None)
-            out.append(r)
+            for hive in _hives_at(s["id"]):
+                r = _health_for(s, hive=hive)
+                r.pop("series", None)
+                out.append(r)
         return out
     return await asyncio.to_thread(run)
 
 
 @app.get("/api/admin/health/{station_id}", dependencies=[Depends(require_admin)])
-async def get_health_one(station_id: str):
+async def get_health_one(station_id: str, hive: str | None = None):
+    """One colony's health. A station with several colonies: pass ?hive=<name>,
+    otherwise the first one is returned and "hives" lists them all."""
     with db() as c:
         s = c.execute("SELECT * FROM stations WHERE id=?", (station_id,)).fetchone()
     if not s:
         raise HTTPException(404, "No such hive.")
-    return await asyncio.to_thread(_health_for, dict(s))
+    hives = _hives_at(station_id)
+    if hive is not None and hive not in hives:
+        raise HTTPException(404, f"No recent readings for colony '{hive}'. Colonies here: {hives}")
+    res = await asyncio.to_thread(_health_for, dict(s), None, hive if hive is not None else hives[0])
+    res["hives"] = hives
+    return res
+
+
+# ================================================================ CITY DATA (pipeline results)
+def _city(name: str, value):
+    if value is None:
+        raise HTTPException(404, f"No '{name}' data yet. Run the pipeline step that makes it (see pipeline/Makefile).")
+    return value
+
+
+@app.get("/api/city/status")
+def city_status():
+    return citydata.status()
+
+
+@app.get("/api/city/balance")
+def city_balance():
+    """250 m Bee Balance squares: food within 1.5 km / 300 m and the verdict."""
+    return _city("balance", citydata.balance())
+
+
+@app.get("/api/city/places")
+def city_places():
+    """Schools and neighbourhoods with their square's Bee Balance verdict."""
+    return {"schools": citydata.schools() or [], "neighbourhoods": citydata.neighbourhoods() or []}
+
+
+@app.get("/api/city/sightings")
+def city_sightings():
+    """Public GBIF records of Asian hornet, European hornet and honey bee around Heilbronn."""
+    return _city("sightings", citydata.sightings())
+
+
+@app.get("/api/city/heat")
+def city_heat():
+    """Street heat from the summer-school walks (°C above or below each walk's median)."""
+    return _city("heat", citydata.heat())
+
+
+@app.get("/api/city/flight-hours")
+def city_flight_hours():
+    return _city("flight", citydata.flight())
+
+
+@app.get("/api/city/study")
+def city_study():
+    """What the OpenSpace hive camera measured: bee traffic vs weather."""
+    return _city("study", citydata.study())
 
 
 # ================================================================ SUMMARY
