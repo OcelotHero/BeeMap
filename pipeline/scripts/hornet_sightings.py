@@ -17,6 +17,7 @@ Outputs (./output)
   hornet_sightings.png    sightings per year, Heilbronn box and Baden-Württemberg
 """
 import json
+import re
 import sys
 import time
 from pathlib import Path
@@ -37,6 +38,31 @@ SPECIES = {"Vespa velutina": "Asian hornet", "Vespa crabro": "European hornet", 
 STATE = "Baden-Württemberg"
 HEADERS = {"User-Agent": "bee-commute-tracker (Green City Hackathon Heilbronn)"}
 PAGE = 300
+_publishers: dict[str, str] = {}
+
+
+def publisher_name(key):
+    """Records without an institutionCode (Observation.org) only carry the publisher's GBIF key."""
+    if not key:
+        return ""
+    if key not in _publishers:
+        try:
+            r = requests.get(f"https://api.gbif.org/v1/organization/{key}", headers=HEADERS, timeout=30)
+            _publishers[key] = (r.json().get("title") or key) if r.ok else key
+        except requests.RequestException:
+            _publishers[key] = key
+    return _publishers[key]
+
+
+def licence_name(url):
+    """http://creativecommons.org/licenses/by-nc/4.0/legalcode -> 'CC BY-NC 4.0'."""
+    url = url or ""
+    m = re.search(r"/licenses/([a-z-]+)/([\d.]+)", url)
+    if m:
+        return f"CC {m.group(1).upper()} {m.group(2)}"
+    if "publicdomain/zero" in url:
+        return "CC0 1.0"
+    return url
 
 
 def fetch_box(species):
@@ -54,9 +80,9 @@ def fetch_box(species):
                          "date": (o.get("eventDate") or "")[:10], "year": o.get("year"), "month": o.get("month"),
                          "lat": o["decimalLatitude"], "lon": o["decimalLongitude"],
                          "uncertainty_m": o.get("coordinateUncertaintyInMeters"),
-                         "source": o.get("institutionCode") or o.get("publishingOrgKey") or "",
+                         "source": o.get("institutionCode") or publisher_name(o.get("publishingOrgKey")),
                          "dataset": o.get("datasetKey", "")[:8], "locality": o.get("locality") or "",
-                         "basis": o.get("basisOfRecord"), "license": (o.get("license") or "").split("/licenses/")[-1][:8]})
+                         "basis": o.get("basisOfRecord"), "license": licence_name(o.get("license"))})
         if js.get("endOfRecords", True) or offset + PAGE >= 10000:
             break
         offset += PAGE

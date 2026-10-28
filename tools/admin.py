@@ -12,7 +12,8 @@ in server/data/admin_key.txt on first start (this tool reads it from there).
   python3 tools/admin.py assign 3 "Feuerwehr Team 2"
   python3 tools/admin.py removed 3
   python3 tools/admin.py health                     # colony health of every smart hive (private)
-  python3 tools/admin.py health hive7-sontheim      # one hive in detail
+  python3 tools/admin.py health hive7-sontheim      # one hive in detail (every colony, if it has several)
+  python3 tools/admin.py health hornet-pi --hive "Beehive No.2"   # one colony at a station with several
   python3 tools/admin.py station-add hive20 "Hive 20, Biberach" 49.105 9.150 --heading 40 [--planned]
   python3 tools/admin.py station-token hive20       # Pi config
   python3 tools/admin.py box-add sb-x "Kirchhausen" 49.148 9.125 [--station hive20]
@@ -78,7 +79,7 @@ def main(argv=None):
     sp.add_parser("nests")
     a = sp.add_parser("assign"); a.add_argument("id", type=int); a.add_argument("team"); a.add_argument("--place", default="")
     sp.add_parser("removed").add_argument("id", type=int)
-    sp.add_parser("health").add_argument("id", nargs="?")
+    a = sp.add_parser("health"); a.add_argument("id", nargs="?"); a.add_argument("--hive", help="one colony at a station with several")
     a = sp.add_parser("station-add"); a.add_argument("id"); a.add_argument("name"); a.add_argument("lat", type=float); a.add_argument("lon", type=float)
     a.add_argument("--heading", type=float, default=0); a.add_argument("--planned", action="store_true"); a.add_argument("--owner", default="")
     sp.add_parser("station-token").add_argument("id")
@@ -109,7 +110,15 @@ def main(argv=None):
     elif a.cmd == "removed":
         api("PATCH", f"/api/nests/{a.id}", json={"status": "removed"}); print("Nest marked removed.")
     elif a.cmd == "health":
-        hs = [api("GET", f"/api/admin/health/{a.id}")] if a.id else api("GET", "/api/admin/health")
+        if a.hive is not None and not a.id:
+            sys.exit("--hive needs a station ID: health STATION --hive NAME")
+        if not a.id:
+            hs = api("GET", "/api/admin/health")
+        elif a.hive is not None:
+            hs = [api("GET", f"/api/admin/health/{a.id}", params={"hive": a.hive})]
+        else:                                       # every colony at the station, the first one comes back with the list
+            first = api("GET", f"/api/admin/health/{a.id}")
+            hs = [first] + [api("GET", f"/api/admin/health/{a.id}", params={"hive": h}) for h in first.get("hives", [])[1:]]
         for h in hs:
             print(f"{h['name']:<28} {h['status'].upper():<6} {h['summary']}")
             for i in h["indicators"]:

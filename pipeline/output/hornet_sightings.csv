@@ -1,467 +1,467 @@
 species,common,gbif_key,date,year,month,lat,lon,uncertainty_m,source,dataset,locality,basis,license,dist_hive_km,precise
-Apis mellifera,Honey bee,5026855252,2014-04-26,2014,4,49.055813,9.227743,250.0,NABU|naturgucker,6ac3f774,Gewann Beurer Feld bei Ilsfeld,HUMAN_OBSERVATION,by/4.0/l,10.09,True
-Apis mellifera,Honey bee,5027110946,2018-06-02,2018,6,49.235367,9.251641,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/4 - Kocher / Neuenstadt (West) / Oedheim,HUMAN_OBSERVATION,by/4.0/l,10.35,True
-Apis mellifera,Honey bee,5021541292,2018-06-04,2018,6,49.070202,9.15516,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/2 - Neckar / Lauffen am Neckar,HUMAN_OBSERVATION,by/4.0/l,9.39,True
-Apis mellifera,Honey bee,5023641787,2018-06-04,2018,6,49.15134,9.173288,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,2.88,True
-Apis mellifera,Honey bee,5025731151,2018-06-04,2018,6,49.162449,9.232029,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,2.34,True
-Apis mellifera,Honey bee,5015176563,2018-06-08,2018,6,49.070202,9.15516,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/2 - Neckar / Lauffen am Neckar,HUMAN_OBSERVATION,by/4.0/l,9.39,True
-Apis mellifera,Honey bee,5021497572,2018-06-21,2018,6,49.07621,9.14901,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/2 - Neckar / Lauffen am Neckar,HUMAN_OBSERVATION,by/4.0/l,9.01,True
-Apis mellifera,Honey bee,5013522402,2018-08-03,2018,8,49.087971,9.1971,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/1 - Neckar / Talheim / Ilsfeld,HUMAN_OBSERVATION,by/4.0/l,6.54,True
-Apis mellifera,Honey bee,5019473698,2018-08-04,2018,8,49.15678,9.230569,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,1.81,True
-Apis mellifera,Honey bee,5017146685,2018-08-08,2018,8,49.157341,9.229711,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,1.8,True
-Apis mellifera,Honey bee,5023871931,2018-08-12,2018,8,49.092293,9.324598,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/2 - Auenstein / Abstatt / Untergruppenbach,HUMAN_OBSERVATION,by/4.0/l,10.14,True
-Apis mellifera,Honey bee,5020455034,2019-02-18,2019,2,49.159283,9.228652,250.0,NABU|naturgucker,6ac3f774,Gärten in der Tscherningstraße,HUMAN_OBSERVATION,by/4.0/l,1.91,True
-Apis mellifera,Honey bee,5017611401,2019-06-02,2019,6,49.157158,9.229625,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,1.78,True
-Apis mellifera,Honey bee,5020675769,2019-06-02,2019,6,49.089439,9.327613,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/2 - Auenstein / Abstatt / Untergruppenbach,HUMAN_OBSERVATION,by/4.0/l,10.5,True
-Apis mellifera,Honey bee,5022685792,2019-06-02,2019,6,49.143246,9.101898,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/4 - Leingarten / Nordheim,HUMAN_OBSERVATION,by/4.0/l,8.01,True
-Apis mellifera,Honey bee,5028611219,2019-06-02,2019,6,49.222095,9.213421,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,by/4.0/l,8.46,True
-Apis mellifera,Honey bee,5014653564,2019-06-04,2019,6,49.088211,9.328095,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/2 - Auenstein / Abstatt / Untergruppenbach,HUMAN_OBSERVATION,by/4.0/l,10.62,True
-Apis mellifera,Honey bee,5019030475,2019-06-07,2019,6,49.137238,9.166603,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,by/4.0/l,3.44,True
-Apis mellifera,Honey bee,5019521482,2019-06-07,2019,6,49.137238,9.166603,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,by/4.0/l,3.44,True
-Apis mellifera,Honey bee,5023033601,2019-06-07,2019,6,49.194515,9.149746,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/2 - Leingarten (Nord) / Biberach,HUMAN_OBSERVATION,by/4.0/l,7.04,True
-Apis mellifera,Honey bee,5026101835,2019-06-09,2019,6,49.127415,9.316273,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/4 - Weinsberg / Lehrensteinsfeld,HUMAN_OBSERVATION,by/4.0/l,7.86,True
-Apis mellifera,Honey bee,5028199996,2019-07-03,2019,7,49.148315,9.207776,25.0,NABU|naturgucker,6ac3f774,Heilbronn BUGA 2019,HUMAN_OBSERVATION,by/4.0/l,0.4,True
-Apis mellifera,Honey bee,5027988507,2019-07-27,2019,7,49.164635,9.159117,250.0,NABU|naturgucker,6ac3f774,Frankenbach West,HUMAN_OBSERVATION,by/4.0/l,4.37,True
-Apis mellifera,Honey bee,5016601975,2019-08-03,2019,8,49.222336,9.104585,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6720/4 - Neckar / Bad Wimpfen / Bad Rappenau,HUMAN_OBSERVATION,by/4.0/l,11.53,True
-Apis mellifera,Honey bee,5017830129,2019-08-04,2019,8,49.180904,9.321738,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/2 - Erlenbach / Eberstadt,HUMAN_OBSERVATION,by/4.0/l,8.87,True
-Apis mellifera,Honey bee,5013577411,2019-08-05,2019,8,49.157299,9.229169,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,1.77,True
-Apis mellifera,Honey bee,5017460745,2019-08-09,2019,8,49.147568,9.284993,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/4 - Weinsberg / Lehrensteinsfeld,HUMAN_OBSERVATION,by/4.0/l,5.31,True
-Apis mellifera,Honey bee,5013974418,2019-08-11,2019,8,49.08086,9.06715,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/1 - Güglingen / Brackenheim,HUMAN_OBSERVATION,by/4.0/l,12.79,True
-Apis mellifera,Honey bee,5018794378,2019-08-11,2019,8,49.149601,9.338068,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6822/1 - Dimbach / Schwabbach / Waldbach,HUMAN_OBSERVATION,by/4.0/l,9.18,True
-Apis mellifera,Honey bee,5019688897,2019-08-11,2019,8,49.055969,9.344269,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6922/1 - Löwenstein / Prevorst,HUMAN_OBSERVATION,by/4.0/l,13.89,True
-Apis mellifera,Honey bee,5027853409,2019-08-12,2019,8,49.194588,9.149586,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/2 - Leingarten (Nord) / Biberach,HUMAN_OBSERVATION,by/4.0/l,7.06,True
-Apis mellifera,Honey bee,5022507043,2020-02-16,2020,2,49.159466,9.14708,250.0,NABU|naturgucker,6ac3f774,Hipfelhof bei Frankenbach,HUMAN_OBSERVATION,by/4.0/l,4.95,True
-Apis mellifera,Honey bee,5016269229,2020-05-31,2020,5,49.078297,9.192699,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/1 - Neckar / Talheim / Ilsfeld,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5016436012,2020-05-31,2020,5,49.137238,9.166603,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,by/4.0/l,3.44,True
-Apis mellifera,Honey bee,5016672618,2020-05-31,2020,5,49.168831,9.191588,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,2.94,True
-Apis mellifera,Honey bee,5021222082,2020-05-31,2020,5,49.056496,9.233996,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/1 - Neckar / Talheim / Ilsfeld,HUMAN_OBSERVATION,by/4.0/l,10.08,True
-Apis mellifera,Honey bee,5019643760,2020-06-01,2020,6,49.090492,9.332596,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6922/1 - Löwenstein / Prevorst,HUMAN_OBSERVATION,by/4.0/l,10.73,True
-Apis mellifera,Honey bee,5022659093,2020-06-01,2020,6,49.190033,9.146267,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/2 - Leingarten (Nord) / Biberach,HUMAN_OBSERVATION,by/4.0/l,6.84,True
-Apis mellifera,Honey bee,5023717159,2020-06-01,2020,6,49.157047,9.228809,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,1.73,True
-Apis mellifera,Honey bee,5024520955,2020-06-01,2020,6,49.055969,9.344269,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6922/1 - Löwenstein / Prevorst,HUMAN_OBSERVATION,by/4.0/l,13.89,True
-Apis mellifera,Honey bee,5018044028,2020-06-02,2020,6,49.227058,9.272661,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/4 - Kocher / Neuenstadt (West) / Oedheim,HUMAN_OBSERVATION,by/4.0/l,10.03,True
-Apis mellifera,Honey bee,5019917018,2020-06-02,2020,6,49.194679,9.150251,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/2 - Leingarten (Nord) / Biberach,HUMAN_OBSERVATION,by/4.0/l,7.03,True
-Apis mellifera,Honey bee,5028049462,2020-06-08,2020,6,49.095238,9.311057,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/2 - Auenstein / Abstatt / Untergruppenbach,HUMAN_OBSERVATION,by/4.0/l,9.16,True
-Apis mellifera,Honey bee,2813969499,2020-07-02,2020,7,49.232814,9.160875,366.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by-nc/4.,10.34,True
-Apis mellifera,Honey bee,5016821432,2020-08-01,2020,8,49.157372,9.229539,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,1.8,True
-Apis mellifera,Honey bee,5028492837,2020-08-01,2020,8,49.184078,9.122183,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/2 - Leingarten (Nord) / Biberach,HUMAN_OBSERVATION,by/4.0/l,7.78,True
-Apis mellifera,Honey bee,5020688424,2020-08-05,2020,8,49.065125,9.139462,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/2 - Neckar / Lauffen am Neckar,HUMAN_OBSERVATION,by/4.0/l,10.43,True
-Apis mellifera,Honey bee,5012883506,2020-08-09,2020,8,49.152256,9.278429,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/2 - Erlenbach / Eberstadt,HUMAN_OBSERVATION,by/4.0/l,4.88,True
-Apis mellifera,Honey bee,5025703760,2020-08-09,2020,8,49.148956,9.244364,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,2.38,True
-Apis mellifera,Honey bee,5013257769,2020-09-21,2020,9,49.159466,9.14708,250.0,NABU|naturgucker,6ac3f774,Hipfelhof bei Frankenbach,HUMAN_OBSERVATION,by/4.0/l,4.95,True
-Apis mellifera,Honey bee,5027406141,2020-10-14,2020,10,49.078323,9.192726,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/1 - Neckar / Talheim / Ilsfeld,HUMAN_OBSERVATION,by/4.0/l,7.65,True
-Apis mellifera,Honey bee,5022424730,2020-11-07,2020,11,49.078316,9.192727,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/1 - Neckar / Talheim / Ilsfeld,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5023943841,2020-11-18,2020,11,49.150135,9.207062,25.0,NABU|naturgucker,6ac3f774,Heilbronn BUGA 2019,HUMAN_OBSERVATION,by/4.0/l,0.58,True
-Apis mellifera,Honey bee,5024208984,2021-04-14,2021,4,49.078331,9.192738,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.65,True
-Apis mellifera,Honey bee,5018962492,2021-05-02,2021,5,49.078327,9.192719,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.65,True
-Apis mellifera,Honey bee,5021898837,2021-05-03,2021,5,49.147797,9.207536,25.0,NABU|naturgucker,6ac3f774,Heilbronn BUGA 2019,HUMAN_OBSERVATION,by/4.0/l,0.38,True
-Apis mellifera,Honey bee,5021872944,2021-06-03,2021,6,49.140999,9.249,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/4 - Weinsberg / Lehrensteinsfeld,HUMAN_OBSERVATION,by/4.0/l,2.75,True
-Apis mellifera,Honey bee,5013959916,2021-06-05,2021,6,49.08466,9.19281,250.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,6.96,True
-Apis mellifera,Honey bee,5020675092,2021-06-05,2021,6,49.102329,9.122301,25.0,NABU|naturgucker,6ac3f774,Nordheim,HUMAN_OBSERVATION,by/4.0/l,8.14,True
-Apis mellifera,Honey bee,5022394539,2021-06-05,2021,6,49.150089,9.228902,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,1.31,True
-Apis mellifera,Honey bee,5026990509,2021-06-05,2021,6,49.134495,9.185642,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,by/4.0/l,2.31,True
-Apis mellifera,Honey bee,5020448276,2021-06-09,2021,6,49.10849,9.130154,250.0,NABU|naturgucker,6ac3f774,Nordheim,HUMAN_OBSERVATION,by/4.0/l,7.27,True
-Apis mellifera,Honey bee,5020320386,2021-06-12,2021,6,49.183739,9.065063,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/1 - Massenbachhausen,HUMAN_OBSERVATION,by/4.0/l,11.48,True
-Apis mellifera,Honey bee,5021359231,2021-06-13,2021,6,49.145615,9.241039,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,by/4.0/l,2.11,True
-Apis mellifera,Honey bee,5012667605,2021-06-15,2021,6,49.08466,9.19281,250.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,6.96,True
-Apis mellifera,Honey bee,5015226164,2021-06-18,2021,6,49.078259,9.192681,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,3722545145,2021-07-11,2021,7,49.236675,9.157622,25.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis) oud,HUMAN_OBSERVATION,by-nc/4.,10.83,True
-Apis mellifera,Honey bee,5028199512,2021-08-04,2021,8,49.163635,9.14732,250.0,NABU|naturgucker,6ac3f774,Rosenbuckel,HUMAN_OBSERVATION,by/4.0/l,5.1,True
-Apis mellifera,Honey bee,5017338659,2021-08-07,2021,8,49.124245,9.330265,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/4 - Weinsberg / Lehrensteinsfeld,HUMAN_OBSERVATION,by/4.0/l,8.94,True
-Apis mellifera,Honey bee,5013933809,2021-08-10,2021,8,49.158463,9.229581,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,1.89,True
-Apis mellifera,Honey bee,5021377235,2021-08-10,2021,8,49.209549,9.194127,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,by/4.0/l,7.18,True
-Apis mellifera,Honey bee,5014713722,2021-08-12,2021,8,49.078262,9.192656,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5024786966,2021-08-15,2021,8,49.151131,9.234678,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,1.75,True
-Apis mellifera,Honey bee,5019647606,2021-08-17,2021,8,49.158497,9.177369,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,2.88,True
-Apis mellifera,Honey bee,5857679898,2021-08-21,2021,8,49.148312,9.209449,1.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,0.32,True
-Apis mellifera,Honey bee,5026395526,2021-08-31,2021,8,49.08466,9.19281,250.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,6.96,True
-Apis mellifera,Honey bee,5024538295,2021-09-10,2021,9,49.078274,9.19266,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5012461744,2021-09-19,2021,9,49.078384,9.192704,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.65,True
-Apis mellifera,Honey bee,5025288268,2021-10-20,2021,10,49.064556,9.081924,25.0,NABU|naturgucker,6ac3f774,Brackenheim Meimsheim,HUMAN_OBSERVATION,by/4.0/l,13.1,True
-Apis mellifera,Honey bee,5019280079,2021-10-25,2021,10,49.078259,9.192658,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5027102640,2021-11-08,2021,11,49.078262,9.19264,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5026194165,2022-03-22,2022,3,49.078243,9.192688,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5015344404,2022-04-19,2022,4,49.078289,9.192723,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5019637950,2022-05-04,2022,5,49.091221,9.256901,25.0,NABU|naturgucker,6ac3f774,Felder westlich v Untergruppenbach,HUMAN_OBSERVATION,by/4.0/l,6.91,True
-Apis mellifera,Honey bee,5023284513,2022-05-04,2022,5,49.078262,9.192746,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5027566364,2022-05-12,2022,5,49.101032,9.174842,25.0,NABU|naturgucker,6ac3f774,Sonderkulturen u Äcker zwischen Talheim u Heilbronn-Horkheim,HUMAN_OBSERVATION,by/4.0/l,5.68,True
-Apis mellifera,Honey bee,5022900022,2022-05-15,2022,5,49.078411,9.1927,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.65,True
-Apis mellifera,Honey bee,5023241112,2022-05-25,2022,5,49.114563,9.154028,25.0,NABU|naturgucker,6ac3f774,Auwiesen bei Nordheim,HUMAN_OBSERVATION,by/4.0/l,5.48,True
-Apis mellifera,Honey bee,5019962171,2022-06-01,2022,6,49.115726,9.155815,25.0,NABU|naturgucker,6ac3f774,Auwiesen bei Nordheim,HUMAN_OBSERVATION,by/4.0/l,5.3,True
-Apis mellifera,Honey bee,5013383430,2022-06-06,2022,6,49.107994,9.103512,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/4 - Leingarten / Nordheim,HUMAN_OBSERVATION,by/4.0/l,8.95,True
-Apis mellifera,Honey bee,5028387992,2022-06-07,2022,6,49.157112,9.229754,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,1.79,True
-Apis mellifera,Honey bee,4460029811,2022-06-12,2022,6,49.125285,9.255838,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,3.93,False
-Apis mellifera,Honey bee,5020646569,2022-07-17,2022,7,49.078377,9.192691,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.65,True
-Apis mellifera,Honey bee,3904504643,2022-07-22,2022,7,49.236696,9.104382,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis) oud,HUMAN_OBSERVATION,by-nc/4.,12.76,False
-Apis mellifera,Honey bee,5017201027,2022-08-05,2022,8,49.063118,9.083837,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/2 - Neckar / Lauffen am Neckar,HUMAN_OBSERVATION,by/4.0/l,13.11,True
-Apis mellifera,Honey bee,5016366111,2022-08-06,2022,8,49.15731,9.229814,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,1.81,True
-Apis mellifera,Honey bee,5027512216,2022-08-06,2022,8,49.209476,9.30302,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/4 - Kocher / Neuenstadt (West) / Oedheim,HUMAN_OBSERVATION,by/4.0/l,9.67,True
-Apis mellifera,Honey bee,5017035000,2022-08-07,2022,8,49.135742,9.191429,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,by/4.0/l,1.88,True
-Apis mellifera,Honey bee,5019520855,2022-08-07,2022,8,49.078266,9.192732,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5014904901,2022-08-09,2022,8,49.15134,9.173288,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,2.88,True
-Apis mellifera,Honey bee,5022139483,2022-08-11,2022,8,49.078262,9.192671,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5017805642,2022-08-24,2022,8,49.078255,9.192676,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5017827515,2022-08-29,2022,8,49.078297,9.192703,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5020516628,2022-08-31,2022,8,49.0783,9.192693,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5024350280,2022-09-02,2022,9,49.078373,9.192712,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.65,True
-Apis mellifera,Honey bee,5013273706,2022-09-03,2022,9,49.078259,9.192689,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5020030827,2022-09-04,2022,9,49.078346,9.192685,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.65,True
-Apis mellifera,Honey bee,5021109910,2022-09-08,2022,9,49.078308,9.192672,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5018873920,2022-09-10,2022,9,49.078278,9.192731,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5028273532,2022-09-13,2022,9,49.078289,9.192757,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5020389437,2022-09-14,2022,9,49.078278,9.192708,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5019780708,2022-09-15,2022,9,49.078285,9.19271,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5027191118,2022-09-30,2022,9,49.078278,9.192705,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5026413119,2022-10-04,2022,10,49.078289,9.192704,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5022021146,2022-10-05,2022,10,49.233292,9.163121,25.0,NABU|naturgucker,6ac3f774,Offenau,HUMAN_OBSERVATION,by/4.0/l,10.34,True
-Apis mellifera,Honey bee,5012960281,2022-10-07,2022,10,49.078289,9.192722,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5025105878,2022-10-07,2022,10,49.154785,9.210597,25.0,NABU|naturgucker,6ac3f774,Heilbronn BuGa 2019 Gesamtfläche,HUMAN_OBSERVATION,by/4.0/l,0.98,True
-Apis mellifera,Honey bee,5016014956,2022-10-27,2022,10,49.164635,9.159117,250.0,NABU|naturgucker,6ac3f774,Frankenbach West,HUMAN_OBSERVATION,by/4.0/l,4.37,True
-Apis mellifera,Honey bee,5016957811,2022-11-13,2022,11,49.071465,9.29846,25.0,NABU|naturgucker,6ac3f774,Abstatt,HUMAN_OBSERVATION,by/4.0/l,10.41,True
-Apis mellifera,Honey bee,5021867016,2023-01-02,2023,1,49.077496,9.194996,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.72,True
-Apis mellifera,Honey bee,5017065347,2023-03-02,2023,3,49.136215,9.2376,250.0,NABU|naturgucker,6ac3f774,Heilbronn Ost und Badener Höhe,HUMAN_OBSERVATION,by/4.0/l,2.16,True
-Apis mellifera,Honey bee,4159779476,2023-04-05,2023,4,49.124664,9.215779,36.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,2.39,True
-Apis mellifera,Honey bee,5025180525,2023-04-22,2023,4,49.241165,9.142573,250.0,NABU|naturgucker,6ac3f774,Bad Wimpfen Hohenstadt u Neckar-Seitentäler,HUMAN_OBSERVATION,by/4.0/l,11.72,True
-Apis mellifera,Honey bee,5027536508,2023-04-27,2023,4,49.078285,9.192715,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5014714305,2023-05-01,2023,5,49.078289,9.192732,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5015385546,2023-05-12,2023,5,49.201466,9.125726,25.0,NABU|naturgucker,6ac3f774,Feldflur u Wald zw. Bonfeld u Heilbronn-Biberach,HUMAN_OBSERVATION,by/4.0/l,8.8,True
-Apis mellifera,Honey bee,5020173462,2023-05-20,2023,5,49.078285,9.192757,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5014848365,2023-06-01,2023,6,49.078297,9.192666,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,4159152351,2023-06-04,2023,6,49.141876,9.246067,5.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,2.52,True
-Apis mellifera,Honey bee,4160858287,2023-06-04,2023,6,49.14209,9.246074,5.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,2.52,True
-Apis mellifera,Honey bee,5024949451,2023-06-10,2023,6,49.157345,9.229582,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,1.8,True
-Apis mellifera,Honey bee,6234782707,2023-06-10,2023,6,49.142307,9.214854,1338.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by/4.0/l,0.46,False
-Apis mellifera,Honey bee,5012510509,2023-06-14,2023,6,49.131901,9.183552,25.0,NABU|naturgucker,6ac3f774,Ziegeleipark Böckingen,HUMAN_OBSERVATION,by/4.0/l,2.6,True
-Apis mellifera,Honey bee,5840637860,2023-06-18,2023,6,49.146737,9.321371,1.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,7.96,True
-Apis mellifera,Honey bee,5016170743,2023-07-15,2023,7,49.078358,9.192699,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.65,True
-Apis mellifera,Honey bee,5028450085,2023-07-16,2023,7,49.078369,9.192703,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.65,True
-Apis mellifera,Honey bee,5014799355,2023-07-17,2023,7,49.078354,9.192697,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.65,True
-Apis mellifera,Honey bee,4409346580,2023-07-18,2023,7,49.130555,9.267755,5.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,4.4,True
-Apis mellifera,Honey bee,5023482268,2023-07-18,2023,7,49.078354,9.192715,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.65,True
-Apis mellifera,Honey bee,4410147589,2023-08-03,2023,8,49.244742,9.310078,20.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,13.09,True
-Apis mellifera,Honey bee,4410042741,2023-08-04,2023,8,49.244841,9.310055,56.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,13.1,True
-Apis mellifera,Honey bee,5020604044,2023-08-05,2023,8,49.210178,9.190741,25.0,NABU|naturgucker,6ac3f774,Untereisesheim,HUMAN_OBSERVATION,by/4.0/l,7.3,True
-Apis mellifera,Honey bee,5026801572,2023-08-05,2023,8,49.078266,9.192633,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5024281221,2023-08-08,2023,8,49.056038,9.261649,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/2 - Auenstein / Abstatt / Untergruppenbach,HUMAN_OBSERVATION,by/4.0/l,10.64,True
-Apis mellifera,Honey bee,4410477064,2023-08-11,2023,8,49.142041,9.216188,900.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,0.54,True
-Apis mellifera,Honey bee,5018620970,2023-08-11,2023,8,49.132938,9.275771,25.0,NABU|naturgucker,6ac3f774,Waldheide Heilbronn nördl. Donnbronn,HUMAN_OBSERVATION,by/4.0/l,4.86,True
-Apis mellifera,Honey bee,4459446051,2023-08-13,2023,8,49.127135,9.226832,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,2.36,False
-Apis mellifera,Honey bee,4459723061,2023-08-13,2023,8,49.16386,9.195695,17.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,2.31,True
-Apis mellifera,Honey bee,5018313023,2023-08-13,2023,8,49.078354,9.192705,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.65,True
-Apis mellifera,Honey bee,5021555459,2023-08-13,2023,8,49.247742,9.172967,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,by/4.0/l,11.66,True
-Apis mellifera,Honey bee,4410255229,2023-08-14,2023,8,49.184231,9.346172,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,10.64,False
-Apis mellifera,Honey bee,5015459924,2023-08-14,2023,8,49.077126,9.106679,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/2 - Neckar / Lauffen am Neckar,HUMAN_OBSERVATION,by/4.0/l,10.84,True
-Apis mellifera,Honey bee,5024899822,2023-08-14,2023,8,49.078274,9.192648,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5027201584,2023-08-16,2023,8,49.08466,9.19281,250.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,6.96,True
-Apis mellifera,Honey bee,5013434737,2023-08-20,2023,8,49.078304,9.192743,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5019796619,2023-08-23,2023,8,49.0783,9.1927,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,4459583549,2023-09-03,2023,9,49.126758,9.213617,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,2.14,False
-Apis mellifera,Honey bee,4459583551,2023-09-03,2023,9,49.1268,9.213556,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,2.14,False
-Apis mellifera,Honey bee,4460305509,2023-09-03,2023,9,49.126775,9.2137,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,2.14,False
-Apis mellifera,Honey bee,4460182550,2023-09-10,2023,9,49.163897,9.195653,9.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,2.32,True
-Apis mellifera,Honey bee,5017740745,2023-09-10,2023,9,49.078308,9.192713,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5026696642,2023-09-13,2023,9,49.078289,9.192742,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5017790322,2023-09-17,2023,9,49.078289,9.192667,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5018452624,2023-09-19,2023,9,49.155209,9.210303,25.0,NABU|naturgucker,6ac3f774,Heilbronn BuGa 2019 Gesamtfläche,HUMAN_OBSERVATION,by/4.0/l,1.03,True
-Apis mellifera,Honey bee,5026365015,2023-09-26,2023,9,49.148754,9.207631,250.0,NABU|naturgucker,6ac3f774,Heilbronn BuGa 2019 Gesamtfläche,HUMAN_OBSERVATION,by/4.0/l,0.44,True
-Apis mellifera,Honey bee,5016489096,2023-09-30,2023,9,49.078293,9.192689,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5025582551,2023-10-02,2023,10,49.078377,9.192715,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.65,True
-Apis mellifera,Honey bee,4461646650,2023-10-13,2023,10,49.147584,9.111569,9.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,7.31,True
-Apis mellifera,Honey bee,4461848367,2023-10-13,2023,10,49.14753,9.111603,4.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,7.3,True
-Apis mellifera,Honey bee,4460766086,2023-10-16,2023,10,49.147573,9.111566,8.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,7.31,True
-Apis mellifera,Honey bee,5017992023,2023-12-17,2023,12,49.159466,9.14708,250.0,NABU|naturgucker,6ac3f774,Hipfelhof bei Frankenbach,HUMAN_OBSERVATION,by/4.0/l,4.95,True
-Apis mellifera,Honey bee,5020527127,2024-03-03,2024,3,49.17915,9.174132,250.0,NABU|naturgucker,6ac3f774,Heilbronn Böllinger Höfe u Böllinger Bach,HUMAN_OBSERVATION,by/4.0/l,4.6,True
-Apis mellifera,Honey bee,5025502787,2024-03-03,2024,3,49.12355,9.107636,25.0,NABU|naturgucker,6ac3f774,Eisenhut u Heuchelbergvorland bei Nordheim,HUMAN_OBSERVATION,by/4.0/l,7.99,True
-Apis mellifera,Honey bee,5013573079,2024-03-08,2024,3,49.20974,9.209287,25.0,NABU|naturgucker,6ac3f774,"Kohlekraftwerk,Heilbronn",HUMAN_OBSERVATION,by/4.0/l,7.09,True
-Apis mellifera,Honey bee,4883158305,2024-03-17,2024,3,49.147447,9.111512,6.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,7.31,True
-Apis mellifera,Honey bee,4882790635,2024-03-25,2024,3,49.14757,9.111621,8.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,7.3,True
-Apis mellifera,Honey bee,4886236595,2024-03-25,2024,3,49.147611,9.111723,5.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,7.3,True
-Apis mellifera,Honey bee,4886332217,2024-03-25,2024,3,49.147632,9.111613,7.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,7.3,True
-Apis mellifera,Honey bee,4886404919,2024-03-25,2024,3,49.147666,9.111691,14.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,7.3,True
-Apis mellifera,Honey bee,4881161154,2024-04-02,2024,4,49.147575,9.111644,17.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,7.3,True
-Apis mellifera,Honey bee,5234210396,2024-04-02,2024,4,49.147598,9.11172,14.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,7.3,True
-Apis mellifera,Honey bee,4881355996,2024-04-08,2024,4,49.134722,9.068333,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,10.53,False
-Apis mellifera,Honey bee,4881839270,2024-04-30,2024,4,49.237527,9.115076,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,12.38,False
-Apis mellifera,Honey bee,5028372862,2024-05-01,2024,5,49.078293,9.192701,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,4931189006,2024-06-08,2024,6,49.236747,9.10429,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,12.77,False
-Apis mellifera,Honey bee,5016153426,2024-06-09,2024,6,49.157349,9.229662,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,1.8,True
-Apis mellifera,Honey bee,5024534701,2024-06-09,2024,6,49.078255,9.192666,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,4932721164,2024-06-13,2024,6,49.134722,9.068333,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,10.53,False
-Apis mellifera,Honey bee,5024053508,2024-06-18,2024,6,49.078293,9.192705,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,4931221158,2024-06-21,2024,6,49.147862,9.111441,6.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,7.32,True
-Apis mellifera,Honey bee,4934502191,2024-06-21,2024,6,49.095295,9.102361,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,9.77,False
-Apis mellifera,Honey bee,5026304694,2024-06-21,2024,6,49.068966,9.168587,25.0,NABU|naturgucker,6ac3f774,Lauffen - Bereich östlich des Neckars,HUMAN_OBSERVATION,by/4.0/l,9.13,True
-Apis mellifera,Honey bee,6234293710,2024-06-23,2024,6,49.142307,9.214854,1342.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by/4.0/l,0.46,False
-Apis mellifera,Honey bee,4931337061,2024-07-04,2024,7,49.132369,9.231734,6.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,2.09,True
-Apis mellifera,Honey bee,4931551929,2024-07-04,2024,7,49.147495,9.315462,9.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,7.53,True
-Apis mellifera,Honey bee,5015519697,2024-07-05,2024,7,49.078194,9.192709,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.67,True
-Apis mellifera,Honey bee,4931963243,2024-07-13,2024,7,49.140259,9.056059,4.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,11.36,True
-Apis mellifera,Honey bee,4934233259,2024-07-21,2024,7,49.053572,9.089192,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,13.62,False
-Apis mellifera,Honey bee,5024657424,2024-07-21,2024,7,49.078293,9.192762,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,4930516037,2024-07-24,2024,7,49.177948,9.23019,4.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,3.79,True
-Apis mellifera,Honey bee,5028125639,2024-07-24,2024,7,49.078278,9.192733,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5019676653,2024-07-26,2024,7,49.176666,9.170785,25.0,NABU|naturgucker,6ac3f774,Heilbronn Böllinger Höfe u Böllinger Bach,HUMAN_OBSERVATION,by/4.0/l,4.54,True
-Apis mellifera,Honey bee,5027705937,2024-07-26,2024,7,49.064857,9.20012,250.0,NABU|naturgucker,6ac3f774,"Lauffen, Gartencenter  Pflanzen Mauk",HUMAN_OBSERVATION,by/4.0/l,9.06,True
-Apis mellifera,Honey bee,4932147583,2024-07-29,2024,7,49.244985,9.310733,12.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,13.14,True
-Apis mellifera,Honey bee,5022548948,2024-07-29,2024,7,49.078297,9.192756,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5016418726,2024-08-10,2024,8,49.157295,9.229491,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,1.79,True
-Apis mellifera,Honey bee,5027228027,2024-08-10,2024,8,49.08466,9.19281,250.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,6.96,True
-Apis mellifera,Honey bee,5018633453,2024-08-14,2024,8,49.15321,9.209515,25.0,NABU|naturgucker,6ac3f774,Heilbronn BuGa 2019 Gesamtfläche,HUMAN_OBSERVATION,by/4.0/l,0.82,True
-Apis mellifera,Honey bee,5022645794,2024-08-16,2024,8,49.096214,9.183381,25.0,NABU|naturgucker,6ac3f774,Unteres Schozachtal bei Talheim,HUMAN_OBSERVATION,by/4.0/l,5.91,True
-Apis mellifera,Honey bee,5022744275,2024-08-16,2024,8,49.08466,9.19281,250.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,6.96,True
-Apis mellifera,Honey bee,5026503746,2024-08-17,2024,8,49.078289,9.192748,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5024573241,2024-08-20,2024,8,49.078285,9.192766,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5027539080,2024-08-22,2024,8,49.124443,9.272289,250.0,NABU|naturgucker,6ac3f774,Waldheide Heilbronn nördl. Donnbronn,HUMAN_OBSERVATION,by/4.0/l,5.0,True
-Apis mellifera,Honey bee,5017013417,2024-08-26,2024,8,49.119781,9.152064,250.0,NABU|naturgucker,6ac3f774,HN-Klingenberg u Neckarprallhang bei Klingenberg,HUMAN_OBSERVATION,by/4.0/l,5.25,True
-Apis mellifera,Honey bee,5026598260,2024-08-26,2024,8,49.113827,9.154787,250.0,NABU|naturgucker,6ac3f774,Auwiesen bei Nordheim,HUMAN_OBSERVATION,by/4.0/l,5.49,True
-Apis mellifera,Honey bee,5027909058,2024-08-27,2024,8,49.078255,9.192718,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5019236180,2024-09-05,2024,9,49.078285,9.192752,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5013078794,2024-09-07,2024,9,49.078297,9.192722,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5013950801,2024-09-15,2024,9,49.078285,9.192714,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5026002610,2024-09-19,2024,9,49.078274,9.192713,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5012581241,2024-09-23,2024,9,49.078281,9.192739,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5012505782,2024-09-27,2024,9,49.078274,9.192705,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5013226406,2024-10-01,2024,10,49.078285,9.192694,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5028325102,2024-10-17,2024,10,49.07803,9.153536,25.0,NABU|naturgucker,6ac3f774,Lauffen am Neckar,HUMAN_OBSERVATION,by/4.0/l,8.67,True
-Apis mellifera,Honey bee,5025684506,2024-10-21,2024,10,49.144703,9.204556,25.0,NABU|naturgucker,6ac3f774,Heilbronn BuGa 2019 Gesamtfläche,HUMAN_OBSERVATION,by/4.0/l,0.56,True
-Apis mellifera,Honey bee,5019771433,2024-10-28,2024,10,49.078304,9.192752,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5135445943,2025-02-28,2025,2,49.117828,9.339736,250.0,NABU|naturgucker,6ac3f774,Lehrensteinsfeld unteres Autal,HUMAN_OBSERVATION,by/4.0/l,9.81,True
-Apis mellifera,Honey bee,5234123372,2025-03-10,2025,3,49.133986,9.252303,7.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,3.22,True
-Apis mellifera,Honey bee,5135484678,2025-03-19,2025,3,49.189991,9.239465,250.0,NABU|naturgucker,6ac3f774,Neckarsulm Kleiner Stadtpark mit Biotop,HUMAN_OBSERVATION,by/4.0/l,5.28,True
-Apis mellifera,Honey bee,5135681324,2025-03-20,2025,3,49.133446,9.292564,250.0,NABU|naturgucker,6ac3f774,Weinsberg Stadtseetal mit Stadtseen,HUMAN_OBSERVATION,by/4.0/l,6.02,True
-Apis mellifera,Honey bee,5135516416,2025-03-28,2025,3,49.062401,9.305347,250.0,NABU|naturgucker,6ac3f774,Beilstein Abstatt SB4 Teil 1 mit Anna See,HUMAN_OBSERVATION,by/4.0/l,11.51,True
-Apis mellifera,Honey bee,5135507816,2025-04-11,2025,4,49.078266,9.19266,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5109019383,2025-04-13,2025,4,49.17788,9.347278,8.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,10.46,True
-Apis mellifera,Honey bee,5135565384,2025-04-14,2025,4,49.078262,9.192685,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5150288410,2025-05-01,2025,5,49.078236,9.192698,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5234306476,2025-05-10,2025,5,49.141479,9.219212,25.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,0.73,True
-Apis mellifera,Honey bee,5158018028,2025-05-17,2025,5,49.177872,9.346979,14.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,10.43,True
-Apis mellifera,Honey bee,5158175218,2025-05-18,2025,5,49.14741,9.103486,4.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,7.89,True
-Apis mellifera,Honey bee,5164015389,2025-05-18,2025,5,49.159523,9.173227,250.0,NABU|naturgucker,6ac3f774,Heilbronn Frankenbach,HUMAN_OBSERVATION,by/4.0/l,3.2,True
-Apis mellifera,Honey bee,5164070318,2025-05-18,2025,5,49.24564,9.167181,250.0,NABU|naturgucker,6ac3f774,Offenau,HUMAN_OBSERVATION,by/4.0/l,11.55,True
-Apis mellifera,Honey bee,5164374770,2025-05-20,2025,5,49.245081,9.310727,4.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,13.15,True
-Apis mellifera,Honey bee,5164053313,2025-05-21,2025,5,49.13858,9.269469,250.0,NABU|naturgucker,6ac3f774,Heilbronner Wald nördl. der Waldheide,HUMAN_OBSERVATION,by/4.0/l,4.26,True
-Apis mellifera,Honey bee,5180622520,2025-06-02,2025,6,49.143811,9.319976,4.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,7.86,True
-Apis mellifera,Honey bee,5186954685,2025-06-14,2025,6,49.147564,9.111506,5.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,7.31,True
-Apis mellifera,Honey bee,5197870110,2025-06-19,2025,6,49.205954,9.121591,2.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,9.36,True
-Apis mellifera,Honey bee,5198088378,2025-06-19,2025,6,49.194723,9.137392,2.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,7.67,True
-Apis mellifera,Honey bee,5218893412,2025-06-19,2025,6,49.20491,9.123205,2.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,9.2,True
-Apis mellifera,Honey bee,5205057077,2025-06-24,2025,6,49.163504,9.196864,16.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,2.24,True
-Apis mellifera,Honey bee,5205212729,2025-06-24,2025,6,49.142253,9.057964,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,11.21,False
-Apis mellifera,Honey bee,5205086636,2025-06-25,2025,6,49.163442,9.196991,23.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,2.23,True
-Apis mellifera,Honey bee,5205163952,2025-06-25,2025,6,49.163421,9.19664,17.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,2.24,True
-Apis mellifera,Honey bee,5205321782,2025-06-27,2025,6,49.152538,9.236661,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,1.94,False
-Apis mellifera,Honey bee,5205267862,2025-06-28,2025,6,49.184606,9.33142,14.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,9.69,True
-Apis mellifera,Honey bee,5215084319,2025-06-29,2025,6,49.151455,9.23569,25.0,NABU|naturgucker,6ac3f774,Heilbronn Nordost,HUMAN_OBSERVATION,by/4.0/l,1.83,True
-Apis mellifera,Honey bee,6235895565,2025-06-29,2025,6,49.142307,9.214854,1342.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by/4.0/l,0.46,False
-Apis mellifera,Honey bee,5212075018,2025-07-06,2025,7,49.072424,9.289005,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,9.92,False
-Apis mellifera,Honey bee,5219226817,2025-07-13,2025,7,49.158263,9.190674,6.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,2.07,True
-Apis mellifera,Honey bee,5219333958,2025-07-13,2025,7,49.06755,9.292637,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,10.51,False
-Apis mellifera,Honey bee,5232265427,2025-07-13,2025,7,49.078259,9.192748,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5234856728,2025-07-15,2025,7,49.245063,9.310477,73.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,13.14,True
-Apis mellifera,Honey bee,5232265387,2025-07-17,2025,7,49.064857,9.20012,250.0,NABU|naturgucker,6ac3f774,"Lauffen, Gartencenter  Pflanzen Mauk",HUMAN_OBSERVATION,by/4.0/l,9.06,True
-Apis mellifera,Honey bee,5234850620,2025-07-19,2025,7,49.123552,9.198959,14.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,2.67,True
-Apis mellifera,Honey bee,5281677095,2025-07-29,2025,7,49.14782,9.2105,25.0,NABU|naturgucker,6ac3f774,Heilbronn BuGa 2019 Gesamtfläche,HUMAN_OBSERVATION,by/4.0/l,0.23,True
-Apis mellifera,Honey bee,5291544004,2025-08-04,2025,8,49.120892,9.219368,250.0,NABU|naturgucker,6ac3f774,Heilbronn Gewerbegebiet Schwabenhof u Gewerbe an der Stuttgarter Straße,HUMAN_OBSERVATION,by/4.0/l,2.84,True
-Apis mellifera,Honey bee,5283030505,2025-08-06,2025,8,49.143867,9.320073,25.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,7.86,True
-Apis mellifera,Honey bee,5282954994,2025-08-08,2025,8,49.118065,9.202856,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,3.18,False
-Apis mellifera,Honey bee,5291543967,2025-08-10,2025,8,49.078259,9.192711,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5291497582,2025-08-11,2025,8,49.156101,9.208713,25.0,NABU|naturgucker,6ac3f774,Heilbronn BuGa 2019 Gesamtfläche,HUMAN_OBSERVATION,by/4.0/l,1.15,True
-Apis mellifera,Honey bee,5291507800,2025-08-11,2025,8,49.078232,9.19264,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.67,True
-Apis mellifera,Honey bee,5291523726,2025-08-12,2025,8,49.078335,9.192683,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.65,True
-Apis mellifera,Honey bee,5288591645,2025-08-13,2025,8,49.142869,9.112567,35.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,7.24,True
-Apis mellifera,Honey bee,5291524695,2025-08-13,2025,8,49.078255,9.192707,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5288030484,2025-08-16,2025,8,49.126838,9.21379,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,2.13,False
-Apis mellifera,Honey bee,6235412040,2025-08-16,2025,8,49.142433,9.216877,,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by/4.0/l,0.53,False
-Apis mellifera,Honey bee,5287974644,2025-08-22,2025,8,49.214801,9.257606,41.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,8.34,True
-Apis mellifera,Honey bee,5794834613,2025-08-31,2025,8,49.078262,9.192738,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5794826106,2025-09-03,2025,9,49.154758,9.210571,25.0,NABU|naturgucker,6ac3f774,Heilbronn BuGa 2019 Gesamtfläche,HUMAN_OBSERVATION,by/4.0/l,0.98,True
-Apis mellifera,Honey bee,5794841845,2025-09-05,2025,9,49.078259,9.192741,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Apis mellifera,Honey bee,5797139314,2025-09-09,2025,9,49.147625,9.315904,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,7.56,False
-Apis mellifera,Honey bee,6234367718,2025-09-15,2025,9,49.14248,9.216944,,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by/4.0/l,0.53,False
-Apis mellifera,Honey bee,5837364214,2025-09-18,2025,9,49.147247,9.205201,25.0,NABU|naturgucker,6ac3f774,Heilbronn BuGa 2019 Gesamtfläche,HUMAN_OBSERVATION,by/4.0/l,0.51,True
-Apis mellifera,Honey bee,5844795942,2025-10-01,2025,10,49.138115,9.104973,25.0,NABU|naturgucker,6ac3f774,Leingarten West,HUMAN_OBSERVATION,by/4.0/l,7.83,True
-Apis mellifera,Honey bee,5844799358,2025-10-02,2025,10,49.109276,9.148875,25.0,NABU|naturgucker,6ac3f774,Altneckar Horkheim,HUMAN_OBSERVATION,by/4.0/l,6.15,True
-Apis mellifera,Honey bee,5844783285,2025-10-09,2025,10,49.145237,9.206005,25.0,NABU|naturgucker,6ac3f774,Heilbronn BuGa 2019 Gesamtfläche,HUMAN_OBSERVATION,by/4.0/l,0.44,True
-Apis mellifera,Honey bee,5892256742,2025-11-04,2025,11,49.156147,9.190153,25.0,NABU|naturgucker,6ac3f774,Heilbronn Gesundbrunnen,HUMAN_OBSERVATION,by/4.0/l,1.95,True
-Apis mellifera,Honey bee,5892268401,2025-11-05,2025,11,49.154488,9.278458,250.0,NABU|naturgucker,6ac3f774,Weinsberg Heilbronner Str. Rückhaltebecken,HUMAN_OBSERVATION,by/4.0/l,4.92,True
-Apis mellifera,Honey bee,5931984534,2025-11-15,2025,11,49.113827,9.154787,250.0,NABU|naturgucker,6ac3f774,Auwiesen bei Nordheim,HUMAN_OBSERVATION,by/4.0/l,5.49,True
-Apis mellifera,Honey bee,6486516467,2026-03-21,2026,3,49.183787,9.327712,3.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Eberstadt,HUMAN_OBSERVATION,by-nc/4.,9.4,True
-Apis mellifera,Honey bee,6487170522,2026-03-21,2026,3,49.24102,9.105727,10.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Bad Rappenau,HUMAN_OBSERVATION,by-nc/4.,13.09,True
-Apis mellifera,Honey bee,6486279269,2026-04-06,2026,4,49.13979,9.178312,21.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn Böckingen,HUMAN_OBSERVATION,by-nc/4.,2.55,True
-Apis mellifera,Honey bee,6447714068,2026-04-26,2026,4,49.126838,9.213807,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn Äussere Bezirke,HUMAN_OBSERVATION,by-nc/4.,2.13,False
-Apis mellifera,Honey bee,6345021211,2026-04-30,2026,4,49.177839,9.346882,8.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Eberstadt,HUMAN_OBSERVATION,by-nc/4.,10.43,True
-Apis mellifera,Honey bee,6344120210,2026-05-03,2026,5,49.156683,9.290767,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Weinsberg,HUMAN_OBSERVATION,by-nc/4.,5.85,False
-Apis mellifera,Honey bee,6343306401,2026-05-08,2026,5,49.12,9.22,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn Äussere Bezirke,HUMAN_OBSERVATION,by-nc/4.,2.95,False
-Apis mellifera,Honey bee,6342798405,2026-05-20,2026,5,49.093641,9.276472,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Untergruppenbach,HUMAN_OBSERVATION,by-nc/4.,7.48,False
-Apis mellifera,Honey bee,6447605432,2026-05-26,2026,5,49.12,9.22,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn Äussere Bezirke,HUMAN_OBSERVATION,by-nc/4.,2.95,False
-Apis mellifera,Honey bee,6342045906,2026-05-30,2026,5,49.147573,9.111582,3.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Leingarten,HUMAN_OBSERVATION,by-nc/4.,7.31,True
-Apis mellifera,Honey bee,6342654330,2026-05-30,2026,5,49.147625,9.111484,4.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Leingarten,HUMAN_OBSERVATION,by-nc/4.,7.31,True
-Apis mellifera,Honey bee,6400070622,2026-06-02,2026,6,49.125214,9.102486,454.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by-nc/4.,8.3,True
-Apis mellifera,Honey bee,6448925437,2026-06-02,2026,6,49.125764,9.209133,14.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn Äussere Bezirke,HUMAN_OBSERVATION,by-nc/4.,2.26,True
-Apis mellifera,Honey bee,6398987389,2026-06-03,2026,6,49.124336,9.211214,,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by-nc/4.,2.41,False
-Apis mellifera,Honey bee,6399442741,2026-06-03,2026,6,49.12344,9.20905,135.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by-nc/4.,2.52,True
-Apis mellifera,Honey bee,6449100456,2026-06-04,2026,6,49.12,9.22,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn Äussere Bezirke,HUMAN_OBSERVATION,by-nc/4.,2.95,False
-Apis mellifera,Honey bee,6400935738,2026-06-05,2026,6,49.142278,9.216849,,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by/4.0/l,0.54,False
-Apis mellifera,Honey bee,6410983453,2026-06-05,2026,6,49.184422,9.331342,5.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Eberstadt,HUMAN_OBSERVATION,by-nc/4.,9.67,True
-Apis mellifera,Honey bee,6448441981,2026-06-13,2026,6,49.241474,9.105031,6.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Bad Rappenau,HUMAN_OBSERVATION,by-nc/4.,13.16,True
-Apis mellifera,Honey bee,6605310192,2026-06-14,2026,6,49.240731,9.218367,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Bad Friedrichshall,HUMAN_OBSERVATION,by-nc/4.,10.54,False
-Apis mellifera,Honey bee,6410672095,2026-06-16,2026,6,49.148312,9.285931,1.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Weinsberg,HUMAN_OBSERVATION,by-nc/4.,5.38,True
-Apis mellifera,Honey bee,6412000887,2026-06-19,2026,6,49.177825,9.347004,6.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Eberstadt,HUMAN_OBSERVATION,by-nc/4.,10.43,True
-Apis mellifera,Honey bee,6412058158,2026-06-21,2026,6,49.072396,9.289062,6.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Abstatt,HUMAN_OBSERVATION,by-nc/4.,9.92,True
-Apis mellifera,Honey bee,6412356748,2026-06-21,2026,6,49.118111,9.202882,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn Sontheim,HUMAN_OBSERVATION,by-nc/4.,3.17,False
-Apis mellifera,Honey bee,6411945787,2026-06-22,2026,6,49.230172,9.153567,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Bad Wimpfen,HUMAN_OBSERVATION,by-nc/4.,10.28,False
-Apis mellifera,Honey bee,6411042112,2026-06-23,2026,6,49.177894,9.346958,21.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Eberstadt,HUMAN_OBSERVATION,by-nc/4.,10.43,True
-Apis mellifera,Honey bee,6410728863,2026-06-27,2026,6,49.072362,9.289016,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Abstatt,HUMAN_OBSERVATION,by-nc/4.,9.92,False
-Apis mellifera,Honey bee,6423580626,2026-06-29,2026,6,49.177837,9.347024,6.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Eberstadt,HUMAN_OBSERVATION,by-nc/4.,10.44,True
-Apis mellifera,Honey bee,6424005722,2026-06-29,2026,6,49.101755,9.226728,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Flein,HUMAN_OBSERVATION,by-nc/4.,5.04,False
-Apis mellifera,Honey bee,6424168304,2026-06-29,2026,6,49.101769,9.226743,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Flein,HUMAN_OBSERVATION,by-nc/4.,5.03,False
-Apis mellifera,Honey bee,6423634437,2026-06-30,2026,6,49.072626,9.289121,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Abstatt,HUMAN_OBSERVATION,by-nc/4.,9.9,False
-Apis mellifera,Honey bee,6423733582,2026-06-30,2026,6,49.141781,9.315433,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Ellhofen,HUMAN_OBSERVATION,by-nc/4.,7.54,False
-Apis mellifera,Honey bee,6423807650,2026-06-30,2026,6,49.09793,9.332704,14.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Untergruppenbach,HUMAN_OBSERVATION,by-nc/4.,10.28,True
-Apis mellifera,Honey bee,6424338412,2026-07-01,2026,7,49.177837,9.347075,6.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Eberstadt,HUMAN_OBSERVATION,by-nc/4.,10.44,True
-Apis mellifera,Honey bee,6423921497,2026-07-05,2026,7,49.072388,9.289036,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Abstatt,HUMAN_OBSERVATION,by-nc/4.,9.92,False
-Apis mellifera,Honey bee,6448072791,2026-07-09,2026,7,49.118031,9.202611,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn Sontheim,HUMAN_OBSERVATION,by-nc/4.,3.18,False
-Apis mellifera,Honey bee,6447900355,2026-07-11,2026,7,49.07244,9.288975,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Abstatt,HUMAN_OBSERVATION,by-nc/4.,9.91,False
-Apis mellifera,Honey bee,6448956363,2026-07-14,2026,7,49.22947,9.162697,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Bad Wimpfen,HUMAN_OBSERVATION,by-nc/4.,9.95,False
-Apis mellifera,Honey bee,6449334269,2026-07-16,2026,7,49.197329,9.241259,37.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Neckarsulm,HUMAN_OBSERVATION,by-nc/4.,6.09,True
-Apis mellifera,Honey bee,6449668919,2026-07-16,2026,7,49.197296,9.241317,28.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Neckarsulm,HUMAN_OBSERVATION,by-nc/4.,6.09,True
-Apis mellifera,Honey bee,6448939008,2026-07-18,2026,7,49.241205,9.105387,10.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Bad Rappenau,HUMAN_OBSERVATION,by-nc/4.,13.12,True
-Apis mellifera,Honey bee,6448891116,2026-07-19,2026,7,49.072372,9.289029,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Abstatt,HUMAN_OBSERVATION,by-nc/4.,9.92,False
-Apis mellifera,Honey bee,6470441767,2026-07-23,2026,7,49.098156,9.278322,4.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by/4.0/l,7.18,True
-Apis mellifera,Honey bee,6485452105,2026-08-04,2026,8,49.230258,9.162017,9.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Bad Wimpfen,HUMAN_OBSERVATION,by-nc/4.,10.05,True
-Apis mellifera,Honey bee,6487273490,2026-08-04,2026,8,49.118092,9.202898,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn Sontheim,HUMAN_OBSERVATION,by-nc/4.,3.17,False
-Apis mellifera,Honey bee,6485340211,2026-08-06,2026,8,49.187306,9.247959,83.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Neckarsulm,HUMAN_OBSERVATION,by-nc/4.,5.28,True
-Apis mellifera,Honey bee,6485493364,2026-08-07,2026,8,49.177893,9.347056,16.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Eberstadt,HUMAN_OBSERVATION,by-nc/4.,10.44,True
-Apis mellifera,Honey bee,6602779671,2026-08-16,2026,8,49.184059,9.32754,25.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Eberstadt,HUMAN_OBSERVATION,by-nc/4.,9.41,True
-Apis mellifera,Honey bee,6604108006,2026-09-15,2026,9,49.172806,9.24585,3.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Erlenbach,HUMAN_OBSERVATION,by-nc/4.,3.87,True
-Apis mellifera,Honey bee,6602438979,2026-09-25,2026,9,49.126833,9.213752,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn Äussere Bezirke,HUMAN_OBSERVATION,by-nc/4.,2.14,False
-Apis mellifera,Honey bee,6579536379,2026-10-02,2026,10,49.122261,9.220463,16.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by-nc/4.,2.71,True
-Apis mellifera,Honey bee,6604108582,2026-10-15,2026,10,49.238809,9.115815,4.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Bad Rappenau,HUMAN_OBSERVATION,by-nc/4.,12.46,True
-Vespa crabro,European hornet,5015878649,2014-04-26,2014,4,49.055813,9.227743,250.0,NABU|naturgucker,6ac3f774,Gewann Beurer Feld bei Ilsfeld,HUMAN_OBSERVATION,by/4.0/l,10.09,True
-Vespa crabro,European hornet,5028420597,2014-06-01,2014,6,49.125454,9.295421,250.0,NABU|naturgucker,6ac3f774,Brühl,HUMAN_OBSERVATION,by/4.0/l,6.48,True
-Vespa crabro,European hornet,5023133995,2015-05-28,2015,5,49.08466,9.19281,250.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,6.96,True
-Vespa crabro,European hornet,5016229177,2018-08-30,2018,8,49.087891,9.2539,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/2 - Auenstein / Abstatt / Untergruppenbach,HUMAN_OBSERVATION,by/4.0/l,7.14,True
-Vespa crabro,European hornet,5022574653,2019-08-11,2019,8,49.08086,9.06715,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/1 - Güglingen / Brackenheim,HUMAN_OBSERVATION,by/4.0/l,12.79,True
-Vespa crabro,European hornet,4177191355,2020-05-25,2020,5,49.126393,9.244167,8.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by-nc/4.,3.2,True
-Vespa crabro,European hornet,5026509976,2020-05-30,2020,5,49.085815,9.296872,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/2 - Auenstein / Abstatt / Untergruppenbach,HUMAN_OBSERVATION,by/4.0/l,9.11,True
-Vespa crabro,European hornet,5020654996,2020-06-03,2020,6,49.23769,9.255587,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/4 - Kocher / Neuenstadt (West) / Oedheim,HUMAN_OBSERVATION,by/4.0/l,10.68,True
-Vespa crabro,European hornet,5076960321,2020-09-24,2020,9,49.118622,9.112645,1953.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by-nc/4.,7.84,False
-Vespa crabro,European hornet,5016137780,2021-06-12,2021,6,49.183739,9.065063,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/1 - Massenbachhausen,HUMAN_OBSERVATION,by/4.0/l,11.48,True
-Vespa crabro,European hornet,5024168752,2021-07-09,2021,7,49.195698,9.247755,250.0,NABU|naturgucker,6ac3f774,Neckarsulm Scheuerberg,HUMAN_OBSERVATION,by/4.0/l,6.11,True
-Vespa crabro,European hornet,5016374487,2021-08-15,2021,8,49.151035,9.234743,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,1.75,True
-Vespa crabro,European hornet,3784806259,2022-05-12,2022,5,49.074037,9.159348,26.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by-nc/4.,8.87,True
-Vespa crabro,European hornet,5018192711,2022-06-28,2022,6,49.158741,9.235872,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,2.24,True
-Vespa crabro,European hornet,5020561119,2022-08-06,2022,8,49.076958,9.19238,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/1 - Neckar / Talheim / Ilsfeld,HUMAN_OBSERVATION,by/4.0/l,7.81,True
-Vespa crabro,European hornet,3888780254,2022-08-09,2022,8,49.13403,9.116962,4.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by-nc/4.,7.04,True
-Vespa crabro,European hornet,5023561655,2022-08-14,2022,8,49.232944,9.194028,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,by/4.0/l,9.76,True
-Vespa crabro,European hornet,5028559955,2022-08-14,2022,8,49.240715,9.222648,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,by/4.0/l,10.56,True
-Vespa crabro,European hornet,5024937360,2022-08-24,2022,8,49.078274,9.192655,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Vespa crabro,European hornet,5019740921,2022-08-29,2022,8,49.164635,9.159117,250.0,NABU|naturgucker,6ac3f774,Frankenbach West,HUMAN_OBSERVATION,by/4.0/l,4.37,True
-Vespa crabro,European hornet,5015379790,2022-09-02,2022,9,49.173946,9.123949,250.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/2 - Leingarten (Nord) / Biberach,HUMAN_OBSERVATION,by/4.0/l,7.12,True
-Vespa crabro,European hornet,5027588404,2022-09-03,2022,9,49.078251,9.192676,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Vespa crabro,European hornet,5019665841,2022-09-04,2022,9,49.078251,9.192677,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Vespa crabro,European hornet,5014494876,2022-09-05,2022,9,49.159466,9.14708,250.0,NABU|naturgucker,6ac3f774,Hipfelhof bei Frankenbach,HUMAN_OBSERVATION,by/4.0/l,4.95,True
-Vespa crabro,European hornet,5021357612,2023-05-09,2023,5,49.136002,9.228,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,by/4.0/l,1.61,True
-Vespa crabro,European hornet,5012516350,2023-05-23,2023,5,49.234646,9.251204,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/4 - Kocher / Neuenstadt (West) / Oedheim,HUMAN_OBSERVATION,by/4.0/l,10.26,True
-Vespa crabro,European hornet,5025738453,2023-06-16,2023,6,49.130917,9.2114,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,by/4.0/l,1.68,True
-Vespa crabro,European hornet,6235371854,2023-06-28,2023,6,49.142307,9.214854,1338.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by/4.0/l,0.46,False
-Vespa crabro,European hornet,4461095870,2023-07-18,2023,7,49.138242,9.253875,14.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,3.17,True
-Vespa crabro,European hornet,5025425737,2023-08-08,2023,8,49.056038,9.261649,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/2 - Auenstein / Abstatt / Untergruppenbach,HUMAN_OBSERVATION,by/4.0/l,10.64,True
-Vespa crabro,European hornet,5027000027,2023-08-10,2023,8,49.143002,9.055,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/3 - Schwaigern,HUMAN_OBSERVATION,by/4.0/l,11.42,True
-Vespa crabro,European hornet,5019543522,2023-09-13,2023,9,49.078285,9.192694,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Vespa crabro,European hornet,4888094074,2024-04-11,2024,4,49.236589,9.104743,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,12.74,False
-Vespa crabro,European hornet,5022936440,2024-05-01,2024,5,49.202644,9.236341,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,by/4.0/l,6.54,True
-Vespa crabro,European hornet,4887018830,2024-05-13,2024,5,49.241122,9.119978,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,12.51,False
-Vespa crabro,European hornet,5013809637,2024-05-29,2024,5,49.130554,9.226,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,by/4.0/l,2.0,True
-Vespa crabro,European hornet,4932507949,2024-08-05,2024,8,49.154938,9.244057,5.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,2.53,True
-Vespa crabro,European hornet,4956174003,2024-08-30,2024,8,49.244872,9.310197,21.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,13.11,True
-Vespa crabro,European hornet,4985418331,2024-10-19,2024,10,49.147562,9.111628,6.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,7.3,True
-Vespa crabro,European hornet,5150176321,2025-05-03,2025,5,49.119495,9.334186,250.0,NABU|naturgucker,6ac3f774,Lehrensteinsfeld / Willsbach  Föhrenbergwald,HUMAN_OBSERVATION,by/4.0/l,9.37,True
-Vespa crabro,European hornet,5171587764,2025-05-29,2025,5,49.186701,9.327149,18.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,9.52,True
-Vespa crabro,European hornet,6236178754,2025-06-09,2025,6,49.142556,9.216975,,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by/4.0/l,0.53,False
-Vespa crabro,European hornet,5291540203,2025-06-13,2025,6,49.142464,9.216957,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,by/4.0/l,0.53,True
-Vespa crabro,European hornet,5205865141,2025-06-20,2025,6,49.24026,9.110798,215.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by-nc/4.,12.8,True
-Vespa crabro,European hornet,5204951473,2025-06-29,2025,6,49.142478,9.331275,5.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,8.68,True
-Vespa crabro,European hornet,5205002570,2025-06-29,2025,6,49.142514,9.331253,4.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,8.68,True
-Vespa crabro,European hornet,5205186995,2025-06-29,2025,6,49.142553,9.331403,13.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,8.69,True
-Vespa crabro,European hornet,5283012985,2025-08-08,2025,8,49.138573,9.123285,10.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,6.51,True
-Vespa crabro,European hornet,5291487307,2025-08-08,2025,8,49.123409,9.110543,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/4 - Leingarten / Nordheim,HUMAN_OBSERVATION,by/4.0/l,7.8,True
-Vespa crabro,European hornet,5291516240,2025-08-08,2025,8,49.190937,9.231478,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,5.19,True
-Vespa crabro,European hornet,5291519717,2025-08-09,2025,8,49.232639,9.154736,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6720/4 - Neckar / Bad Wimpfen / Bad Rappenau,HUMAN_OBSERVATION,by/4.0/l,10.49,True
-Vespa crabro,European hornet,5291498481,2025-08-11,2025,8,49.063992,9.137192,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/2 - Neckar / Lauffen am Neckar,HUMAN_OBSERVATION,by/4.0/l,10.62,True
-Vespa crabro,European hornet,5291504919,2025-08-12,2025,8,49.078213,9.192693,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.67,True
-Vespa crabro,European hornet,5871911225,2025-08-14,2025,8,49.100864,9.208856,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,by/4.0/l,5.02,True
-Vespa crabro,European hornet,5291510060,2025-08-15,2025,8,49.076328,9.150689,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/2 - Neckar / Lauffen am Neckar,HUMAN_OBSERVATION,by/4.0/l,8.94,True
-Vespa crabro,European hornet,5291527517,2025-08-16,2025,8,49.226067,9.221233,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,by/4.0/l,8.93,True
-Vespa crabro,European hornet,5761005361,2025-08-21,2025,8,49.132077,9.343944,9.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by-nc/4.,9.72,True
-Vespa crabro,European hornet,5288631212,2025-08-24,2025,8,49.152656,9.236653,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,1.94,False
-Vespa crabro,European hornet,5291525371,2025-08-24,2025,8,49.100143,9.208398,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,by/4.0/l,5.11,True
-Vespa crabro,European hornet,5762287010,2025-09-05,2025,9,49.190249,9.339252,5.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,10.48,True
-Vespa crabro,European hornet,5794844035,2025-09-07,2025,9,49.143013,9.250942,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/4 - Weinsberg / Lehrensteinsfeld,HUMAN_OBSERVATION,by/4.0/l,2.85,True
-Vespa crabro,European hornet,5824862267,2025-09-13,2025,9,49.114132,9.192211,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,by/4.0/l,3.82,True
-Vespa crabro,European hornet,5797118240,2025-09-14,2025,9,49.238009,9.114814,98.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,by-nc/4.,12.43,True
-Vespa crabro,European hornet,5837280713,2025-09-14,2025,9,49.078266,9.192752,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Vespa crabro,European hornet,5844793838,2025-09-14,2025,9,49.13858,9.269469,250.0,NABU|naturgucker,6ac3f774,Heilbronner Wald nördl. der Waldheide,HUMAN_OBSERVATION,by/4.0/l,4.26,True
-Vespa crabro,European hornet,5837262213,2025-09-15,2025,9,49.078262,9.192743,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Vespa crabro,European hornet,5844788174,2025-10-03,2025,10,49.123955,9.290592,250.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/4 - Weinsberg / Lehrensteinsfeld,HUMAN_OBSERVATION,by/4.0/l,6.22,True
-Vespa crabro,European hornet,5868477830,2025-10-15,2025,10,49.196774,9.250925,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/2 - Erlenbach / Eberstadt,HUMAN_OBSERVATION,by/4.0/l,6.32,True
-Vespa crabro,European hornet,5868312560,2025-10-19,2025,10,49.124167,9.243246,,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by-nc/4.,3.33,False
-Vespa crabro,European hornet,5889617435,2025-10-22,2025,10,49.229849,9.165863,,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by-nc/4.,9.91,False
-Vespa crabro,European hornet,5888999632,2025-10-31,2025,10,49.203529,9.240701,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,by/4.0/l,6.73,True
-Vespa crabro,European hornet,5892270640,2025-11-04,2025,11,49.065456,9.087629,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/2 - Neckar / Lauffen am Neckar,HUMAN_OBSERVATION,by/4.0/l,12.73,True
-Vespa crabro,European hornet,5901488417,2025-11-19,2025,11,49.239991,9.20837,6.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Bad Friedrichshall,HUMAN_OBSERVATION,by-nc/4.,10.45,True
-Vespa crabro,European hornet,6181733100,2026-03-19,2026,3,49.078243,9.192722,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,by/4.0/l,7.66,True
-Vespa crabro,European hornet,6236272403,2026-04-26,2026,4,49.18259,9.327428,56.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by-nc/4.,9.33,True
-Vespa crabro,European hornet,6602837859,2026-05-01,2026,5,49.241214,9.224767,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Bad Friedrichshall,HUMAN_OBSERVATION,by-nc/4.,10.63,False
-Vespa crabro,European hornet,6342279564,2026-05-19,2026,5,49.17796,9.347097,10.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Eberstadt,HUMAN_OBSERVATION,by-nc/4.,10.45,True
-Vespa crabro,European hornet,6342633295,2026-05-20,2026,5,49.239421,9.090931,3.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Bad Rappenau,HUMAN_OBSERVATION,by-nc/4.,13.61,True
-Vespa crabro,European hornet,6602075591,2026-05-30,2026,5,49.123564,9.19898,13.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn Sontheim,HUMAN_OBSERVATION,by-nc/4.,2.67,True
-Vespa crabro,European hornet,6480776661,2026-07-30,2026,7,49.15758,9.197309,100.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by-nc/4.,1.67,True
-Vespa crabro,European hornet,6602404622,2026-09-06,2026,9,49.096703,9.072062,4.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Brackenheim,HUMAN_OBSERVATION,by-nc/4.,11.57,True
-Vespa crabro,European hornet,6604479674,2026-09-27,2026,9,49.074024,9.201959,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Talheim,HUMAN_OBSERVATION,by-nc/4.,8.04,False
-Vespa crabro,European hornet,6603236729,2026-10-01,2026,10,49.244024,9.246146,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Oedheim,HUMAN_OBSERVATION,by-nc/4.,11.18,False
-Vespa crabro,European hornet,6605345748,2026-10-05,2026,10,49.126813,9.214073,,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn Äussere Bezirke,HUMAN_OBSERVATION,by-nc/4.,2.14,False
-Vespa crabro,European hornet,6604863140,2026-10-13,2026,10,49.10827,9.124465,200.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Nordheim,HUMAN_OBSERVATION,by-nc/4.,7.63,True
-Vespa velutina,Asian hornet,5014038575,2023-08-18,2023,8,49.137798,9.056239,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/3 - Schwaigern,HUMAN_OBSERVATION,by/4.0/l,11.37,True
-Vespa velutina,Asian hornet,5014988883,2023-09-09,2023,9,49.228668,9.156754,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6720/4 - Neckar / Bad Wimpfen / Bad Rappenau,HUMAN_OBSERVATION,by/4.0/l,10.03,True
-Vespa velutina,Asian hornet,5021900220,2023-09-20,2023,9,49.15807,9.192229,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,1.97,True
-Vespa velutina,Asian hornet,5024251007,2023-11-22,2023,11,49.223942,9.20727,250.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,by/4.0/l,8.67,True
-Vespa velutina,Asian hornet,5027794950,2024-05-01,2024,5,49.171875,9.195491,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,3.12,True
-Vespa velutina,Asian hornet,5028294416,2024-05-30,2024,5,49.154785,9.254499,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/2 - Erlenbach / Eberstadt,HUMAN_OBSERVATION,by/4.0/l,3.24,True
-Vespa velutina,Asian hornet,5021521406,2024-10-23,2024,10,49.077999,9.061899,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/1 - Güglingen / Brackenheim,HUMAN_OBSERVATION,by/4.0/l,13.29,True
-Vespa velutina,Asian hornet,5024214868,2024-10-24,2024,10,49.076542,9.345837,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6922/1 - Löwenstein / Prevorst,HUMAN_OBSERVATION,by/4.0/l,12.43,True
-Vespa velutina,Asian hornet,5180202399,2025-05-09,2025,5,49.159523,9.173227,250.0,NABU|naturgucker,6ac3f774,Heilbronn Frankenbach,HUMAN_OBSERVATION,by/4.0/l,3.2,True
-Vespa velutina,Asian hornet,5212569399,2025-05-11,2025,5,49.127054,9.213944,8.0,c8d737e0-2ff8-42e8-b8fc-6b805d26fc5f,8a863029,HN Heilbronn,HUMAN_OBSERVATION,by-nc/4.,2.11,True
-Vespa velutina,Asian hornet,5291518571,2025-07-19,2025,7,49.158257,9.171444,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,3.25,True
-Vespa velutina,Asian hornet,5291541400,2025-08-04,2025,8,49.149059,9.101717,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/2 - Leingarten (Nord) / Biberach,HUMAN_OBSERVATION,by/4.0/l,8.03,True
-Vespa velutina,Asian hornet,5291508852,2025-08-08,2025,8,49.214451,9.251838,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/4 - Kocher / Neuenstadt (West) / Oedheim,HUMAN_OBSERVATION,by/4.0/l,8.14,True
-Vespa velutina,Asian hornet,5291523493,2025-08-10,2025,8,49.194412,9.200394,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,5.45,True
-Vespa velutina,Asian hornet,5291494694,2025-08-13,2025,8,49.221737,9.217182,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,by/4.0/l,8.43,True
-Vespa velutina,Asian hornet,5291514421,2025-08-15,2025,8,49.175186,9.171593,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,4.38,True
-Vespa velutina,Asian hornet,5291513114,2025-08-16,2025,8,49.226067,9.221233,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,by/4.0/l,8.93,True
-Vespa velutina,Asian hornet,5759393832,2025-08-30,2025,8,49.168602,9.187356,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,3.09,True
-Vespa velutina,Asian hornet,5794827881,2025-09-02,2025,9,49.163502,9.187447,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,2.64,True
-Vespa velutina,Asian hornet,5794841299,2025-09-03,2025,9,49.139168,9.164982,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/4 - Leingarten / Nordheim,HUMAN_OBSERVATION,by/4.0/l,3.5,True
-Vespa velutina,Asian hornet,5827879018,2025-09-03,2025,9,49.139182,9.165817,25.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by-nc/4.,3.44,True
-Vespa velutina,Asian hornet,5794824976,2025-09-07,2025,9,49.143013,9.250942,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/4 - Weinsberg / Lehrensteinsfeld,HUMAN_OBSERVATION,by/4.0/l,2.85,True
-Vespa velutina,Asian hornet,5794826467,2025-09-07,2025,9,49.08762,9.18386,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/1 - Neckar / Talheim / Ilsfeld,HUMAN_OBSERVATION,by/4.0/l,6.81,True
-Vespa velutina,Asian hornet,5794827401,2025-09-07,2025,9,49.063744,9.133463,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/2 - Neckar / Lauffen am Neckar,HUMAN_OBSERVATION,by/4.0/l,10.79,True
-Vespa velutina,Asian hornet,5844809758,2025-09-12,2025,9,49.080833,9.065598,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/1 - Güglingen / Brackenheim,HUMAN_OBSERVATION,by/4.0/l,12.89,True
-Vespa velutina,Asian hornet,5823625399,2025-09-13,2025,9,49.116596,9.0593,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/3 - Schwaigern,HUMAN_OBSERVATION,by/4.0/l,11.58,True
-Vespa velutina,Asian hornet,5825617461,2025-09-13,2025,9,49.114132,9.192211,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,by/4.0/l,3.82,True
-Vespa velutina,Asian hornet,5830658147,2025-09-13,2025,9,49.142859,9.250475,69.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by-nc/4.,2.82,True
-Vespa velutina,Asian hornet,5844785926,2025-10-01,2025,10,49.229691,9.171868,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,by/4.0/l,9.75,True
-Vespa velutina,Asian hornet,5844785720,2025-10-02,2025,10,49.224026,9.219951,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,by/4.0/l,8.7,True
-Vespa velutina,Asian hornet,5844779699,2025-10-08,2025,10,49.169186,9.195039,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,2.86,True
-Vespa velutina,Asian hornet,5844797185,2025-10-09,2025,10,49.121876,9.199301,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,by/4.0/l,2.84,True
-Vespa velutina,Asian hornet,5844802793,2025-10-11,2025,10,49.181973,9.106828,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/2 - Leingarten (Nord) / Biberach,HUMAN_OBSERVATION,by/4.0/l,8.63,True
-Vespa velutina,Asian hornet,5871911436,2025-10-21,2025,10,49.169308,9.194708,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,by/4.0/l,2.88,True
-Vespa velutina,Asian hornet,5871911638,2025-10-21,2025,10,49.054626,9.245099,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/1 - Neckar / Talheim / Ilsfeld,HUMAN_OBSERVATION,by/4.0/l,10.44,True
-Vespa velutina,Asian hornet,5871918236,2025-10-24,2025,10,49.243931,9.106035,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6720/4 - Neckar / Bad Wimpfen / Bad Rappenau,HUMAN_OBSERVATION,by/4.0/l,13.34,True
-Vespa velutina,Asian hornet,5871916739,2025-10-25,2025,10,49.141796,9.103225,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/4 - Leingarten / Nordheim,HUMAN_OBSERVATION,by/4.0/l,7.93,True
-Vespa velutina,Asian hornet,5889004997,2025-11-01,2025,11,49.132092,9.225368,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,by/4.0/l,1.83,True
-Vespa velutina,Asian hornet,5892270438,2025-11-04,2025,11,49.140957,9.117816,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/4 - Leingarten / Nordheim,HUMAN_OBSERVATION,by/4.0/l,6.87,True
-Vespa velutina,Asian hornet,5897004851,2025-11-05,2025,11,49.159523,9.173227,250.0,NABU|naturgucker,6ac3f774,Heilbronn Frankenbach,HUMAN_OBSERVATION,by/4.0/l,3.2,True
-Vespa velutina,Asian hornet,5892259893,2025-11-06,2025,11,49.129936,9.228287,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,by/4.0/l,2.14,True
-Vespa velutina,Asian hornet,6551019758,2026-09-16,2026,9,49.238053,9.117597,9.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,by-nc/4.,12.32,True
+Apis mellifera,Honey bee,5026855252,2014-04-26,2014,4,49.055813,9.227743,250.0,NABU|naturgucker,6ac3f774,Gewann Beurer Feld bei Ilsfeld,HUMAN_OBSERVATION,CC BY 4.0,10.09,True
+Apis mellifera,Honey bee,5027110946,2018-06-02,2018,6,49.235367,9.251641,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/4 - Kocher / Neuenstadt (West) / Oedheim,HUMAN_OBSERVATION,CC BY 4.0,10.35,True
+Apis mellifera,Honey bee,5021541292,2018-06-04,2018,6,49.070202,9.15516,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/2 - Neckar / Lauffen am Neckar,HUMAN_OBSERVATION,CC BY 4.0,9.39,True
+Apis mellifera,Honey bee,5023641787,2018-06-04,2018,6,49.15134,9.173288,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,2.88,True
+Apis mellifera,Honey bee,5025731151,2018-06-04,2018,6,49.162449,9.232029,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,2.34,True
+Apis mellifera,Honey bee,5015176563,2018-06-08,2018,6,49.070202,9.15516,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/2 - Neckar / Lauffen am Neckar,HUMAN_OBSERVATION,CC BY 4.0,9.39,True
+Apis mellifera,Honey bee,5021497572,2018-06-21,2018,6,49.07621,9.14901,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/2 - Neckar / Lauffen am Neckar,HUMAN_OBSERVATION,CC BY 4.0,9.01,True
+Apis mellifera,Honey bee,5013522402,2018-08-03,2018,8,49.087971,9.1971,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/1 - Neckar / Talheim / Ilsfeld,HUMAN_OBSERVATION,CC BY 4.0,6.54,True
+Apis mellifera,Honey bee,5019473698,2018-08-04,2018,8,49.15678,9.230569,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,1.81,True
+Apis mellifera,Honey bee,5017146685,2018-08-08,2018,8,49.157341,9.229711,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,1.8,True
+Apis mellifera,Honey bee,5023871931,2018-08-12,2018,8,49.092293,9.324598,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/2 - Auenstein / Abstatt / Untergruppenbach,HUMAN_OBSERVATION,CC BY 4.0,10.14,True
+Apis mellifera,Honey bee,5020455034,2019-02-18,2019,2,49.159283,9.228652,250.0,NABU|naturgucker,6ac3f774,Gärten in der Tscherningstraße,HUMAN_OBSERVATION,CC BY 4.0,1.91,True
+Apis mellifera,Honey bee,5017611401,2019-06-02,2019,6,49.157158,9.229625,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,1.78,True
+Apis mellifera,Honey bee,5020675769,2019-06-02,2019,6,49.089439,9.327613,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/2 - Auenstein / Abstatt / Untergruppenbach,HUMAN_OBSERVATION,CC BY 4.0,10.5,True
+Apis mellifera,Honey bee,5022685792,2019-06-02,2019,6,49.143246,9.101898,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/4 - Leingarten / Nordheim,HUMAN_OBSERVATION,CC BY 4.0,8.01,True
+Apis mellifera,Honey bee,5028611219,2019-06-02,2019,6,49.222095,9.213421,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,CC BY 4.0,8.46,True
+Apis mellifera,Honey bee,5014653564,2019-06-04,2019,6,49.088211,9.328095,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/2 - Auenstein / Abstatt / Untergruppenbach,HUMAN_OBSERVATION,CC BY 4.0,10.62,True
+Apis mellifera,Honey bee,5019030475,2019-06-07,2019,6,49.137238,9.166603,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,CC BY 4.0,3.44,True
+Apis mellifera,Honey bee,5019521482,2019-06-07,2019,6,49.137238,9.166603,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,CC BY 4.0,3.44,True
+Apis mellifera,Honey bee,5023033601,2019-06-07,2019,6,49.194515,9.149746,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/2 - Leingarten (Nord) / Biberach,HUMAN_OBSERVATION,CC BY 4.0,7.04,True
+Apis mellifera,Honey bee,5026101835,2019-06-09,2019,6,49.127415,9.316273,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/4 - Weinsberg / Lehrensteinsfeld,HUMAN_OBSERVATION,CC BY 4.0,7.86,True
+Apis mellifera,Honey bee,5028199996,2019-07-03,2019,7,49.148315,9.207776,25.0,NABU|naturgucker,6ac3f774,Heilbronn BUGA 2019,HUMAN_OBSERVATION,CC BY 4.0,0.4,True
+Apis mellifera,Honey bee,5027988507,2019-07-27,2019,7,49.164635,9.159117,250.0,NABU|naturgucker,6ac3f774,Frankenbach West,HUMAN_OBSERVATION,CC BY 4.0,4.37,True
+Apis mellifera,Honey bee,5016601975,2019-08-03,2019,8,49.222336,9.104585,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6720/4 - Neckar / Bad Wimpfen / Bad Rappenau,HUMAN_OBSERVATION,CC BY 4.0,11.53,True
+Apis mellifera,Honey bee,5017830129,2019-08-04,2019,8,49.180904,9.321738,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/2 - Erlenbach / Eberstadt,HUMAN_OBSERVATION,CC BY 4.0,8.87,True
+Apis mellifera,Honey bee,5013577411,2019-08-05,2019,8,49.157299,9.229169,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,1.77,True
+Apis mellifera,Honey bee,5017460745,2019-08-09,2019,8,49.147568,9.284993,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/4 - Weinsberg / Lehrensteinsfeld,HUMAN_OBSERVATION,CC BY 4.0,5.31,True
+Apis mellifera,Honey bee,5013974418,2019-08-11,2019,8,49.08086,9.06715,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/1 - Güglingen / Brackenheim,HUMAN_OBSERVATION,CC BY 4.0,12.79,True
+Apis mellifera,Honey bee,5018794378,2019-08-11,2019,8,49.149601,9.338068,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6822/1 - Dimbach / Schwabbach / Waldbach,HUMAN_OBSERVATION,CC BY 4.0,9.18,True
+Apis mellifera,Honey bee,5019688897,2019-08-11,2019,8,49.055969,9.344269,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6922/1 - Löwenstein / Prevorst,HUMAN_OBSERVATION,CC BY 4.0,13.89,True
+Apis mellifera,Honey bee,5027853409,2019-08-12,2019,8,49.194588,9.149586,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/2 - Leingarten (Nord) / Biberach,HUMAN_OBSERVATION,CC BY 4.0,7.06,True
+Apis mellifera,Honey bee,5022507043,2020-02-16,2020,2,49.159466,9.14708,250.0,NABU|naturgucker,6ac3f774,Hipfelhof bei Frankenbach,HUMAN_OBSERVATION,CC BY 4.0,4.95,True
+Apis mellifera,Honey bee,5016269229,2020-05-31,2020,5,49.078297,9.192699,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/1 - Neckar / Talheim / Ilsfeld,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5016436012,2020-05-31,2020,5,49.137238,9.166603,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,CC BY 4.0,3.44,True
+Apis mellifera,Honey bee,5016672618,2020-05-31,2020,5,49.168831,9.191588,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,2.94,True
+Apis mellifera,Honey bee,5021222082,2020-05-31,2020,5,49.056496,9.233996,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/1 - Neckar / Talheim / Ilsfeld,HUMAN_OBSERVATION,CC BY 4.0,10.08,True
+Apis mellifera,Honey bee,5019643760,2020-06-01,2020,6,49.090492,9.332596,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6922/1 - Löwenstein / Prevorst,HUMAN_OBSERVATION,CC BY 4.0,10.73,True
+Apis mellifera,Honey bee,5022659093,2020-06-01,2020,6,49.190033,9.146267,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/2 - Leingarten (Nord) / Biberach,HUMAN_OBSERVATION,CC BY 4.0,6.84,True
+Apis mellifera,Honey bee,5023717159,2020-06-01,2020,6,49.157047,9.228809,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,1.73,True
+Apis mellifera,Honey bee,5024520955,2020-06-01,2020,6,49.055969,9.344269,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6922/1 - Löwenstein / Prevorst,HUMAN_OBSERVATION,CC BY 4.0,13.89,True
+Apis mellifera,Honey bee,5018044028,2020-06-02,2020,6,49.227058,9.272661,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/4 - Kocher / Neuenstadt (West) / Oedheim,HUMAN_OBSERVATION,CC BY 4.0,10.03,True
+Apis mellifera,Honey bee,5019917018,2020-06-02,2020,6,49.194679,9.150251,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/2 - Leingarten (Nord) / Biberach,HUMAN_OBSERVATION,CC BY 4.0,7.03,True
+Apis mellifera,Honey bee,5028049462,2020-06-08,2020,6,49.095238,9.311057,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/2 - Auenstein / Abstatt / Untergruppenbach,HUMAN_OBSERVATION,CC BY 4.0,9.16,True
+Apis mellifera,Honey bee,2813969499,2020-07-02,2020,7,49.232814,9.160875,366.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY-NC 4.0,10.34,True
+Apis mellifera,Honey bee,5016821432,2020-08-01,2020,8,49.157372,9.229539,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,1.8,True
+Apis mellifera,Honey bee,5028492837,2020-08-01,2020,8,49.184078,9.122183,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/2 - Leingarten (Nord) / Biberach,HUMAN_OBSERVATION,CC BY 4.0,7.78,True
+Apis mellifera,Honey bee,5020688424,2020-08-05,2020,8,49.065125,9.139462,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/2 - Neckar / Lauffen am Neckar,HUMAN_OBSERVATION,CC BY 4.0,10.43,True
+Apis mellifera,Honey bee,5012883506,2020-08-09,2020,8,49.152256,9.278429,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/2 - Erlenbach / Eberstadt,HUMAN_OBSERVATION,CC BY 4.0,4.88,True
+Apis mellifera,Honey bee,5025703760,2020-08-09,2020,8,49.148956,9.244364,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,2.38,True
+Apis mellifera,Honey bee,5013257769,2020-09-21,2020,9,49.159466,9.14708,250.0,NABU|naturgucker,6ac3f774,Hipfelhof bei Frankenbach,HUMAN_OBSERVATION,CC BY 4.0,4.95,True
+Apis mellifera,Honey bee,5027406141,2020-10-14,2020,10,49.078323,9.192726,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/1 - Neckar / Talheim / Ilsfeld,HUMAN_OBSERVATION,CC BY 4.0,7.65,True
+Apis mellifera,Honey bee,5022424730,2020-11-07,2020,11,49.078316,9.192727,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/1 - Neckar / Talheim / Ilsfeld,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5023943841,2020-11-18,2020,11,49.150135,9.207062,25.0,NABU|naturgucker,6ac3f774,Heilbronn BUGA 2019,HUMAN_OBSERVATION,CC BY 4.0,0.58,True
+Apis mellifera,Honey bee,5024208984,2021-04-14,2021,4,49.078331,9.192738,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.65,True
+Apis mellifera,Honey bee,5018962492,2021-05-02,2021,5,49.078327,9.192719,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.65,True
+Apis mellifera,Honey bee,5021898837,2021-05-03,2021,5,49.147797,9.207536,25.0,NABU|naturgucker,6ac3f774,Heilbronn BUGA 2019,HUMAN_OBSERVATION,CC BY 4.0,0.38,True
+Apis mellifera,Honey bee,5021872944,2021-06-03,2021,6,49.140999,9.249,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/4 - Weinsberg / Lehrensteinsfeld,HUMAN_OBSERVATION,CC BY 4.0,2.75,True
+Apis mellifera,Honey bee,5013959916,2021-06-05,2021,6,49.08466,9.19281,250.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,6.96,True
+Apis mellifera,Honey bee,5020675092,2021-06-05,2021,6,49.102329,9.122301,25.0,NABU|naturgucker,6ac3f774,Nordheim,HUMAN_OBSERVATION,CC BY 4.0,8.14,True
+Apis mellifera,Honey bee,5022394539,2021-06-05,2021,6,49.150089,9.228902,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,1.31,True
+Apis mellifera,Honey bee,5026990509,2021-06-05,2021,6,49.134495,9.185642,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,CC BY 4.0,2.31,True
+Apis mellifera,Honey bee,5020448276,2021-06-09,2021,6,49.10849,9.130154,250.0,NABU|naturgucker,6ac3f774,Nordheim,HUMAN_OBSERVATION,CC BY 4.0,7.27,True
+Apis mellifera,Honey bee,5020320386,2021-06-12,2021,6,49.183739,9.065063,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/1 - Massenbachhausen,HUMAN_OBSERVATION,CC BY 4.0,11.48,True
+Apis mellifera,Honey bee,5021359231,2021-06-13,2021,6,49.145615,9.241039,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,CC BY 4.0,2.11,True
+Apis mellifera,Honey bee,5012667605,2021-06-15,2021,6,49.08466,9.19281,250.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,6.96,True
+Apis mellifera,Honey bee,5015226164,2021-06-18,2021,6,49.078259,9.192681,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,3722545145,2021-07-11,2021,7,49.236675,9.157622,25.0,Observation.org,8a863029,HN Heilbronn (Landkreis) oud,HUMAN_OBSERVATION,CC BY-NC 4.0,10.83,True
+Apis mellifera,Honey bee,5028199512,2021-08-04,2021,8,49.163635,9.14732,250.0,NABU|naturgucker,6ac3f774,Rosenbuckel,HUMAN_OBSERVATION,CC BY 4.0,5.1,True
+Apis mellifera,Honey bee,5017338659,2021-08-07,2021,8,49.124245,9.330265,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/4 - Weinsberg / Lehrensteinsfeld,HUMAN_OBSERVATION,CC BY 4.0,8.94,True
+Apis mellifera,Honey bee,5013933809,2021-08-10,2021,8,49.158463,9.229581,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,1.89,True
+Apis mellifera,Honey bee,5021377235,2021-08-10,2021,8,49.209549,9.194127,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,CC BY 4.0,7.18,True
+Apis mellifera,Honey bee,5014713722,2021-08-12,2021,8,49.078262,9.192656,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5024786966,2021-08-15,2021,8,49.151131,9.234678,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,1.75,True
+Apis mellifera,Honey bee,5019647606,2021-08-17,2021,8,49.158497,9.177369,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,2.88,True
+Apis mellifera,Honey bee,5857679898,2021-08-21,2021,8,49.148312,9.209449,1.0,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,0.32,True
+Apis mellifera,Honey bee,5026395526,2021-08-31,2021,8,49.08466,9.19281,250.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,6.96,True
+Apis mellifera,Honey bee,5024538295,2021-09-10,2021,9,49.078274,9.19266,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5012461744,2021-09-19,2021,9,49.078384,9.192704,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.65,True
+Apis mellifera,Honey bee,5025288268,2021-10-20,2021,10,49.064556,9.081924,25.0,NABU|naturgucker,6ac3f774,Brackenheim Meimsheim,HUMAN_OBSERVATION,CC BY 4.0,13.1,True
+Apis mellifera,Honey bee,5019280079,2021-10-25,2021,10,49.078259,9.192658,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5027102640,2021-11-08,2021,11,49.078262,9.19264,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5026194165,2022-03-22,2022,3,49.078243,9.192688,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5015344404,2022-04-19,2022,4,49.078289,9.192723,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5019637950,2022-05-04,2022,5,49.091221,9.256901,25.0,NABU|naturgucker,6ac3f774,Felder westlich v Untergruppenbach,HUMAN_OBSERVATION,CC BY 4.0,6.91,True
+Apis mellifera,Honey bee,5023284513,2022-05-04,2022,5,49.078262,9.192746,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5027566364,2022-05-12,2022,5,49.101032,9.174842,25.0,NABU|naturgucker,6ac3f774,Sonderkulturen u Äcker zwischen Talheim u Heilbronn-Horkheim,HUMAN_OBSERVATION,CC BY 4.0,5.68,True
+Apis mellifera,Honey bee,5022900022,2022-05-15,2022,5,49.078411,9.1927,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.65,True
+Apis mellifera,Honey bee,5023241112,2022-05-25,2022,5,49.114563,9.154028,25.0,NABU|naturgucker,6ac3f774,Auwiesen bei Nordheim,HUMAN_OBSERVATION,CC BY 4.0,5.48,True
+Apis mellifera,Honey bee,5019962171,2022-06-01,2022,6,49.115726,9.155815,25.0,NABU|naturgucker,6ac3f774,Auwiesen bei Nordheim,HUMAN_OBSERVATION,CC BY 4.0,5.3,True
+Apis mellifera,Honey bee,5013383430,2022-06-06,2022,6,49.107994,9.103512,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/4 - Leingarten / Nordheim,HUMAN_OBSERVATION,CC BY 4.0,8.95,True
+Apis mellifera,Honey bee,5028387992,2022-06-07,2022,6,49.157112,9.229754,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,1.79,True
+Apis mellifera,Honey bee,4460029811,2022-06-12,2022,6,49.125285,9.255838,,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,3.93,False
+Apis mellifera,Honey bee,5020646569,2022-07-17,2022,7,49.078377,9.192691,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.65,True
+Apis mellifera,Honey bee,3904504643,2022-07-22,2022,7,49.236696,9.104382,,Observation.org,8a863029,HN Heilbronn (Landkreis) oud,HUMAN_OBSERVATION,CC BY-NC 4.0,12.76,False
+Apis mellifera,Honey bee,5017201027,2022-08-05,2022,8,49.063118,9.083837,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/2 - Neckar / Lauffen am Neckar,HUMAN_OBSERVATION,CC BY 4.0,13.11,True
+Apis mellifera,Honey bee,5016366111,2022-08-06,2022,8,49.15731,9.229814,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,1.81,True
+Apis mellifera,Honey bee,5027512216,2022-08-06,2022,8,49.209476,9.30302,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/4 - Kocher / Neuenstadt (West) / Oedheim,HUMAN_OBSERVATION,CC BY 4.0,9.67,True
+Apis mellifera,Honey bee,5017035000,2022-08-07,2022,8,49.135742,9.191429,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,CC BY 4.0,1.88,True
+Apis mellifera,Honey bee,5019520855,2022-08-07,2022,8,49.078266,9.192732,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5014904901,2022-08-09,2022,8,49.15134,9.173288,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,2.88,True
+Apis mellifera,Honey bee,5022139483,2022-08-11,2022,8,49.078262,9.192671,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5017805642,2022-08-24,2022,8,49.078255,9.192676,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5017827515,2022-08-29,2022,8,49.078297,9.192703,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5020516628,2022-08-31,2022,8,49.0783,9.192693,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5024350280,2022-09-02,2022,9,49.078373,9.192712,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.65,True
+Apis mellifera,Honey bee,5013273706,2022-09-03,2022,9,49.078259,9.192689,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5020030827,2022-09-04,2022,9,49.078346,9.192685,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.65,True
+Apis mellifera,Honey bee,5021109910,2022-09-08,2022,9,49.078308,9.192672,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5018873920,2022-09-10,2022,9,49.078278,9.192731,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5028273532,2022-09-13,2022,9,49.078289,9.192757,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5020389437,2022-09-14,2022,9,49.078278,9.192708,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5019780708,2022-09-15,2022,9,49.078285,9.19271,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5027191118,2022-09-30,2022,9,49.078278,9.192705,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5026413119,2022-10-04,2022,10,49.078289,9.192704,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5022021146,2022-10-05,2022,10,49.233292,9.163121,25.0,NABU|naturgucker,6ac3f774,Offenau,HUMAN_OBSERVATION,CC BY 4.0,10.34,True
+Apis mellifera,Honey bee,5012960281,2022-10-07,2022,10,49.078289,9.192722,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5025105878,2022-10-07,2022,10,49.154785,9.210597,25.0,NABU|naturgucker,6ac3f774,Heilbronn BuGa 2019 Gesamtfläche,HUMAN_OBSERVATION,CC BY 4.0,0.98,True
+Apis mellifera,Honey bee,5016014956,2022-10-27,2022,10,49.164635,9.159117,250.0,NABU|naturgucker,6ac3f774,Frankenbach West,HUMAN_OBSERVATION,CC BY 4.0,4.37,True
+Apis mellifera,Honey bee,5016957811,2022-11-13,2022,11,49.071465,9.29846,25.0,NABU|naturgucker,6ac3f774,Abstatt,HUMAN_OBSERVATION,CC BY 4.0,10.41,True
+Apis mellifera,Honey bee,5021867016,2023-01-02,2023,1,49.077496,9.194996,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.72,True
+Apis mellifera,Honey bee,5017065347,2023-03-02,2023,3,49.136215,9.2376,250.0,NABU|naturgucker,6ac3f774,Heilbronn Ost und Badener Höhe,HUMAN_OBSERVATION,CC BY 4.0,2.16,True
+Apis mellifera,Honey bee,4159779476,2023-04-05,2023,4,49.124664,9.215779,36.0,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,2.39,True
+Apis mellifera,Honey bee,5025180525,2023-04-22,2023,4,49.241165,9.142573,250.0,NABU|naturgucker,6ac3f774,Bad Wimpfen Hohenstadt u Neckar-Seitentäler,HUMAN_OBSERVATION,CC BY 4.0,11.72,True
+Apis mellifera,Honey bee,5027536508,2023-04-27,2023,4,49.078285,9.192715,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5014714305,2023-05-01,2023,5,49.078289,9.192732,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5015385546,2023-05-12,2023,5,49.201466,9.125726,25.0,NABU|naturgucker,6ac3f774,Feldflur u Wald zw. Bonfeld u Heilbronn-Biberach,HUMAN_OBSERVATION,CC BY 4.0,8.8,True
+Apis mellifera,Honey bee,5020173462,2023-05-20,2023,5,49.078285,9.192757,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5014848365,2023-06-01,2023,6,49.078297,9.192666,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,4159152351,2023-06-04,2023,6,49.141876,9.246067,5.0,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,2.52,True
+Apis mellifera,Honey bee,4160858287,2023-06-04,2023,6,49.14209,9.246074,5.0,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,2.52,True
+Apis mellifera,Honey bee,5024949451,2023-06-10,2023,6,49.157345,9.229582,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,1.8,True
+Apis mellifera,Honey bee,6234782707,2023-06-10,2023,6,49.142307,9.214854,1338.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY 4.0,0.46,False
+Apis mellifera,Honey bee,5012510509,2023-06-14,2023,6,49.131901,9.183552,25.0,NABU|naturgucker,6ac3f774,Ziegeleipark Böckingen,HUMAN_OBSERVATION,CC BY 4.0,2.6,True
+Apis mellifera,Honey bee,5840637860,2023-06-18,2023,6,49.146737,9.321371,1.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,7.96,True
+Apis mellifera,Honey bee,5016170743,2023-07-15,2023,7,49.078358,9.192699,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.65,True
+Apis mellifera,Honey bee,5028450085,2023-07-16,2023,7,49.078369,9.192703,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.65,True
+Apis mellifera,Honey bee,5014799355,2023-07-17,2023,7,49.078354,9.192697,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.65,True
+Apis mellifera,Honey bee,4409346580,2023-07-18,2023,7,49.130555,9.267755,5.0,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,4.4,True
+Apis mellifera,Honey bee,5023482268,2023-07-18,2023,7,49.078354,9.192715,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.65,True
+Apis mellifera,Honey bee,4410147589,2023-08-03,2023,8,49.244742,9.310078,20.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,13.09,True
+Apis mellifera,Honey bee,4410042741,2023-08-04,2023,8,49.244841,9.310055,56.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,13.1,True
+Apis mellifera,Honey bee,5020604044,2023-08-05,2023,8,49.210178,9.190741,25.0,NABU|naturgucker,6ac3f774,Untereisesheim,HUMAN_OBSERVATION,CC BY 4.0,7.3,True
+Apis mellifera,Honey bee,5026801572,2023-08-05,2023,8,49.078266,9.192633,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5024281221,2023-08-08,2023,8,49.056038,9.261649,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/2 - Auenstein / Abstatt / Untergruppenbach,HUMAN_OBSERVATION,CC BY 4.0,10.64,True
+Apis mellifera,Honey bee,4410477064,2023-08-11,2023,8,49.142041,9.216188,900.0,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,0.54,True
+Apis mellifera,Honey bee,5018620970,2023-08-11,2023,8,49.132938,9.275771,25.0,NABU|naturgucker,6ac3f774,Waldheide Heilbronn nördl. Donnbronn,HUMAN_OBSERVATION,CC BY 4.0,4.86,True
+Apis mellifera,Honey bee,4459446051,2023-08-13,2023,8,49.127135,9.226832,,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,2.36,False
+Apis mellifera,Honey bee,4459723061,2023-08-13,2023,8,49.16386,9.195695,17.0,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,2.31,True
+Apis mellifera,Honey bee,5018313023,2023-08-13,2023,8,49.078354,9.192705,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.65,True
+Apis mellifera,Honey bee,5021555459,2023-08-13,2023,8,49.247742,9.172967,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,CC BY 4.0,11.66,True
+Apis mellifera,Honey bee,4410255229,2023-08-14,2023,8,49.184231,9.346172,,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,10.64,False
+Apis mellifera,Honey bee,5015459924,2023-08-14,2023,8,49.077126,9.106679,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/2 - Neckar / Lauffen am Neckar,HUMAN_OBSERVATION,CC BY 4.0,10.84,True
+Apis mellifera,Honey bee,5024899822,2023-08-14,2023,8,49.078274,9.192648,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5027201584,2023-08-16,2023,8,49.08466,9.19281,250.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,6.96,True
+Apis mellifera,Honey bee,5013434737,2023-08-20,2023,8,49.078304,9.192743,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5019796619,2023-08-23,2023,8,49.0783,9.1927,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,4459583549,2023-09-03,2023,9,49.126758,9.213617,,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,2.14,False
+Apis mellifera,Honey bee,4459583551,2023-09-03,2023,9,49.1268,9.213556,,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,2.14,False
+Apis mellifera,Honey bee,4460305509,2023-09-03,2023,9,49.126775,9.2137,,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,2.14,False
+Apis mellifera,Honey bee,4460182550,2023-09-10,2023,9,49.163897,9.195653,9.0,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,2.32,True
+Apis mellifera,Honey bee,5017740745,2023-09-10,2023,9,49.078308,9.192713,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5026696642,2023-09-13,2023,9,49.078289,9.192742,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5017790322,2023-09-17,2023,9,49.078289,9.192667,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5018452624,2023-09-19,2023,9,49.155209,9.210303,25.0,NABU|naturgucker,6ac3f774,Heilbronn BuGa 2019 Gesamtfläche,HUMAN_OBSERVATION,CC BY 4.0,1.03,True
+Apis mellifera,Honey bee,5026365015,2023-09-26,2023,9,49.148754,9.207631,250.0,NABU|naturgucker,6ac3f774,Heilbronn BuGa 2019 Gesamtfläche,HUMAN_OBSERVATION,CC BY 4.0,0.44,True
+Apis mellifera,Honey bee,5016489096,2023-09-30,2023,9,49.078293,9.192689,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5025582551,2023-10-02,2023,10,49.078377,9.192715,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.65,True
+Apis mellifera,Honey bee,4461646650,2023-10-13,2023,10,49.147584,9.111569,9.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,7.31,True
+Apis mellifera,Honey bee,4461848367,2023-10-13,2023,10,49.14753,9.111603,4.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,7.3,True
+Apis mellifera,Honey bee,4460766086,2023-10-16,2023,10,49.147573,9.111566,8.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,7.31,True
+Apis mellifera,Honey bee,5017992023,2023-12-17,2023,12,49.159466,9.14708,250.0,NABU|naturgucker,6ac3f774,Hipfelhof bei Frankenbach,HUMAN_OBSERVATION,CC BY 4.0,4.95,True
+Apis mellifera,Honey bee,5020527127,2024-03-03,2024,3,49.17915,9.174132,250.0,NABU|naturgucker,6ac3f774,Heilbronn Böllinger Höfe u Böllinger Bach,HUMAN_OBSERVATION,CC BY 4.0,4.6,True
+Apis mellifera,Honey bee,5025502787,2024-03-03,2024,3,49.12355,9.107636,25.0,NABU|naturgucker,6ac3f774,Eisenhut u Heuchelbergvorland bei Nordheim,HUMAN_OBSERVATION,CC BY 4.0,7.99,True
+Apis mellifera,Honey bee,5013573079,2024-03-08,2024,3,49.20974,9.209287,25.0,NABU|naturgucker,6ac3f774,"Kohlekraftwerk,Heilbronn",HUMAN_OBSERVATION,CC BY 4.0,7.09,True
+Apis mellifera,Honey bee,4883158305,2024-03-17,2024,3,49.147447,9.111512,6.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,7.31,True
+Apis mellifera,Honey bee,4882790635,2024-03-25,2024,3,49.14757,9.111621,8.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,7.3,True
+Apis mellifera,Honey bee,4886236595,2024-03-25,2024,3,49.147611,9.111723,5.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,7.3,True
+Apis mellifera,Honey bee,4886332217,2024-03-25,2024,3,49.147632,9.111613,7.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,7.3,True
+Apis mellifera,Honey bee,4886404919,2024-03-25,2024,3,49.147666,9.111691,14.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,7.3,True
+Apis mellifera,Honey bee,4881161154,2024-04-02,2024,4,49.147575,9.111644,17.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,7.3,True
+Apis mellifera,Honey bee,5234210396,2024-04-02,2024,4,49.147598,9.11172,14.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,7.3,True
+Apis mellifera,Honey bee,4881355996,2024-04-08,2024,4,49.134722,9.068333,,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,10.53,False
+Apis mellifera,Honey bee,4881839270,2024-04-30,2024,4,49.237527,9.115076,,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,12.38,False
+Apis mellifera,Honey bee,5028372862,2024-05-01,2024,5,49.078293,9.192701,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,4931189006,2024-06-08,2024,6,49.236747,9.10429,,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,12.77,False
+Apis mellifera,Honey bee,5016153426,2024-06-09,2024,6,49.157349,9.229662,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,1.8,True
+Apis mellifera,Honey bee,5024534701,2024-06-09,2024,6,49.078255,9.192666,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,4932721164,2024-06-13,2024,6,49.134722,9.068333,,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,10.53,False
+Apis mellifera,Honey bee,5024053508,2024-06-18,2024,6,49.078293,9.192705,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,4931221158,2024-06-21,2024,6,49.147862,9.111441,6.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,7.32,True
+Apis mellifera,Honey bee,4934502191,2024-06-21,2024,6,49.095295,9.102361,,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,9.77,False
+Apis mellifera,Honey bee,5026304694,2024-06-21,2024,6,49.068966,9.168587,25.0,NABU|naturgucker,6ac3f774,Lauffen - Bereich östlich des Neckars,HUMAN_OBSERVATION,CC BY 4.0,9.13,True
+Apis mellifera,Honey bee,6234293710,2024-06-23,2024,6,49.142307,9.214854,1342.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY 4.0,0.46,False
+Apis mellifera,Honey bee,4931337061,2024-07-04,2024,7,49.132369,9.231734,6.0,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,2.09,True
+Apis mellifera,Honey bee,4931551929,2024-07-04,2024,7,49.147495,9.315462,9.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,7.53,True
+Apis mellifera,Honey bee,5015519697,2024-07-05,2024,7,49.078194,9.192709,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.67,True
+Apis mellifera,Honey bee,4931963243,2024-07-13,2024,7,49.140259,9.056059,4.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,11.36,True
+Apis mellifera,Honey bee,4934233259,2024-07-21,2024,7,49.053572,9.089192,,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,13.62,False
+Apis mellifera,Honey bee,5024657424,2024-07-21,2024,7,49.078293,9.192762,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,4930516037,2024-07-24,2024,7,49.177948,9.23019,4.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,3.79,True
+Apis mellifera,Honey bee,5028125639,2024-07-24,2024,7,49.078278,9.192733,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5019676653,2024-07-26,2024,7,49.176666,9.170785,25.0,NABU|naturgucker,6ac3f774,Heilbronn Böllinger Höfe u Böllinger Bach,HUMAN_OBSERVATION,CC BY 4.0,4.54,True
+Apis mellifera,Honey bee,5027705937,2024-07-26,2024,7,49.064857,9.20012,250.0,NABU|naturgucker,6ac3f774,"Lauffen, Gartencenter  Pflanzen Mauk",HUMAN_OBSERVATION,CC BY 4.0,9.06,True
+Apis mellifera,Honey bee,4932147583,2024-07-29,2024,7,49.244985,9.310733,12.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,13.14,True
+Apis mellifera,Honey bee,5022548948,2024-07-29,2024,7,49.078297,9.192756,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5016418726,2024-08-10,2024,8,49.157295,9.229491,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,1.79,True
+Apis mellifera,Honey bee,5027228027,2024-08-10,2024,8,49.08466,9.19281,250.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,6.96,True
+Apis mellifera,Honey bee,5018633453,2024-08-14,2024,8,49.15321,9.209515,25.0,NABU|naturgucker,6ac3f774,Heilbronn BuGa 2019 Gesamtfläche,HUMAN_OBSERVATION,CC BY 4.0,0.82,True
+Apis mellifera,Honey bee,5022645794,2024-08-16,2024,8,49.096214,9.183381,25.0,NABU|naturgucker,6ac3f774,Unteres Schozachtal bei Talheim,HUMAN_OBSERVATION,CC BY 4.0,5.91,True
+Apis mellifera,Honey bee,5022744275,2024-08-16,2024,8,49.08466,9.19281,250.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,6.96,True
+Apis mellifera,Honey bee,5026503746,2024-08-17,2024,8,49.078289,9.192748,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5024573241,2024-08-20,2024,8,49.078285,9.192766,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5027539080,2024-08-22,2024,8,49.124443,9.272289,250.0,NABU|naturgucker,6ac3f774,Waldheide Heilbronn nördl. Donnbronn,HUMAN_OBSERVATION,CC BY 4.0,5.0,True
+Apis mellifera,Honey bee,5017013417,2024-08-26,2024,8,49.119781,9.152064,250.0,NABU|naturgucker,6ac3f774,HN-Klingenberg u Neckarprallhang bei Klingenberg,HUMAN_OBSERVATION,CC BY 4.0,5.25,True
+Apis mellifera,Honey bee,5026598260,2024-08-26,2024,8,49.113827,9.154787,250.0,NABU|naturgucker,6ac3f774,Auwiesen bei Nordheim,HUMAN_OBSERVATION,CC BY 4.0,5.49,True
+Apis mellifera,Honey bee,5027909058,2024-08-27,2024,8,49.078255,9.192718,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5019236180,2024-09-05,2024,9,49.078285,9.192752,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5013078794,2024-09-07,2024,9,49.078297,9.192722,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5013950801,2024-09-15,2024,9,49.078285,9.192714,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5026002610,2024-09-19,2024,9,49.078274,9.192713,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5012581241,2024-09-23,2024,9,49.078281,9.192739,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5012505782,2024-09-27,2024,9,49.078274,9.192705,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5013226406,2024-10-01,2024,10,49.078285,9.192694,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5028325102,2024-10-17,2024,10,49.07803,9.153536,25.0,NABU|naturgucker,6ac3f774,Lauffen am Neckar,HUMAN_OBSERVATION,CC BY 4.0,8.67,True
+Apis mellifera,Honey bee,5025684506,2024-10-21,2024,10,49.144703,9.204556,25.0,NABU|naturgucker,6ac3f774,Heilbronn BuGa 2019 Gesamtfläche,HUMAN_OBSERVATION,CC BY 4.0,0.56,True
+Apis mellifera,Honey bee,5019771433,2024-10-28,2024,10,49.078304,9.192752,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5135445943,2025-02-28,2025,2,49.117828,9.339736,250.0,NABU|naturgucker,6ac3f774,Lehrensteinsfeld unteres Autal,HUMAN_OBSERVATION,CC BY 4.0,9.81,True
+Apis mellifera,Honey bee,5234123372,2025-03-10,2025,3,49.133986,9.252303,7.0,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,3.22,True
+Apis mellifera,Honey bee,5135484678,2025-03-19,2025,3,49.189991,9.239465,250.0,NABU|naturgucker,6ac3f774,Neckarsulm Kleiner Stadtpark mit Biotop,HUMAN_OBSERVATION,CC BY 4.0,5.28,True
+Apis mellifera,Honey bee,5135681324,2025-03-20,2025,3,49.133446,9.292564,250.0,NABU|naturgucker,6ac3f774,Weinsberg Stadtseetal mit Stadtseen,HUMAN_OBSERVATION,CC BY 4.0,6.02,True
+Apis mellifera,Honey bee,5135516416,2025-03-28,2025,3,49.062401,9.305347,250.0,NABU|naturgucker,6ac3f774,Beilstein Abstatt SB4 Teil 1 mit Anna See,HUMAN_OBSERVATION,CC BY 4.0,11.51,True
+Apis mellifera,Honey bee,5135507816,2025-04-11,2025,4,49.078266,9.19266,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5109019383,2025-04-13,2025,4,49.17788,9.347278,8.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,10.46,True
+Apis mellifera,Honey bee,5135565384,2025-04-14,2025,4,49.078262,9.192685,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5150288410,2025-05-01,2025,5,49.078236,9.192698,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5234306476,2025-05-10,2025,5,49.141479,9.219212,25.0,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,0.73,True
+Apis mellifera,Honey bee,5158018028,2025-05-17,2025,5,49.177872,9.346979,14.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,10.43,True
+Apis mellifera,Honey bee,5158175218,2025-05-18,2025,5,49.14741,9.103486,4.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,7.89,True
+Apis mellifera,Honey bee,5164015389,2025-05-18,2025,5,49.159523,9.173227,250.0,NABU|naturgucker,6ac3f774,Heilbronn Frankenbach,HUMAN_OBSERVATION,CC BY 4.0,3.2,True
+Apis mellifera,Honey bee,5164070318,2025-05-18,2025,5,49.24564,9.167181,250.0,NABU|naturgucker,6ac3f774,Offenau,HUMAN_OBSERVATION,CC BY 4.0,11.55,True
+Apis mellifera,Honey bee,5164374770,2025-05-20,2025,5,49.245081,9.310727,4.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,13.15,True
+Apis mellifera,Honey bee,5164053313,2025-05-21,2025,5,49.13858,9.269469,250.0,NABU|naturgucker,6ac3f774,Heilbronner Wald nördl. der Waldheide,HUMAN_OBSERVATION,CC BY 4.0,4.26,True
+Apis mellifera,Honey bee,5180622520,2025-06-02,2025,6,49.143811,9.319976,4.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,7.86,True
+Apis mellifera,Honey bee,5186954685,2025-06-14,2025,6,49.147564,9.111506,5.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,7.31,True
+Apis mellifera,Honey bee,5197870110,2025-06-19,2025,6,49.205954,9.121591,2.0,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,9.36,True
+Apis mellifera,Honey bee,5198088378,2025-06-19,2025,6,49.194723,9.137392,2.0,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,7.67,True
+Apis mellifera,Honey bee,5218893412,2025-06-19,2025,6,49.20491,9.123205,2.0,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,9.2,True
+Apis mellifera,Honey bee,5205057077,2025-06-24,2025,6,49.163504,9.196864,16.0,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,2.24,True
+Apis mellifera,Honey bee,5205212729,2025-06-24,2025,6,49.142253,9.057964,,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,11.21,False
+Apis mellifera,Honey bee,5205086636,2025-06-25,2025,6,49.163442,9.196991,23.0,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,2.23,True
+Apis mellifera,Honey bee,5205163952,2025-06-25,2025,6,49.163421,9.19664,17.0,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,2.24,True
+Apis mellifera,Honey bee,5205321782,2025-06-27,2025,6,49.152538,9.236661,,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,1.94,False
+Apis mellifera,Honey bee,5205267862,2025-06-28,2025,6,49.184606,9.33142,14.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,9.69,True
+Apis mellifera,Honey bee,5215084319,2025-06-29,2025,6,49.151455,9.23569,25.0,NABU|naturgucker,6ac3f774,Heilbronn Nordost,HUMAN_OBSERVATION,CC BY 4.0,1.83,True
+Apis mellifera,Honey bee,6235895565,2025-06-29,2025,6,49.142307,9.214854,1342.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY 4.0,0.46,False
+Apis mellifera,Honey bee,5212075018,2025-07-06,2025,7,49.072424,9.289005,,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,9.92,False
+Apis mellifera,Honey bee,5219226817,2025-07-13,2025,7,49.158263,9.190674,6.0,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,2.07,True
+Apis mellifera,Honey bee,5219333958,2025-07-13,2025,7,49.06755,9.292637,,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,10.51,False
+Apis mellifera,Honey bee,5232265427,2025-07-13,2025,7,49.078259,9.192748,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5234856728,2025-07-15,2025,7,49.245063,9.310477,73.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,13.14,True
+Apis mellifera,Honey bee,5232265387,2025-07-17,2025,7,49.064857,9.20012,250.0,NABU|naturgucker,6ac3f774,"Lauffen, Gartencenter  Pflanzen Mauk",HUMAN_OBSERVATION,CC BY 4.0,9.06,True
+Apis mellifera,Honey bee,5234850620,2025-07-19,2025,7,49.123552,9.198959,14.0,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,2.67,True
+Apis mellifera,Honey bee,5281677095,2025-07-29,2025,7,49.14782,9.2105,25.0,NABU|naturgucker,6ac3f774,Heilbronn BuGa 2019 Gesamtfläche,HUMAN_OBSERVATION,CC BY 4.0,0.23,True
+Apis mellifera,Honey bee,5291544004,2025-08-04,2025,8,49.120892,9.219368,250.0,NABU|naturgucker,6ac3f774,Heilbronn Gewerbegebiet Schwabenhof u Gewerbe an der Stuttgarter Straße,HUMAN_OBSERVATION,CC BY 4.0,2.84,True
+Apis mellifera,Honey bee,5283030505,2025-08-06,2025,8,49.143867,9.320073,25.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,7.86,True
+Apis mellifera,Honey bee,5282954994,2025-08-08,2025,8,49.118065,9.202856,,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,3.18,False
+Apis mellifera,Honey bee,5291543967,2025-08-10,2025,8,49.078259,9.192711,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5291497582,2025-08-11,2025,8,49.156101,9.208713,25.0,NABU|naturgucker,6ac3f774,Heilbronn BuGa 2019 Gesamtfläche,HUMAN_OBSERVATION,CC BY 4.0,1.15,True
+Apis mellifera,Honey bee,5291507800,2025-08-11,2025,8,49.078232,9.19264,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.67,True
+Apis mellifera,Honey bee,5291523726,2025-08-12,2025,8,49.078335,9.192683,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.65,True
+Apis mellifera,Honey bee,5288591645,2025-08-13,2025,8,49.142869,9.112567,35.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,7.24,True
+Apis mellifera,Honey bee,5291524695,2025-08-13,2025,8,49.078255,9.192707,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5288030484,2025-08-16,2025,8,49.126838,9.21379,,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,2.13,False
+Apis mellifera,Honey bee,6235412040,2025-08-16,2025,8,49.142433,9.216877,,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY 4.0,0.53,False
+Apis mellifera,Honey bee,5287974644,2025-08-22,2025,8,49.214801,9.257606,41.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,8.34,True
+Apis mellifera,Honey bee,5794834613,2025-08-31,2025,8,49.078262,9.192738,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5794826106,2025-09-03,2025,9,49.154758,9.210571,25.0,NABU|naturgucker,6ac3f774,Heilbronn BuGa 2019 Gesamtfläche,HUMAN_OBSERVATION,CC BY 4.0,0.98,True
+Apis mellifera,Honey bee,5794841845,2025-09-05,2025,9,49.078259,9.192741,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Apis mellifera,Honey bee,5797139314,2025-09-09,2025,9,49.147625,9.315904,,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,7.56,False
+Apis mellifera,Honey bee,6234367718,2025-09-15,2025,9,49.14248,9.216944,,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY 4.0,0.53,False
+Apis mellifera,Honey bee,5837364214,2025-09-18,2025,9,49.147247,9.205201,25.0,NABU|naturgucker,6ac3f774,Heilbronn BuGa 2019 Gesamtfläche,HUMAN_OBSERVATION,CC BY 4.0,0.51,True
+Apis mellifera,Honey bee,5844795942,2025-10-01,2025,10,49.138115,9.104973,25.0,NABU|naturgucker,6ac3f774,Leingarten West,HUMAN_OBSERVATION,CC BY 4.0,7.83,True
+Apis mellifera,Honey bee,5844799358,2025-10-02,2025,10,49.109276,9.148875,25.0,NABU|naturgucker,6ac3f774,Altneckar Horkheim,HUMAN_OBSERVATION,CC BY 4.0,6.15,True
+Apis mellifera,Honey bee,5844783285,2025-10-09,2025,10,49.145237,9.206005,25.0,NABU|naturgucker,6ac3f774,Heilbronn BuGa 2019 Gesamtfläche,HUMAN_OBSERVATION,CC BY 4.0,0.44,True
+Apis mellifera,Honey bee,5892256742,2025-11-04,2025,11,49.156147,9.190153,25.0,NABU|naturgucker,6ac3f774,Heilbronn Gesundbrunnen,HUMAN_OBSERVATION,CC BY 4.0,1.95,True
+Apis mellifera,Honey bee,5892268401,2025-11-05,2025,11,49.154488,9.278458,250.0,NABU|naturgucker,6ac3f774,Weinsberg Heilbronner Str. Rückhaltebecken,HUMAN_OBSERVATION,CC BY 4.0,4.92,True
+Apis mellifera,Honey bee,5931984534,2025-11-15,2025,11,49.113827,9.154787,250.0,NABU|naturgucker,6ac3f774,Auwiesen bei Nordheim,HUMAN_OBSERVATION,CC BY 4.0,5.49,True
+Apis mellifera,Honey bee,6486516467,2026-03-21,2026,3,49.183787,9.327712,3.0,Observation.org,8a863029,HN Eberstadt,HUMAN_OBSERVATION,CC BY-NC 4.0,9.4,True
+Apis mellifera,Honey bee,6487170522,2026-03-21,2026,3,49.24102,9.105727,10.0,Observation.org,8a863029,HN Bad Rappenau,HUMAN_OBSERVATION,CC BY-NC 4.0,13.09,True
+Apis mellifera,Honey bee,6486279269,2026-04-06,2026,4,49.13979,9.178312,21.0,Observation.org,8a863029,HN Heilbronn Böckingen,HUMAN_OBSERVATION,CC BY-NC 4.0,2.55,True
+Apis mellifera,Honey bee,6447714068,2026-04-26,2026,4,49.126838,9.213807,,Observation.org,8a863029,HN Heilbronn Äussere Bezirke,HUMAN_OBSERVATION,CC BY-NC 4.0,2.13,False
+Apis mellifera,Honey bee,6345021211,2026-04-30,2026,4,49.177839,9.346882,8.0,Observation.org,8a863029,HN Eberstadt,HUMAN_OBSERVATION,CC BY-NC 4.0,10.43,True
+Apis mellifera,Honey bee,6344120210,2026-05-03,2026,5,49.156683,9.290767,,Observation.org,8a863029,HN Weinsberg,HUMAN_OBSERVATION,CC BY-NC 4.0,5.85,False
+Apis mellifera,Honey bee,6343306401,2026-05-08,2026,5,49.12,9.22,,Observation.org,8a863029,HN Heilbronn Äussere Bezirke,HUMAN_OBSERVATION,CC BY-NC 4.0,2.95,False
+Apis mellifera,Honey bee,6342798405,2026-05-20,2026,5,49.093641,9.276472,,Observation.org,8a863029,HN Untergruppenbach,HUMAN_OBSERVATION,CC BY-NC 4.0,7.48,False
+Apis mellifera,Honey bee,6447605432,2026-05-26,2026,5,49.12,9.22,,Observation.org,8a863029,HN Heilbronn Äussere Bezirke,HUMAN_OBSERVATION,CC BY-NC 4.0,2.95,False
+Apis mellifera,Honey bee,6342045906,2026-05-30,2026,5,49.147573,9.111582,3.0,Observation.org,8a863029,HN Leingarten,HUMAN_OBSERVATION,CC BY-NC 4.0,7.31,True
+Apis mellifera,Honey bee,6342654330,2026-05-30,2026,5,49.147625,9.111484,4.0,Observation.org,8a863029,HN Leingarten,HUMAN_OBSERVATION,CC BY-NC 4.0,7.31,True
+Apis mellifera,Honey bee,6400070622,2026-06-02,2026,6,49.125214,9.102486,454.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY-NC 4.0,8.3,True
+Apis mellifera,Honey bee,6448925437,2026-06-02,2026,6,49.125764,9.209133,14.0,Observation.org,8a863029,HN Heilbronn Äussere Bezirke,HUMAN_OBSERVATION,CC BY-NC 4.0,2.26,True
+Apis mellifera,Honey bee,6398987389,2026-06-03,2026,6,49.124336,9.211214,,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY-NC 4.0,2.41,False
+Apis mellifera,Honey bee,6399442741,2026-06-03,2026,6,49.12344,9.20905,135.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY-NC 4.0,2.52,True
+Apis mellifera,Honey bee,6449100456,2026-06-04,2026,6,49.12,9.22,,Observation.org,8a863029,HN Heilbronn Äussere Bezirke,HUMAN_OBSERVATION,CC BY-NC 4.0,2.95,False
+Apis mellifera,Honey bee,6400935738,2026-06-05,2026,6,49.142278,9.216849,,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY 4.0,0.54,False
+Apis mellifera,Honey bee,6410983453,2026-06-05,2026,6,49.184422,9.331342,5.0,Observation.org,8a863029,HN Eberstadt,HUMAN_OBSERVATION,CC BY-NC 4.0,9.67,True
+Apis mellifera,Honey bee,6448441981,2026-06-13,2026,6,49.241474,9.105031,6.0,Observation.org,8a863029,HN Bad Rappenau,HUMAN_OBSERVATION,CC BY-NC 4.0,13.16,True
+Apis mellifera,Honey bee,6605310192,2026-06-14,2026,6,49.240731,9.218367,,Observation.org,8a863029,HN Bad Friedrichshall,HUMAN_OBSERVATION,CC BY-NC 4.0,10.54,False
+Apis mellifera,Honey bee,6410672095,2026-06-16,2026,6,49.148312,9.285931,1.0,Observation.org,8a863029,HN Weinsberg,HUMAN_OBSERVATION,CC BY-NC 4.0,5.38,True
+Apis mellifera,Honey bee,6412000887,2026-06-19,2026,6,49.177825,9.347004,6.0,Observation.org,8a863029,HN Eberstadt,HUMAN_OBSERVATION,CC BY-NC 4.0,10.43,True
+Apis mellifera,Honey bee,6412058158,2026-06-21,2026,6,49.072396,9.289062,6.0,Observation.org,8a863029,HN Abstatt,HUMAN_OBSERVATION,CC BY-NC 4.0,9.92,True
+Apis mellifera,Honey bee,6412356748,2026-06-21,2026,6,49.118111,9.202882,,Observation.org,8a863029,HN Heilbronn Sontheim,HUMAN_OBSERVATION,CC BY-NC 4.0,3.17,False
+Apis mellifera,Honey bee,6411945787,2026-06-22,2026,6,49.230172,9.153567,,Observation.org,8a863029,HN Bad Wimpfen,HUMAN_OBSERVATION,CC BY-NC 4.0,10.28,False
+Apis mellifera,Honey bee,6411042112,2026-06-23,2026,6,49.177894,9.346958,21.0,Observation.org,8a863029,HN Eberstadt,HUMAN_OBSERVATION,CC BY-NC 4.0,10.43,True
+Apis mellifera,Honey bee,6410728863,2026-06-27,2026,6,49.072362,9.289016,,Observation.org,8a863029,HN Abstatt,HUMAN_OBSERVATION,CC BY-NC 4.0,9.92,False
+Apis mellifera,Honey bee,6423580626,2026-06-29,2026,6,49.177837,9.347024,6.0,Observation.org,8a863029,HN Eberstadt,HUMAN_OBSERVATION,CC BY-NC 4.0,10.44,True
+Apis mellifera,Honey bee,6424005722,2026-06-29,2026,6,49.101755,9.226728,,Observation.org,8a863029,HN Flein,HUMAN_OBSERVATION,CC BY-NC 4.0,5.04,False
+Apis mellifera,Honey bee,6424168304,2026-06-29,2026,6,49.101769,9.226743,,Observation.org,8a863029,HN Flein,HUMAN_OBSERVATION,CC BY-NC 4.0,5.03,False
+Apis mellifera,Honey bee,6423634437,2026-06-30,2026,6,49.072626,9.289121,,Observation.org,8a863029,HN Abstatt,HUMAN_OBSERVATION,CC BY-NC 4.0,9.9,False
+Apis mellifera,Honey bee,6423733582,2026-06-30,2026,6,49.141781,9.315433,,Observation.org,8a863029,HN Ellhofen,HUMAN_OBSERVATION,CC BY-NC 4.0,7.54,False
+Apis mellifera,Honey bee,6423807650,2026-06-30,2026,6,49.09793,9.332704,14.0,Observation.org,8a863029,HN Untergruppenbach,HUMAN_OBSERVATION,CC BY-NC 4.0,10.28,True
+Apis mellifera,Honey bee,6424338412,2026-07-01,2026,7,49.177837,9.347075,6.0,Observation.org,8a863029,HN Eberstadt,HUMAN_OBSERVATION,CC BY-NC 4.0,10.44,True
+Apis mellifera,Honey bee,6423921497,2026-07-05,2026,7,49.072388,9.289036,,Observation.org,8a863029,HN Abstatt,HUMAN_OBSERVATION,CC BY-NC 4.0,9.92,False
+Apis mellifera,Honey bee,6448072791,2026-07-09,2026,7,49.118031,9.202611,,Observation.org,8a863029,HN Heilbronn Sontheim,HUMAN_OBSERVATION,CC BY-NC 4.0,3.18,False
+Apis mellifera,Honey bee,6447900355,2026-07-11,2026,7,49.07244,9.288975,,Observation.org,8a863029,HN Abstatt,HUMAN_OBSERVATION,CC BY-NC 4.0,9.91,False
+Apis mellifera,Honey bee,6448956363,2026-07-14,2026,7,49.22947,9.162697,,Observation.org,8a863029,HN Bad Wimpfen,HUMAN_OBSERVATION,CC BY-NC 4.0,9.95,False
+Apis mellifera,Honey bee,6449334269,2026-07-16,2026,7,49.197329,9.241259,37.0,Observation.org,8a863029,HN Neckarsulm,HUMAN_OBSERVATION,CC BY-NC 4.0,6.09,True
+Apis mellifera,Honey bee,6449668919,2026-07-16,2026,7,49.197296,9.241317,28.0,Observation.org,8a863029,HN Neckarsulm,HUMAN_OBSERVATION,CC BY-NC 4.0,6.09,True
+Apis mellifera,Honey bee,6448939008,2026-07-18,2026,7,49.241205,9.105387,10.0,Observation.org,8a863029,HN Bad Rappenau,HUMAN_OBSERVATION,CC BY-NC 4.0,13.12,True
+Apis mellifera,Honey bee,6448891116,2026-07-19,2026,7,49.072372,9.289029,,Observation.org,8a863029,HN Abstatt,HUMAN_OBSERVATION,CC BY-NC 4.0,9.92,False
+Apis mellifera,Honey bee,6470441767,2026-07-23,2026,7,49.098156,9.278322,4.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY 4.0,7.18,True
+Apis mellifera,Honey bee,6485452105,2026-08-04,2026,8,49.230258,9.162017,9.0,Observation.org,8a863029,HN Bad Wimpfen,HUMAN_OBSERVATION,CC BY-NC 4.0,10.05,True
+Apis mellifera,Honey bee,6487273490,2026-08-04,2026,8,49.118092,9.202898,,Observation.org,8a863029,HN Heilbronn Sontheim,HUMAN_OBSERVATION,CC BY-NC 4.0,3.17,False
+Apis mellifera,Honey bee,6485340211,2026-08-06,2026,8,49.187306,9.247959,83.0,Observation.org,8a863029,HN Neckarsulm,HUMAN_OBSERVATION,CC BY-NC 4.0,5.28,True
+Apis mellifera,Honey bee,6485493364,2026-08-07,2026,8,49.177893,9.347056,16.0,Observation.org,8a863029,HN Eberstadt,HUMAN_OBSERVATION,CC BY-NC 4.0,10.44,True
+Apis mellifera,Honey bee,6602779671,2026-08-16,2026,8,49.184059,9.32754,25.0,Observation.org,8a863029,HN Eberstadt,HUMAN_OBSERVATION,CC BY-NC 4.0,9.41,True
+Apis mellifera,Honey bee,6604108006,2026-09-15,2026,9,49.172806,9.24585,3.0,Observation.org,8a863029,HN Erlenbach,HUMAN_OBSERVATION,CC BY-NC 4.0,3.87,True
+Apis mellifera,Honey bee,6602438979,2026-09-25,2026,9,49.126833,9.213752,,Observation.org,8a863029,HN Heilbronn Äussere Bezirke,HUMAN_OBSERVATION,CC BY-NC 4.0,2.14,False
+Apis mellifera,Honey bee,6579536379,2026-10-02,2026,10,49.122261,9.220463,16.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY-NC 4.0,2.71,True
+Apis mellifera,Honey bee,6604108582,2026-10-15,2026,10,49.238809,9.115815,4.0,Observation.org,8a863029,HN Bad Rappenau,HUMAN_OBSERVATION,CC BY-NC 4.0,12.46,True
+Vespa crabro,European hornet,5015878649,2014-04-26,2014,4,49.055813,9.227743,250.0,NABU|naturgucker,6ac3f774,Gewann Beurer Feld bei Ilsfeld,HUMAN_OBSERVATION,CC BY 4.0,10.09,True
+Vespa crabro,European hornet,5028420597,2014-06-01,2014,6,49.125454,9.295421,250.0,NABU|naturgucker,6ac3f774,Brühl,HUMAN_OBSERVATION,CC BY 4.0,6.48,True
+Vespa crabro,European hornet,5023133995,2015-05-28,2015,5,49.08466,9.19281,250.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,6.96,True
+Vespa crabro,European hornet,5016229177,2018-08-30,2018,8,49.087891,9.2539,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/2 - Auenstein / Abstatt / Untergruppenbach,HUMAN_OBSERVATION,CC BY 4.0,7.14,True
+Vespa crabro,European hornet,5022574653,2019-08-11,2019,8,49.08086,9.06715,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/1 - Güglingen / Brackenheim,HUMAN_OBSERVATION,CC BY 4.0,12.79,True
+Vespa crabro,European hornet,4177191355,2020-05-25,2020,5,49.126393,9.244167,8.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY-NC 4.0,3.2,True
+Vespa crabro,European hornet,5026509976,2020-05-30,2020,5,49.085815,9.296872,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/2 - Auenstein / Abstatt / Untergruppenbach,HUMAN_OBSERVATION,CC BY 4.0,9.11,True
+Vespa crabro,European hornet,5020654996,2020-06-03,2020,6,49.23769,9.255587,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/4 - Kocher / Neuenstadt (West) / Oedheim,HUMAN_OBSERVATION,CC BY 4.0,10.68,True
+Vespa crabro,European hornet,5076960321,2020-09-24,2020,9,49.118622,9.112645,1953.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY-NC 4.0,7.84,False
+Vespa crabro,European hornet,5016137780,2021-06-12,2021,6,49.183739,9.065063,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/1 - Massenbachhausen,HUMAN_OBSERVATION,CC BY 4.0,11.48,True
+Vespa crabro,European hornet,5024168752,2021-07-09,2021,7,49.195698,9.247755,250.0,NABU|naturgucker,6ac3f774,Neckarsulm Scheuerberg,HUMAN_OBSERVATION,CC BY 4.0,6.11,True
+Vespa crabro,European hornet,5016374487,2021-08-15,2021,8,49.151035,9.234743,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,1.75,True
+Vespa crabro,European hornet,3784806259,2022-05-12,2022,5,49.074037,9.159348,26.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY-NC 4.0,8.87,True
+Vespa crabro,European hornet,5018192711,2022-06-28,2022,6,49.158741,9.235872,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,2.24,True
+Vespa crabro,European hornet,5020561119,2022-08-06,2022,8,49.076958,9.19238,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/1 - Neckar / Talheim / Ilsfeld,HUMAN_OBSERVATION,CC BY 4.0,7.81,True
+Vespa crabro,European hornet,3888780254,2022-08-09,2022,8,49.13403,9.116962,4.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY-NC 4.0,7.04,True
+Vespa crabro,European hornet,5023561655,2022-08-14,2022,8,49.232944,9.194028,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,CC BY 4.0,9.76,True
+Vespa crabro,European hornet,5028559955,2022-08-14,2022,8,49.240715,9.222648,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,CC BY 4.0,10.56,True
+Vespa crabro,European hornet,5024937360,2022-08-24,2022,8,49.078274,9.192655,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Vespa crabro,European hornet,5019740921,2022-08-29,2022,8,49.164635,9.159117,250.0,NABU|naturgucker,6ac3f774,Frankenbach West,HUMAN_OBSERVATION,CC BY 4.0,4.37,True
+Vespa crabro,European hornet,5015379790,2022-09-02,2022,9,49.173946,9.123949,250.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/2 - Leingarten (Nord) / Biberach,HUMAN_OBSERVATION,CC BY 4.0,7.12,True
+Vespa crabro,European hornet,5027588404,2022-09-03,2022,9,49.078251,9.192676,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Vespa crabro,European hornet,5019665841,2022-09-04,2022,9,49.078251,9.192677,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Vespa crabro,European hornet,5014494876,2022-09-05,2022,9,49.159466,9.14708,250.0,NABU|naturgucker,6ac3f774,Hipfelhof bei Frankenbach,HUMAN_OBSERVATION,CC BY 4.0,4.95,True
+Vespa crabro,European hornet,5021357612,2023-05-09,2023,5,49.136002,9.228,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,CC BY 4.0,1.61,True
+Vespa crabro,European hornet,5012516350,2023-05-23,2023,5,49.234646,9.251204,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/4 - Kocher / Neuenstadt (West) / Oedheim,HUMAN_OBSERVATION,CC BY 4.0,10.26,True
+Vespa crabro,European hornet,5025738453,2023-06-16,2023,6,49.130917,9.2114,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,CC BY 4.0,1.68,True
+Vespa crabro,European hornet,6235371854,2023-06-28,2023,6,49.142307,9.214854,1338.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY 4.0,0.46,False
+Vespa crabro,European hornet,4461095870,2023-07-18,2023,7,49.138242,9.253875,14.0,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,3.17,True
+Vespa crabro,European hornet,5025425737,2023-08-08,2023,8,49.056038,9.261649,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/2 - Auenstein / Abstatt / Untergruppenbach,HUMAN_OBSERVATION,CC BY 4.0,10.64,True
+Vespa crabro,European hornet,5027000027,2023-08-10,2023,8,49.143002,9.055,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/3 - Schwaigern,HUMAN_OBSERVATION,CC BY 4.0,11.42,True
+Vespa crabro,European hornet,5019543522,2023-09-13,2023,9,49.078285,9.192694,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Vespa crabro,European hornet,4888094074,2024-04-11,2024,4,49.236589,9.104743,,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,12.74,False
+Vespa crabro,European hornet,5022936440,2024-05-01,2024,5,49.202644,9.236341,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,CC BY 4.0,6.54,True
+Vespa crabro,European hornet,4887018830,2024-05-13,2024,5,49.241122,9.119978,,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,12.51,False
+Vespa crabro,European hornet,5013809637,2024-05-29,2024,5,49.130554,9.226,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,CC BY 4.0,2.0,True
+Vespa crabro,European hornet,4932507949,2024-08-05,2024,8,49.154938,9.244057,5.0,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,2.53,True
+Vespa crabro,European hornet,4956174003,2024-08-30,2024,8,49.244872,9.310197,21.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,13.11,True
+Vespa crabro,European hornet,4985418331,2024-10-19,2024,10,49.147562,9.111628,6.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,7.3,True
+Vespa crabro,European hornet,5150176321,2025-05-03,2025,5,49.119495,9.334186,250.0,NABU|naturgucker,6ac3f774,Lehrensteinsfeld / Willsbach  Föhrenbergwald,HUMAN_OBSERVATION,CC BY 4.0,9.37,True
+Vespa crabro,European hornet,5171587764,2025-05-29,2025,5,49.186701,9.327149,18.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,9.52,True
+Vespa crabro,European hornet,6236178754,2025-06-09,2025,6,49.142556,9.216975,,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY 4.0,0.53,False
+Vespa crabro,European hornet,5291540203,2025-06-13,2025,6,49.142464,9.216957,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,CC BY 4.0,0.53,True
+Vespa crabro,European hornet,5205865141,2025-06-20,2025,6,49.24026,9.110798,215.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY-NC 4.0,12.8,True
+Vespa crabro,European hornet,5204951473,2025-06-29,2025,6,49.142478,9.331275,5.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,8.68,True
+Vespa crabro,European hornet,5205002570,2025-06-29,2025,6,49.142514,9.331253,4.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,8.68,True
+Vespa crabro,European hornet,5205186995,2025-06-29,2025,6,49.142553,9.331403,13.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,8.69,True
+Vespa crabro,European hornet,5283012985,2025-08-08,2025,8,49.138573,9.123285,10.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,6.51,True
+Vespa crabro,European hornet,5291487307,2025-08-08,2025,8,49.123409,9.110543,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/4 - Leingarten / Nordheim,HUMAN_OBSERVATION,CC BY 4.0,7.8,True
+Vespa crabro,European hornet,5291516240,2025-08-08,2025,8,49.190937,9.231478,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,5.19,True
+Vespa crabro,European hornet,5291519717,2025-08-09,2025,8,49.232639,9.154736,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6720/4 - Neckar / Bad Wimpfen / Bad Rappenau,HUMAN_OBSERVATION,CC BY 4.0,10.49,True
+Vespa crabro,European hornet,5291498481,2025-08-11,2025,8,49.063992,9.137192,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/2 - Neckar / Lauffen am Neckar,HUMAN_OBSERVATION,CC BY 4.0,10.62,True
+Vespa crabro,European hornet,5291504919,2025-08-12,2025,8,49.078213,9.192693,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.67,True
+Vespa crabro,European hornet,5871911225,2025-08-14,2025,8,49.100864,9.208856,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,CC BY 4.0,5.02,True
+Vespa crabro,European hornet,5291510060,2025-08-15,2025,8,49.076328,9.150689,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/2 - Neckar / Lauffen am Neckar,HUMAN_OBSERVATION,CC BY 4.0,8.94,True
+Vespa crabro,European hornet,5291527517,2025-08-16,2025,8,49.226067,9.221233,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,CC BY 4.0,8.93,True
+Vespa crabro,European hornet,5761005361,2025-08-21,2025,8,49.132077,9.343944,9.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY-NC 4.0,9.72,True
+Vespa crabro,European hornet,5288631212,2025-08-24,2025,8,49.152656,9.236653,,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,1.94,False
+Vespa crabro,European hornet,5291525371,2025-08-24,2025,8,49.100143,9.208398,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,CC BY 4.0,5.11,True
+Vespa crabro,European hornet,5762287010,2025-09-05,2025,9,49.190249,9.339252,5.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,10.48,True
+Vespa crabro,European hornet,5794844035,2025-09-07,2025,9,49.143013,9.250942,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/4 - Weinsberg / Lehrensteinsfeld,HUMAN_OBSERVATION,CC BY 4.0,2.85,True
+Vespa crabro,European hornet,5824862267,2025-09-13,2025,9,49.114132,9.192211,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,CC BY 4.0,3.82,True
+Vespa crabro,European hornet,5797118240,2025-09-14,2025,9,49.238009,9.114814,98.0,Observation.org,8a863029,HN Heilbronn (Landkreis),HUMAN_OBSERVATION,CC BY-NC 4.0,12.43,True
+Vespa crabro,European hornet,5837280713,2025-09-14,2025,9,49.078266,9.192752,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Vespa crabro,European hornet,5844793838,2025-09-14,2025,9,49.13858,9.269469,250.0,NABU|naturgucker,6ac3f774,Heilbronner Wald nördl. der Waldheide,HUMAN_OBSERVATION,CC BY 4.0,4.26,True
+Vespa crabro,European hornet,5837262213,2025-09-15,2025,9,49.078262,9.192743,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Vespa crabro,European hornet,5844788174,2025-10-03,2025,10,49.123955,9.290592,250.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/4 - Weinsberg / Lehrensteinsfeld,HUMAN_OBSERVATION,CC BY 4.0,6.22,True
+Vespa crabro,European hornet,5868477830,2025-10-15,2025,10,49.196774,9.250925,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/2 - Erlenbach / Eberstadt,HUMAN_OBSERVATION,CC BY 4.0,6.32,True
+Vespa crabro,European hornet,5868312560,2025-10-19,2025,10,49.124167,9.243246,,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY-NC 4.0,3.33,False
+Vespa crabro,European hornet,5889617435,2025-10-22,2025,10,49.229849,9.165863,,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY-NC 4.0,9.91,False
+Vespa crabro,European hornet,5888999632,2025-10-31,2025,10,49.203529,9.240701,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,CC BY 4.0,6.73,True
+Vespa crabro,European hornet,5892270640,2025-11-04,2025,11,49.065456,9.087629,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/2 - Neckar / Lauffen am Neckar,HUMAN_OBSERVATION,CC BY 4.0,12.73,True
+Vespa crabro,European hornet,5901488417,2025-11-19,2025,11,49.239991,9.20837,6.0,Observation.org,8a863029,HN Bad Friedrichshall,HUMAN_OBSERVATION,CC BY-NC 4.0,10.45,True
+Vespa crabro,European hornet,6181733100,2026-03-19,2026,3,49.078243,9.192722,25.0,NABU|naturgucker,6ac3f774,Talheim - Ort,HUMAN_OBSERVATION,CC BY 4.0,7.66,True
+Vespa crabro,European hornet,6236272403,2026-04-26,2026,4,49.18259,9.327428,56.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY-NC 4.0,9.33,True
+Vespa crabro,European hornet,6602837859,2026-05-01,2026,5,49.241214,9.224767,,Observation.org,8a863029,HN Bad Friedrichshall,HUMAN_OBSERVATION,CC BY-NC 4.0,10.63,False
+Vespa crabro,European hornet,6342279564,2026-05-19,2026,5,49.17796,9.347097,10.0,Observation.org,8a863029,HN Eberstadt,HUMAN_OBSERVATION,CC BY-NC 4.0,10.45,True
+Vespa crabro,European hornet,6342633295,2026-05-20,2026,5,49.239421,9.090931,3.0,Observation.org,8a863029,HN Bad Rappenau,HUMAN_OBSERVATION,CC BY-NC 4.0,13.61,True
+Vespa crabro,European hornet,6602075591,2026-05-30,2026,5,49.123564,9.19898,13.0,Observation.org,8a863029,HN Heilbronn Sontheim,HUMAN_OBSERVATION,CC BY-NC 4.0,2.67,True
+Vespa crabro,European hornet,6480776661,2026-07-30,2026,7,49.15758,9.197309,100.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY-NC 4.0,1.67,True
+Vespa crabro,European hornet,6602404622,2026-09-06,2026,9,49.096703,9.072062,4.0,Observation.org,8a863029,HN Brackenheim,HUMAN_OBSERVATION,CC BY-NC 4.0,11.57,True
+Vespa crabro,European hornet,6604479674,2026-09-27,2026,9,49.074024,9.201959,,Observation.org,8a863029,HN Talheim,HUMAN_OBSERVATION,CC BY-NC 4.0,8.04,False
+Vespa crabro,European hornet,6603236729,2026-10-01,2026,10,49.244024,9.246146,,Observation.org,8a863029,HN Oedheim,HUMAN_OBSERVATION,CC BY-NC 4.0,11.18,False
+Vespa crabro,European hornet,6605345748,2026-10-05,2026,10,49.126813,9.214073,,Observation.org,8a863029,HN Heilbronn Äussere Bezirke,HUMAN_OBSERVATION,CC BY-NC 4.0,2.14,False
+Vespa crabro,European hornet,6604863140,2026-10-13,2026,10,49.10827,9.124465,200.0,Observation.org,8a863029,HN Nordheim,HUMAN_OBSERVATION,CC BY-NC 4.0,7.63,True
+Vespa velutina,Asian hornet,5014038575,2023-08-18,2023,8,49.137798,9.056239,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/3 - Schwaigern,HUMAN_OBSERVATION,CC BY 4.0,11.37,True
+Vespa velutina,Asian hornet,5014988883,2023-09-09,2023,9,49.228668,9.156754,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6720/4 - Neckar / Bad Wimpfen / Bad Rappenau,HUMAN_OBSERVATION,CC BY 4.0,10.03,True
+Vespa velutina,Asian hornet,5021900220,2023-09-20,2023,9,49.15807,9.192229,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,1.97,True
+Vespa velutina,Asian hornet,5024251007,2023-11-22,2023,11,49.223942,9.20727,250.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,CC BY 4.0,8.67,True
+Vespa velutina,Asian hornet,5027794950,2024-05-01,2024,5,49.171875,9.195491,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,3.12,True
+Vespa velutina,Asian hornet,5028294416,2024-05-30,2024,5,49.154785,9.254499,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/2 - Erlenbach / Eberstadt,HUMAN_OBSERVATION,CC BY 4.0,3.24,True
+Vespa velutina,Asian hornet,5021521406,2024-10-23,2024,10,49.077999,9.061899,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/1 - Güglingen / Brackenheim,HUMAN_OBSERVATION,CC BY 4.0,13.29,True
+Vespa velutina,Asian hornet,5024214868,2024-10-24,2024,10,49.076542,9.345837,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6922/1 - Löwenstein / Prevorst,HUMAN_OBSERVATION,CC BY 4.0,12.43,True
+Vespa velutina,Asian hornet,5180202399,2025-05-09,2025,5,49.159523,9.173227,250.0,NABU|naturgucker,6ac3f774,Heilbronn Frankenbach,HUMAN_OBSERVATION,CC BY 4.0,3.2,True
+Vespa velutina,Asian hornet,5212569399,2025-05-11,2025,5,49.127054,9.213944,8.0,Observation.org,8a863029,HN Heilbronn,HUMAN_OBSERVATION,CC BY-NC 4.0,2.11,True
+Vespa velutina,Asian hornet,5291518571,2025-07-19,2025,7,49.158257,9.171444,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,3.25,True
+Vespa velutina,Asian hornet,5291541400,2025-08-04,2025,8,49.149059,9.101717,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/2 - Leingarten (Nord) / Biberach,HUMAN_OBSERVATION,CC BY 4.0,8.03,True
+Vespa velutina,Asian hornet,5291508852,2025-08-08,2025,8,49.214451,9.251838,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/4 - Kocher / Neuenstadt (West) / Oedheim,HUMAN_OBSERVATION,CC BY 4.0,8.14,True
+Vespa velutina,Asian hornet,5291523493,2025-08-10,2025,8,49.194412,9.200394,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,5.45,True
+Vespa velutina,Asian hornet,5291494694,2025-08-13,2025,8,49.221737,9.217182,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,CC BY 4.0,8.43,True
+Vespa velutina,Asian hornet,5291514421,2025-08-15,2025,8,49.175186,9.171593,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,4.38,True
+Vespa velutina,Asian hornet,5291513114,2025-08-16,2025,8,49.226067,9.221233,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,CC BY 4.0,8.93,True
+Vespa velutina,Asian hornet,5759393832,2025-08-30,2025,8,49.168602,9.187356,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,3.09,True
+Vespa velutina,Asian hornet,5794827881,2025-09-02,2025,9,49.163502,9.187447,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,2.64,True
+Vespa velutina,Asian hornet,5794841299,2025-09-03,2025,9,49.139168,9.164982,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/4 - Leingarten / Nordheim,HUMAN_OBSERVATION,CC BY 4.0,3.5,True
+Vespa velutina,Asian hornet,5827879018,2025-09-03,2025,9,49.139182,9.165817,25.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY-NC 4.0,3.44,True
+Vespa velutina,Asian hornet,5794824976,2025-09-07,2025,9,49.143013,9.250942,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/4 - Weinsberg / Lehrensteinsfeld,HUMAN_OBSERVATION,CC BY 4.0,2.85,True
+Vespa velutina,Asian hornet,5794826467,2025-09-07,2025,9,49.08762,9.18386,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/1 - Neckar / Talheim / Ilsfeld,HUMAN_OBSERVATION,CC BY 4.0,6.81,True
+Vespa velutina,Asian hornet,5794827401,2025-09-07,2025,9,49.063744,9.133463,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/2 - Neckar / Lauffen am Neckar,HUMAN_OBSERVATION,CC BY 4.0,10.79,True
+Vespa velutina,Asian hornet,5844809758,2025-09-12,2025,9,49.080833,9.065598,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6920/1 - Güglingen / Brackenheim,HUMAN_OBSERVATION,CC BY 4.0,12.89,True
+Vespa velutina,Asian hornet,5823625399,2025-09-13,2025,9,49.116596,9.0593,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/3 - Schwaigern,HUMAN_OBSERVATION,CC BY 4.0,11.58,True
+Vespa velutina,Asian hornet,5825617461,2025-09-13,2025,9,49.114132,9.192211,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,CC BY 4.0,3.82,True
+Vespa velutina,Asian hornet,5830658147,2025-09-13,2025,9,49.142859,9.250475,69.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY-NC 4.0,2.82,True
+Vespa velutina,Asian hornet,5844785926,2025-10-01,2025,10,49.229691,9.171868,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,CC BY 4.0,9.75,True
+Vespa velutina,Asian hornet,5844785720,2025-10-02,2025,10,49.224026,9.219951,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6721/3 - Neckar / Kocher / Bad Friedrichshall,HUMAN_OBSERVATION,CC BY 4.0,8.7,True
+Vespa velutina,Asian hornet,5844779699,2025-10-08,2025,10,49.169186,9.195039,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,2.86,True
+Vespa velutina,Asian hornet,5844797185,2025-10-09,2025,10,49.121876,9.199301,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,CC BY 4.0,2.84,True
+Vespa velutina,Asian hornet,5844802793,2025-10-11,2025,10,49.181973,9.106828,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/2 - Leingarten (Nord) / Biberach,HUMAN_OBSERVATION,CC BY 4.0,8.63,True
+Vespa velutina,Asian hornet,5871911436,2025-10-21,2025,10,49.169308,9.194708,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/1 - Neckar / Heilbronn (N) / Neckarsulm,HUMAN_OBSERVATION,CC BY 4.0,2.88,True
+Vespa velutina,Asian hornet,5871911638,2025-10-21,2025,10,49.054626,9.245099,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6921/1 - Neckar / Talheim / Ilsfeld,HUMAN_OBSERVATION,CC BY 4.0,10.44,True
+Vespa velutina,Asian hornet,5871918236,2025-10-24,2025,10,49.243931,9.106035,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6720/4 - Neckar / Bad Wimpfen / Bad Rappenau,HUMAN_OBSERVATION,CC BY 4.0,13.34,True
+Vespa velutina,Asian hornet,5871916739,2025-10-25,2025,10,49.141796,9.103225,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/4 - Leingarten / Nordheim,HUMAN_OBSERVATION,CC BY 4.0,7.93,True
+Vespa velutina,Asian hornet,5889004997,2025-11-01,2025,11,49.132092,9.225368,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,CC BY 4.0,1.83,True
+Vespa velutina,Asian hornet,5892270438,2025-11-04,2025,11,49.140957,9.117816,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6820/4 - Leingarten / Nordheim,HUMAN_OBSERVATION,CC BY 4.0,6.87,True
+Vespa velutina,Asian hornet,5897004851,2025-11-05,2025,11,49.159523,9.173227,250.0,NABU|naturgucker,6ac3f774,Heilbronn Frankenbach,HUMAN_OBSERVATION,CC BY 4.0,3.2,True
+Vespa velutina,Asian hornet,5892259893,2025-11-06,2025,11,49.129936,9.228287,25.0,NABU|naturgucker,6ac3f774,TK25 Blatt 6821/3 - Neckar / Heilbronn,HUMAN_OBSERVATION,CC BY 4.0,2.14,True
+Vespa velutina,Asian hornet,6551019758,2026-09-16,2026,9,49.238053,9.117597,9.0,iNaturalist,50c9509d,,HUMAN_OBSERVATION,CC BY-NC 4.0,12.32,True
