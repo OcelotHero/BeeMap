@@ -13,6 +13,7 @@ python3 server/tests/test_osm.py
 python3 server/tests/test_ondemand.py
 python3 server/tests/test_nest_reports.py   # model part needs: pip install onnx onnxruntime (else skipped)
 python3 server/tests/test_correlate.py
+python3 server/tests/test_city.py
 cd pi && python3 test_agent.py
 ```
 
@@ -30,6 +31,7 @@ They use temporary data folders, `BEEMAP_ONLINE=off` and the demo map, so they n
 | `test_ondemand` | Background fetching swaps data in, land cover only in view, bloom months saved progressively and not refetched, failed fetches wait before retrying |
 | `test_nest_reports` | Photo quality gate; real ONNX Runtime with tiny stand-in models; confident model confirms; "not Asian" never closes a report; recheck; manual check; public view hides photo, note and exact spot |
 | `test_correlate` | Reports at a triangulated nest match strongly and name the hives; 75% photo plus match confirms; located area leaves planning; removal closes the area; corridor matches; late small-nest flag |
+| `test_city` | Pipeline results on the map from small hand-made output files: endpoints answer `404` with a hint before any data exists, serve the data once it does, and pick up a rerun; readings from several colonies at one station are stored and reported separately |
 | `pi/test_agent` | Sky and horizon heading cameras recover directions within 3–4°; hornets outside the view become presence-only; flipped cameras |
 
 ## Limits of the tests
@@ -37,6 +39,8 @@ They use temporary data folders, `BEEMAP_ONLINE=off` and the demo map, so they n
 - **External services** (Overpass, iNaturalist, map tiles) were tested only with mock responses matching their documented formats. The first real run happens online.
 - **No trained nest-photo model exists;** the tests use stand-in models with fixed answers.
 - **All accuracy figures are from simulations,** not from real hornets, hives or nests.
+- **The data pipeline has no automated tests.** `test_city` checks only how the server reads its files. The pipeline's own checks are the reports it writes (`inspect_report.txt`, `findings.md`, the validation tables and plots), and it's rerun only when new data arrives.
+- **The Pi live view, autofocus and rotation** were tried by hand on a Pi 4 with a Camera Module 3, not in `test_agent`.
 
 ## The demo as an integration test
 

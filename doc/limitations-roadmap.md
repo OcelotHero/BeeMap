@@ -6,6 +6,9 @@
 - **Apiary register** is demo data. The hive competition check depends on it.
 - **No nest-photo model** is included; until one is trained, every report is checked by hand.
 - **External services** (Overpass, iNaturalist, map tiles) were tested only against mock responses; the first real run happens online.
+- **The hive camera study is tiny.** Only 6 hourly bins of footage carry a signal, the frame interval is assumed (1 s), and the camera's hive is unknown. Its weather links are a direction check; the flight-hours humidity factor was shaped after seeing those hours.
+- **Real hive sensors** reach BeeMap only for the three OpenSpace hives, and their S31 sensor sits in the hive body, not necessarily the brood nest, so brood-nest warnings for them are unreliable.
+- **VespAI on a Pi 4** runs at about 1 frame per second and is only reliable looking straight down at a plain bait board.
 - **The heading camera** (motion tracking against the sky) is untested with real hornets. Wind-blown leaves and other insects may cause false tracks; pairing with the VespAI departure time filters most of them.
 
 ## Assumptions to validate
@@ -19,6 +22,9 @@
 | Colony-health thresholds | `health.py` | Beekeepers' inspection records for the same hives |
 | ±50 m pin accuracy; 75% combined photo threshold; 150-day season | `correlate.py`, `nest_classifier.py` | Confirmed nests after a season |
 | Foraging-distance model for smart-hive planning | `triangulate.FORAGE_SCALE_M` | Distances between real nests and the hives that saw them |
+| Bee Balance food weights per land use; verdicts by city quartiles | `pipeline/scripts/bee_balance.py` (`FORAGE_WEIGHT`, `THRESHOLDS`) | Compare verdicts with hive-scale weight gain; agree fixed thresholds with beekeepers |
+| Flight-hours rule factors, especially humidity | `pipeline/scripts/activity_model.py` (`factors`) | Weeks of continuous hive-camera footage |
+| 1 s frame interval of the hive recordings | `pipeline/scripts/common.py` (`FRAME_INTERVAL_S`) | Ask the organisers, or timestamp new recordings |
 
 ## Known gaps
 
@@ -29,6 +35,9 @@
 - **Infrastructure:** one SQLite server; in-memory rate limits; a single shared admin key; anonymous submissions could be spammed.
 - **No beekeeper view.** Colony health has no per-beekeeper view on the public site, by design.
 - **Leftover table:** the database still creates an unused `hive_requests` table from an earlier version.
+- **Two food models** (800 m flower model and 1.5 km Bee Balance) use different land-use sources and weights, and can disagree. They aren't reconciled yet.
+- **Pipeline output isn't checked automatically.** A rerun that writes odd numbers goes straight onto the map; review `findings.md` and the plots before committing new results.
+- **3D data** (`make lights`) is produced but not shown by the web page.
 
 ## Roadmap
 

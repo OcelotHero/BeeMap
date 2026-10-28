@@ -21,13 +21,33 @@
 
 `--simulate` runs without cameras or a model, sending fake hornets towards `sim_nest_bearing`.
 
+### Raspberry Pi 4 with a Camera Module 3
+
+Tested on 28 Oct 2026 (the HornTrac station). Getting VespAI running on this hardware needs:
+
+- **The pinned YOLOv5.** The VespAI weights are a whole pickled model and only load with YOLOv5 at commit `23701eac`. Check that commit out on the Pi and set `yolov5_dir` to it. On torch 2.6 or newer, the agent sets `TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD` itself.
+- **`min_confidence = 0.8`.** At 0.5 the model boxes hair, flowers and bottles. It's only reliable on its training view, looking straight down at a plain bait board, and misses close-ups and busy scenes.
+- **Camera:** `camera = picamera2:0` with `autofocus = true`. Use `rotate` if the camera is mounted sideways.
+- **Speed:** on a Pi 4 CPU the model runs at about 1 frame per second. That's enough to log a hornet at a bait station, but the exit direction is rough; a Pi 5 or a second heading camera does better.
+- **Live view:** `stream_port = 8080` shows the camera with its boxes at `http://<pi>:8080/` while aiming. Leave it at 0 outside a trusted network.
+- **Python environment:**
+  - create it with `python3 -m venv --system-site-packages`, so Picamera2 from apt is visible;
+  - install the CPU build of torch with `pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu` (the default ARM build pulls in gigabytes of unused GPU libraries);
+  - install OpenCV from apt (`sudo apt install python3-opencv`), so it matches the system numpy.
+
+To try the model on a laptop webcam or a video first, the data pipeline has a stand-alone alarm: `make hornet-setup` then `make hornet-live` in `pipeline/` (see [pipeline.md](pipeline.md)).
+
 ### Configuration (`[beemap]` in `beemap.ini`)
 
 | Key | Default | Meaning |
 |---|---|---|
 | `server`, `station_id`, `token` | (required) | Where to send data, and as which hive |
-| `weights`, `target_class`, `min_confidence` | `models/vespai.pt`, `velutina`, 0.6 | VespAI model and the class to track |
+| `weights`, `target_class`, `min_confidence` | `models/vespai.pt`, `velutina`, 0.6 | VespAI model and the class to track. The example config sets `min_confidence = 0.8`, VespAI's own field setting. |
+| `yolov5_dir` | empty | Local checkout of ultralytics/yolov5 at commit `23701eac`; empty fetches the current GitHub version, which can't load the VespAI weights |
 | `camera`, `width`, `height`, `fps` | `picamera2`, 1280, 720, 10 | Detection camera |
+| `rotate` | 0 | Rotate the detection image clockwise: 0, 90, 180 or 270. Set the heading in the app after rotating. |
+| `autofocus` | true | Continuous autofocus on a Camera Module 3 (ignored by cameras without it) |
+| `stream_port` | 0 | Above 0: live view with VespAI's boxes at `http://<pi>:<port>/` for aiming the camera. **No login.** |
 | `lost_after_s`, `min_track_points`, `max_jump` | 0.6, 4, 0.25 | When a track counts as "left", and tracking limits |
 | `heading_camera` | `none` | `picamera2:1`, `opencv:1`, a file, or `none` (single-camera station) |
 | `heading_mode`, `heading_hfov`, `heading_flip` | `sky`, 120, false | Heading camera geometry |
@@ -44,7 +64,7 @@
 
 - **Detections:** snapshot, detection confidence, track, relative heading and its uncertainty (or the single-camera exit angle), and an event ID so retries aren't counted twice. Queued on disk when offline.
 - **Heartbeat** every minute: status (fps, Pi temperature, queue length, heading-camera statistics), plus a frame kept privately on the server. The reply carries the current heading calibration.
-- **In-hive readings** every 5 minutes: average entrance activity (bees in view), hive temperature and humidity. Kept in memory and retried if sending fails.
+- **In-hive readings** every 5 minutes: average entrance activity (bees in view), hive temperature and humidity. Kept in memory and retried if sending fails. A station that watches several colonies can name each reading's `hive` (see [api.md](api.md)); the Pi agent itself reports one colony.
 
 Entrance activity is a **relative** number: each colony is compared only with itself, so camera position doesn't matter as long as it stays put.
 

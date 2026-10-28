@@ -131,6 +131,8 @@ Computed per hive over 30 days of hourly data, with the "recent" period being th
 
 These are indicators that suggest an inspection; they are never a diagnosis.
 
+**Several colonies per station.** Readings can name their colony (`hive`). Each named colony is analysed on its own, against the same outside weather and hornet visits of its station. The real OpenSpace hives arrive this way from the data pipeline (section 12).
+
 ## 9. Nest-report photo check (`server/nest_classifier.py`)
 
 - **Quality gate:**
@@ -160,3 +162,72 @@ These are indicators that suggest an inspection; they are never a diagnosis.
 - **Source:** monthly counts of observations annotated *Plant Phenology: Flowering* (`term_id=12, term_value_id=13`), for Baden-Württemberg, or Germany when there are fewer than 30.
 - **Bloom months:** months with at least 20% of the peak month's count. Peak months: at least 60%.
 - **Matching:** only exact scientific-name matches are accepted, so a similar species is never substituted.
+
+## 12. Data pipeline (`pipeline/`)
+
+These run offline (see [pipeline.md](pipeline.md)); the server only serves their results. Unlike sections 1–11 they work on **real measurements** from Heilbronn, but several rest on very little data, as noted.
+
+### Bee Balance (`bee_balance.py`)
+
+A second, coarser opinion on where a honeybee hive has enough food, next to the 800 m spot check (section 6).
+
+1. **Land use** comes from OpenFreeMap vector tiles (OpenMapTiles schema, zoom 14): the same OpenStreetMap data, but always reachable. Every polygon gets a bee-food weight (`FORAGE_WEIGHT`), for example:
+   - meadow, orchard, heath, flower bed 1.0; allotments 0.8; garden and scrub 0.7;
+   - wood, park, cemetery 0.5; grass 0.2; residential 0.15; farmland and vineyard 0.1.
+
+   Polygons are rasterised on a 25 m grid. Where they overlap, the higher weight wins.
+2. **Food within reach:** the mean weight within **1.5 km** (honeybees) and **300 m** (wild bees) of every 250 m square's centre, by disc convolution.
+3. **City only:** squares at least 40% inside Heilbronn's boundary (from Nominatim) are kept: 1,632 squares, 102 km².
+4. **Verdict** from food within 1.5 km:
+   - **hive-ready** (green) from the 75th percentile of the city's squares (currently 33.8%);
+   - **plant first** (yellow) from the 25th percentile (25.4%);
+   - **no extra hives** (red) below.
+
+   So the city splits into a quarter, a half and a quarter by design. `THRESHOLDS = (0.28, 0.20)` switches to the fixed values of the team's original raster, whose level differs.
+5. **Extras per square:**
+   - an environment score from the senseBox stations: share of daytime hours at bee-flight temperature, share of very humid hours and mean PM2.5, weighted by their correlation with the camera's activity counts (|Spearman r|, floored at 0.1), and interpolated by inverse distance;
+   - street heat from the walks (below).
+6. **Schools and neighbourhoods** get their square's numbers, for "which school can host a hive" and "where to plant first".
+
+The web page's **Wild bees (300 m)** view of the layer colours the squares by the city's quartiles of food within 300 m, computed in the browser.
+
+### Street heat (`heat_walks.py`)
+
+Summer-school datalogger walks on 1–3 Sep 2026: 61,546 one-second readings of temperature and humidity with GPS.
+
+- The first **15 minutes** of each recording are dropped, because the loggers start indoors and need time to settle. Recordings with less than 10 minutes left after that, and readings faster than walking pace (3 m/s), are dropped too.
+- For each reading, `delta = (T − M) − median over the recording of (T − M)`, with `M` the Open-Meteo temperature at the hives, interpolated to the minute. Subtracting the model removes the day's warming; subtracting the recording's own median removes each logger's bias (they run 2–4 °C warm).
+- **Map:** mean delta on **100 m** cells with at least 20 readings. It shows how much hotter or cooler a street is than the rest of that walk, not an absolute temperature.
+
+### Bee flight hours (`activity_model.py`)
+
+A rule model: hourly activity (0–1) is the product of factors, each 0–1:
+
+| Factor | Rule |
+|---|---|
+| warmth | 0 below 10 °C, full from 20 °C |
+| not too hot | fades above 32 °C, 0 at 38 °C |
+| calm | fades above 3 m/s wind, 0 at 8 m/s |
+| sun | radiation ÷ 300 W/m², at least 0.3 (overcast) |
+| dry | 0 in rain (≥ 0.2 mm/h) |
+| daylight | 0 at night |
+| humidity (the *humidity* variant only) | full below 60% RH, 0 at 90% |
+
+**Flight hours** are the sum of hourly activity over a month or year, on Open-Meteo 2025 weather, for Heilbronn by month and for 8 German cities. **Heat hours** are daylight hours at 30 °C or more.
+
+The humidity factor was added because the camera counts showed the humid day nearly dead, with humidity as strong a correlate as temperature. Its shape was chosen *after* seeing those hours, so the agreement with them **isn't an independent test**.
+
+### Weather check (`validate_weather.py`)
+
+Flight hours rely on Open-Meteo, so it's compared against the hives' SenseCAP S2120 station, which has a radiation shield, and against senseBox stations within 3 km with at least 500 hours (summer 2026). The metrics are bias, MAE, RMSE and Pearson r per variable, plus the temperature offset by hour of day; the daytime offset is the median over 10:00–17:00. If the shielded station agrees with Open-Meteo while the senseBoxes read warm, their offsets are mostly siting rather than urban heat.
+
+### Bee detector and hive camera study (`make_dataset.py`, `train.py`, `count_bees.py`, `analyse.py`)
+
+- **Labels:** the organisers' 32×32 crops (`bee_motion`, `bee_slow`, `background`) become 32×32 boxes on their source frames. Crops whose names lack the session are matched to it by comparing pixels. Frames with only background crops are negative examples. The split is 80/20 (seed 42).
+- **Model:** YOLOv8n, 50 epochs. mAP50 about 0.8 on held-out frames (0.81, precision 0.76, recall 0.73 on 683 frames in the last run).
+- **Counting:** detections per frame, averaged per minute, and detections per minute (which scales with the assumed frame interval). Sessions with no coloured motion at all carry no signal and are excluded, not counted as zero.
+- **Study:** activity joined to hive-station weather and senseBox PM2.5 in hourly bins; Spearman and Pearson correlations. Only **6 hourly bins** exist, so this is a direction check (warmer and drier = busier), not a model.
+
+### Public sightings (`hornet_sightings.py`)
+
+GBIF occurrence records with coordinates, status *present*, in the box 49.05–49.25 N, 9.05–9.35 E (about 22 km around Heilbronn), for the Asian hornet, the European hornet and the honey bee. Each record keeps its coordinate uncertainty (8–250 m for every Asian hornet record so far), source and licence. The source is the record's institution code, or else its publisher's name looked up on GBIF (Observation.org records carry only a publisher key). Licence URLs are shortened to names such as `CC BY-NC 4.0`. Counts per year for Baden-Württemberg come from a GBIF facet query. **Nothing is modelled:** these are what people reported, unchecked by the city, and they don't feed the nest search.

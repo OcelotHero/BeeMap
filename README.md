@@ -160,7 +160,7 @@ make beemap        # just send the latest hive sensors to a running server (BEEM
 | Sensors tab: **Measured at the OpenSpace hives** | `make count`, `make analyse` | YOLOv8n bee detector on the hive camera (mAP50 0.80); traffic vs weather over 6 hourly bins. |
 | **Colony health** (`tools/admin.py health`) | `make analyse`, `make beemap` | The real BeeHappy sensors of the three OpenSpace hives (inside temperature and humidity, June 2025 →) and the hive's SenseCAP weather station, sent through the normal upload API: the colonies go to station `hornet-pi` as `Beehive No.1–3`, the weather station becomes SensoBox `openspace-weather`. |
 
-**Several colonies per station.** Hive readings now carry an optional `hive` name, so one station (an apiary) can report several colonies. `GET /api/admin/health` lists each colony, and `/api/admin/health/<station>?hive=<name>` shows one. Readings without a name work as before.
+**Several colonies per station.** Hive readings now carry an optional `hive` name, so one station (an apiary) can report several colonies. `GET /api/admin/health` lists each colony, and `/api/admin/health/<station>?hive=<name>` shows one; in the admin tool, `health <station>` details every colony there and `--hive <name>` picks one. Readings without a name work as before.
 
 What's not in git: raw data (`pipeline/data/`, ~1.3 GB), training runs, model weights and the pinned YOLOv5 are fetched or rebuilt by `make`. The small results the server reads stay in `pipeline/output/`.
 
@@ -230,7 +230,7 @@ Connecting a real Pi: in the app go to **Hive cameras > Add station** and enter 
 * **Planner**: one new hive at the top suggested site turns a lone corridor into a located nest in 67 of 80 runs with few departures (an oracle that knows the nest manages 73) and in 77 of 80 runs with well-observed corridors (oracle: 80).
 * **Heading camera** (simulated): a sky-facing camera recovers directions within about 4°, an outward camera within about 3° inside its view. In the demo the extra camera takes the newly located nest from 220 m to 76 m off.
 * **Pollinator checks:** the example from the screen designs (2 colonies near Wertwiesenpark) comes out amber, overlapping a wild-bee meadow with 3 apiaries within 800 m, and a green spot is found 750 m away. The public API carries no owner names, tokens or exact apiary positions.
-* Run `python3 server/tests/test_triangulate.py`, `python3 server/tests/test_api.py`, `python3 server/tests/test_eco.py`, `python3 server/tests/test_bloom.py`, `python3 server/tests/test_sensors.py`, `python3 server/tests/test_health.py`, `python3 server/tests/test_osm.py`, `python3 server/tests/test_ondemand.py`, `python3 server/tests/test_nest_reports.py`, `python3 server/tests/test_correlate.py` and `python3 pi/test_agent.py`.
+* Run `python3 server/tests/test_triangulate.py`, `python3 server/tests/test_api.py`, `python3 server/tests/test_eco.py`, `python3 server/tests/test_bloom.py`, `python3 server/tests/test_sensors.py`, `python3 server/tests/test_health.py`, `python3 server/tests/test_osm.py`, `python3 server/tests/test_ondemand.py`, `python3 server/tests/test_nest_reports.py`, `python3 server/tests/test_correlate.py`, `python3 server/tests/test_city.py` and `python3 pi/test_agent.py`.
 
 ## Honest limits of this proof of concept
 

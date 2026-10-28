@@ -44,7 +44,10 @@ python3 tools/demo.py --live              # second terminal, from the project fo
 | `BEEMAP_MAX_RANGE_M` | 3000 | Longest flight line considered |
 | `BEEMAP_M_PER_MIN` | 100 | Metres per minute for round-trip distance estimates |
 | `BEEMAP_WEB` | `web/` | Folder served as the website |
-| `BEEMAP_SERVER` | `http://127.0.0.1:8000` | Server address used by `tools/admin.py` |
+| `BEEMAP_SERVER` | `http://127.0.0.1:8000` | Server address used by `tools/admin.py` and `pipeline/scripts/beemap_sync.py` |
+| `BEEMAP_PIPELINE_OUT` | `pipeline/output` | Folder of data pipeline results the server reads for `/api/city/*` |
+
+The data pipeline also reads `BEEMAP_NC_SHARE` and `BEEMAP_WALKS_SHARE` (private share tokens for its downloads); see [pipeline.md](pipeline.md).
 
 ## The admin tool
 
@@ -63,8 +66,14 @@ python3 tools/admin.py station-add ID "Name" LAT LON --heading DEG [--planned]
 python3 tools/admin.py station-token ID
 python3 tools/admin.py box-add ID "Name" LAT LON [--station HIVE]
 python3 tools/admin.py box-token ID
-python3 tools/admin.py health [HIVE]                # colony health (private)
+python3 tools/admin.py health [HIVE] [--hive NAME]  # colony health (private); --hive: one colony at a station with several
 ```
+
+`health` without an ID lists every colony. A station with several colonies (such as `hornet-pi`, which gets the three OpenSpace hives from the data pipeline) shows one line per colony, named after the station and the colony, e.g. `OpenSpace hives · Beehive No.2`. `health hornet-pi` details every colony at that station; `health hornet-pi --hive "Beehive No.2"` details just one.
+
+## Refreshing the city data (data pipeline)
+
+The Bee Balance, public sightings, street heat, flight hours and hive camera study come from `pipeline/`. Their results are committed in `pipeline/output/`, so **nothing needs running for a normal start or a pitch**. Rerun a step only when new data arrives (a new season of hive data, new recordings, fresh sightings); the server picks up changed files without a restart. To send the latest real hive sensors into a running server: `cd pipeline && make beemap BEEMAP=http://host:8000`. Setup, steps and caveats are in [pipeline.md](pipeline.md).
 
 ## Installing a nest-photo model
 
@@ -93,3 +102,6 @@ Check its accuracy on photos it never saw during training before relying on the 
 | **No streets on the map** | Browser can't load map tiles | Check the *browser's* internet; disable blockers for `tile.openstreetmap.org`; try another background under Layers. The note bottom left says what failed. |
 | "Couldn't reach OpenStreetMap / iNaturalist" | Server has no internet, or the service is busy | Retries automatically every 10 minutes; built-in data meanwhile. `BEEMAP_ONLINE=off` to stop trying. |
 | Nest report photos "need a check by a person" | No model installed, or photo too small, blurry or dark | Expected without a model; see above |
+| Bee Balance, sightings or street heat layer says "run make …"; their cards are missing | `pipeline/output/` lacks that file, or `BEEMAP_PIPELINE_OUT` points elsewhere | `GET /api/city/status` lists what's there; restore the files from git, or run that pipeline step |
+| `make beemap`: "hourly.csv missing" | The raw hive series are kept local, not in git | Run `make fetch analyse` on that machine first |
+| Pi: VespAI weights won't load | Current YOLOv5 from GitHub | Set `yolov5_dir` to a checkout of commit `23701eac` (see [hardware.md](hardware.md)) |

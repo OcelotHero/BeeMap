@@ -28,6 +28,12 @@ BeeMap is **one public website**, a full-screen map like Google Maps, open to ev
 - **Colony health** (private, for the city and beekeepers): in-hive temperature and humidity and entrance activity, compared with the weather, flag colonies that need a look.
 - Real land cover, nature reserves and place names are fetched automatically from **OpenStreetMap**.
 
+**Measured city data** (from the offline [data pipeline](pipeline.md))
+- **Bee Balance**: every 250 m square of Heilbronn rated hive-ready, plant first or no extra hives by the bee food within 1.5 km, with the food within 300 m for wild bees. Schools and neighbourhoods get their square's verdict.
+- **Public sightings**: Asian hornet, European hornet and honey bee records from iNaturalist, naturgucker and Observation.org (via GBIF).
+- **Street heat** from the summer-school temperature walks, and **bee flight hours** by month for Heilbronn and 8 other cities.
+- **Real hives**: the OpenSpace hives' camera (a trained bee detector) and their BeeHappy sensors, which feed colony health.
+
 ## Who it's for
 
 | Who | What they use |
@@ -41,7 +47,7 @@ BeeMap is **one public website**, a full-screen map like Google Maps, open to ev
 
 A **working proof of concept** for a hackathon. Everything runs end to end, and simulated hornets go through the real Raspberry Pi code. But:
 
-- Hornets, SensoBox readings and colony data in the demo are **simulated**.
+- Hornets, SensoBox readings and colony data in the demo are **simulated**. The exceptions are the data pipeline's layers and the three OpenSpace hives, which are real but rest on little data (six hours of usable camera footage, one apiary).
 - The **apiary register is demo data**; land cover and nature areas are real when OpenStreetMap is reachable.
 - The bundled **nest-photo image model doesn't exist yet**; the code to use one does.
 - Thresholds are **rules of thumb** that have not been validated against real colonies or nests.

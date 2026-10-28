@@ -43,3 +43,18 @@ CARTO now needs a key outside its own platform, and an earlier misspelt CARTO ad
 
 **14. No build step for the web page.**
 Plain JavaScript and a bundled Leaflet: anyone at the hackathon can read and change it, and it runs offline apart from tiles and fonts.
+
+**15. Heavy analysis runs offline; the server only reads its results.**
+The data pipeline needs pandas, scipy and ultralytics, a GPU for training, and gigabytes of raw data. The server needs none of that: it reads small CSV and JSON files with the standard library and re-reads them when they change. The results are committed, so a fresh checkout shows every layer, and the pipeline is rerun only when new data arrives. A missing file disables one layer, never the server.
+
+**16. Real hive data arrives through the device API.**
+`make beemap` sends the real BeeHappy sensors and weather station the way a Pi or SensoBox would, instead of writing to the database. The same authentication, validation and colony-health code applies, and the sync works against any BeeMap server, local or deployed.
+
+**17. One station, several colonies.**
+An apiary often has one camera or gateway but several hives. Readings carry an optional colony name rather than needing a station per hive; unnamed readings behave as before, so existing Pis need no change.
+
+**18. Two food models, both shown.**
+The server's 800 m monthly flower model and the pipeline's 1.5 km / 300 m Bee Balance answer different questions (seasonal gaps at a spot versus a city-wide verdict) from different land-use sources. They're kept separate: the place card shows Bee Balance as a labelled second opinion below the spot check, with its wider range stated.
+
+**19. VespAI at its own field setting.**
+The Pi example config uses VespAI's own 0.8 confidence and the YOLOv5 version its weights were saved with. On a real Pi 4 with a Camera Module 3, lower thresholds boxed hair, flowers and bottles, and newer YOLOv5 code couldn't load the weights at all.
