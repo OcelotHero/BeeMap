@@ -98,10 +98,10 @@ def send_departures(hook, lat, lon, heading, counts, rng, t_from, t_to):
     for name, k in counts.items():
         plan += [(rng.uniform(t_from, t_to), name) for _ in range(k)]
     if plan and rng.random() < 0.5:
-        plan.append((rng.uniform(t_from, t_to), None))      # one that wandered off elsewhere
+        plan.append((rng.uniform(t_from, t_to), ""))      # one that wandered off elsewhere
     for t, name in sorted(plan):
         # heading camera: about ±6° (it sees metres of the flight, not centimetres)
-        compass = rng.uniform(0, 360) if name is None else true_bearing(lat, lon, *NESTS[name]) + rng.gauss(0, 6)
+        compass = rng.uniform(0, 360) if name == "" else true_bearing(lat, lon, *NESTS[name]) + rng.gauss(0, 6)
         t_end = agent.fake_visit(hook, rng.uniform(0, 360), t, rng)     # detection camera: presence + timing
         agent.fake_heading(hook, compass % 360, heading, t_end, rng)
         hook.flush()

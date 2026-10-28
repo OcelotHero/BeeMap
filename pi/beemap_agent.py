@@ -52,12 +52,16 @@ class Config:
     station_id: str
     token: str
     weights: str = "models/vespai.pt"
+    yolov5_dir: str = ""               # local ultralytics/yolov5 checkout (VespAI needs commit 23701eac); empty = GitHub
     target_class: str = "velutina"     # matched against model.names, case-insensitive
     min_confidence: float = 0.6
     camera: str = "picamera2"          # picamera2 | opencv:<index> | file:<path>
     width: int = 1280
     height: int = 720
     fps: float = 10.0
+    rotate: int = 0                    # detection camera: rotate clockwise 0 | 90 | 180 | 270 before anything else
+    autofocus: bool = True             # Camera Module 3: continuous autofocus (ignored by cameras without it)
+    stream_port: int = 0               # >0: live view with boxes at http://<pi>:<port>/ for aiming the camera
     lost_after_s: float = 0.6          # hornet gone this long = it has left
     min_track_points: int = 4
     max_jump: float = 0.25             # max move between frames, as a fraction of the frame
@@ -682,8 +686,18 @@ def open_camera(cfg: Config, spec: str | None = None, size: tuple[int, int] | No
         cam = Picamera2(num)
         cam.configure(cam.create_video_configuration(main={"size": (width, height), "format": "RGB888"}))
         cam.start()
+        if cfg.autofocus:
+            try:                                  # Camera Module 3 has autofocus; older modules don't
+                from libcamera import controls
+                cam.set_controls({"AfMode": controls.AfModeEnum.Continuous})
+            except Exception as e:
+                log.debug("no autofocus on this camera: %s", e)
         time.sleep(1)
-        return lambda: cam.capture_array()       # RGB888 on Picamera2 is BGR order in memory, as OpenCV expects
+        rot = _rotation(cfg) if spec == cfg.camera else None
+        if rot is None:
+            return lambda: cam.capture_array()   # RGB888 on Picamera2 is BGR order in memory, as OpenCV expects
+        import cv2
+        return lambda: cv2.rotate(cam.capture_array(), rot)
     import cv2
     src = spec.split(":", 1)[1] if ":" in spec else "0"
     cap = cv2.VideoCapture(int(src) if src.isdigit() else src)
@@ -692,23 +706,50 @@ def open_camera(cfg: Config, spec: str | None = None, size: tuple[int, int] | No
     if not cap.isOpened():
         raise SystemExit(f"Could not open camera '{spec}'.")
 
+    rot = _rotation(cfg) if spec == cfg.camera else None
+
     def read():
         ok, f = cap.read()
         if not ok and spec.startswith("file:"):
             cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
             ok, f = cap.read()
+        if ok and rot is not None:
+            f = cv2.rotate(f, rot)
         return f if ok else None
     return read
 
 
+def _rotation(cfg: Config):
+    if not cfg.rotate:
+        return None
+    import cv2
+    rots = {90: cv2.ROTATE_90_CLOCKWISE, 180: cv2.ROTATE_180, 270: cv2.ROTATE_90_COUNTERCLOCKWISE}
+    if cfg.rotate not in rots:
+        raise SystemExit(f"rotate must be 0, 90, 180 or 270, not {cfg.rotate}")
+    return rots[cfg.rotate]
+
+
 def load_model(cfg: Config):
     """VespAI ships YOLOv5 weights. Loaded through torch.hub so the exact
-    VespAI checkpoint works without changes."""
+    VespAI checkpoint works without changes.
+
+    The VespAI checkpoint is a whole pickled model and only loads with the
+    YOLOv5 code it was saved with (commit 23701eac); the current GitHub
+    version fails. Set yolov5_dir= to a local checkout of that commit."""
     import torch
-    if not Path(cfg.weights).exists():
+    os.environ.setdefault("TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD", "1")   # torch >= 2.6 refuses pickled models otherwise
+    weights = str(Path(cfg.weights).expanduser())
+    if not Path(weights).exists():
         raise SystemExit(f"Model weights not found at {cfg.weights}. Put the VespAI .pt file there "
                          "or set weights= in the config.")
-    model = torch.hub.load("ultralytics/yolov5", "custom", path=cfg.weights, trust_repo=True)
+    if cfg.yolov5_dir:
+        repo = Path(cfg.yolov5_dir).expanduser()
+        if not (repo / "hubconf.py").exists():
+            raise SystemExit(f"yolov5_dir={cfg.yolov5_dir} has no hubconf.py. Check out ultralytics/yolov5 "
+                             "at commit 23701eac there.")
+        model = torch.hub.load(str(repo), "custom", path=weights, source="local", trust_repo=True, verbose=False)
+    else:
+        model = torch.hub.load("ultralytics/yolov5", "custom", path=weights, trust_repo=True)
     model.conf = cfg.min_confidence
     names = model.names if isinstance(model.names, dict) else dict(enumerate(model.names))
     if not any(cfg.target_class.lower() in str(n).lower() for n in names.values()):
@@ -725,11 +766,74 @@ def load_model(cfg: Config):
     return infer
 
 
+class LiveStream:
+    """Live view for aiming the camera: the latest frame with VespAI's boxes, as an
+    MJPEG stream any browser on the same network can open at http://<pi>:<port>/.
+    No login, so only switch it on in a network you trust."""
+
+    PAGE = (b"<!doctype html><title>BeeMap station</title><body style='margin:0;background:#111'>"
+            b"<img src='/stream' style='width:100vw;height:100vh;object-fit:contain'></body>")
+
+    def __init__(self, port: int):
+        from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+        self.jpeg, self.cond = None, threading.Condition()
+        live = self
+
+        class Handler(BaseHTTPRequestHandler):
+            def log_message(self, *a):
+                pass
+
+            def do_GET(self):
+                self.send_response(200)
+                if self.path != "/stream":
+                    self.send_header("Content-Type", "text/html")
+                    self.end_headers()
+                    self.wfile.write(LiveStream.PAGE)
+                    return
+                self.send_header("Content-Type", "multipart/x-mixed-replace; boundary=frame")
+                self.end_headers()
+                try:
+                    while True:
+                        with live.cond:
+                            live.cond.wait(timeout=5)
+                            jpeg = live.jpeg
+                        if jpeg:
+                            self.wfile.write(b"--frame\r\nContent-Type: image/jpeg\r\nContent-Length: "
+                                             + str(len(jpeg)).encode() + b"\r\n\r\n" + jpeg + b"\r\n")
+                except (BrokenPipeError, ConnectionResetError):
+                    pass
+
+        server = ThreadingHTTPServer(("0.0.0.0", port), Handler)
+        server.daemon_threads = True
+        threading.Thread(target=server.serve_forever, daemon=True).start()
+        log.info("live view on port %d", port)
+
+    def push(self, frame, boxes: list, cfg: Config, fps: float):
+        import cv2
+        img = frame.copy()
+        for x1, y1, x2, y2, conf, cls in boxes:
+            target = cfg.target_class.lower() in str(cls).lower()
+            if conf < cfg.min_confidence:
+                continue
+            colour = (27, 72, 194) if target else (200, 200, 200)       # hornet orange / grey (BGR)
+            cv2.rectangle(img, (int(x1), int(y1)), (int(x2), int(y2)), colour, 3)
+            cv2.putText(img, f"{cls} {conf:.2f}", (int(x1), max(18, int(y1) - 8)),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.6, colour, 2)
+        cv2.putText(img, f"{cfg.station_id}  {fps:.1f} fps  conf >= {cfg.min_confidence}", (12, 28),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
+        ok, buf = cv2.imencode(".jpg", img, [cv2.IMWRITE_JPEG_QUALITY, 80])
+        if ok:
+            with self.cond:
+                self.jpeg = buf.tobytes()
+                self.cond.notify_all()
+
+
 def run_camera(cfg: Config):
     hook = BeeMapHook(cfg=cfg)
     hook.model_name = Path(cfg.weights).name
     read = open_camera(cfg)
     infer = load_model(cfg)
+    live = LiveStream(cfg.stream_port) if cfg.stream_port else None
     period = 1.0 / cfg.fps
     log.info("watching the bait station at %.0f fps", cfg.fps)
     if hook.heading_cam:
@@ -741,8 +845,11 @@ def run_camera(cfg: Config):
         if frame is None:
             time.sleep(0.5)
             continue
-        hook.frame(frame, infer(frame), t0)
+        boxes = infer(frame)
+        hook.frame(frame, boxes, t0)
         hook.hive.count(frame)
+        if live:
+            live.push(frame, boxes, cfg, hook.fps)
         dt = time.time() - last
         last = time.time()
         hook.fps = 0.9 * hook.fps + 0.1 * (1 / dt if dt > 0 else 0)
