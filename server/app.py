@@ -55,6 +55,14 @@ ONLINE_SECS = 150
 # Round-trip timing rule of thumb used by beekeepers: roughly 100 m per minute
 # away (out, unload, back). Rough, so it only ever gives a wide ellipse.
 METRES_PER_MINUTE = float(os.environ.get("BEEMAP_M_PER_MIN", "100"))
+# Camera alerts are sorted by the visit's median VespAI confidence: at or above
+# AUTO_CONFIRM confirmed, below AUTO_DISMISS dismissed, in between a person
+# checks it (and the Pi sends a short clip). Visits without a median (older
+# agents) wait for a person, as before.
+AUTO_CONFIRM = float(os.environ.get("BEEMAP_AUTO_CONFIRM", "0.9"))
+AUTO_DISMISS = float(os.environ.get("BEEMAP_AUTO_DISMISS", "0.7"))
+CLIPS = DATA / "clips"                 # manual-check clips stay private (not under /images)
+MAX_CLIP_BYTES = 20 * 1024 * 1024
 
 DATA.mkdir(parents=True, exist_ok=True)
 IMAGES.mkdir(parents=True, exist_ok=True)
@@ -92,7 +100,8 @@ CREATE TABLE IF NOT EXISTS detections (
   ts REAL NOT NULL,                  -- when the hornet left (or was seen)
   arrived_ts REAL,
   species TEXT DEFAULT 'velutina',
-  confidence REAL,
+  confidence REAL,                   -- best box of the visit
+  confidence_median REAL,            -- median box of the visit: decides auto confirm / dismiss
   exit_angle_img REAL,               -- clockwise from image top, as measured on the Pi
   straightness REAL,                 -- 0..1, how straight the exit path was
   bearing_deg REAL,                  -- compass bearing (derived for cameras, given for sightings)
@@ -105,6 +114,8 @@ CREATE TABLE IF NOT EXISTS detections (
   reporter TEXT DEFAULT '',
   status TEXT DEFAULT 'pending',     -- pending | confirmed | rejected
   reviewed_at REAL,
+  reviewed_by TEXT,                  -- auto (by confidence) | manual
+  clip TEXT,                         -- short video for a manual check, in data/clips/
   resolved_nest_id INTEGER,          -- set once the nest it led to is removed
   event_id TEXT,                     -- the Pi's own id, so retries don't double count
   heading_source TEXT                -- heading_camera | detector | sighting | NULL (presence only)
@@ -196,8 +207,9 @@ with db() as c:
         if col.split()[0] not in ncols:
             c.execute(f"ALTER TABLE nest_reports ADD COLUMN {col}")
     dcols = {r[1] for r in c.execute("PRAGMA table_info(detections)")}
-    if "heading_source" not in dcols:
-        c.execute("ALTER TABLE detections ADD COLUMN heading_source TEXT")
+    for col in ("heading_source TEXT", "confidence_median REAL", "reviewed_by TEXT", "clip TEXT"):
+        if col.split()[0] not in dcols:
+            c.execute(f"ALTER TABLE detections ADD COLUMN {col}")
     hcols = {r[1] for r in c.execute("PRAGMA table_info(hive_readings)")}
     if "hive" not in hcols:                           # one station can hold several colonies
         c.execute("ALTER TABLE hive_readings ADD COLUMN hive TEXT DEFAULT ''")
@@ -355,7 +367,23 @@ def public_detection(d: dict, stations: dict[str, dict]) -> dict:
     out.pop("reporter", None)
     out.pop("note", None)
     out.pop("event_id", None)
+    out["has_clip"] = bool(out.pop("clip", None))     # the clip itself is admin-only
     return out
+
+
+def auto_review(median: float | None) -> str:
+    """confirmed | rejected | pending (a person checks) from the visit's median confidence."""
+    if median is None:
+        return "pending"
+    if median >= AUTO_CONFIRM:
+        return "confirmed"
+    return "rejected" if median < AUTO_DISMISS else "pending"
+
+
+def visit_reply(det: dict) -> dict:
+    """What the Pi gets back for a visit: the decision, and whether to send a clip."""
+    return {"ok": True, "id": det["id"], "bearing_deg": det["bearing_deg"], "status": det["status"],
+            "clip_wanted": det["status"] == "pending" and det.get("reviewed_by") is None and not det.get("clip")}
 
 
 # ----------------------------------------------------------- nest estimation
@@ -716,8 +744,10 @@ async def heartbeat(station_id: str, status: str = Form("{}"), image: UploadFile
 async def station_detection(station_id: str, meta: str = Form(...), image: UploadFile | None = File(None),
                             st: dict = Depends(require_station)):
     """One hornet visit. `meta` is JSON:
-    {event_id, ts, arrived_ts, species, confidence, exit_angle_img, straightness, track:[[t,x,y],...]}
-    x, y are normalised 0..1 image coordinates (y downwards)."""
+    {event_id, ts, arrived_ts, species, confidence, confidence_median, exit_angle_img, straightness,
+     track:[[t,x,y],...]}
+    x, y are normalised 0..1 image coordinates (y downwards). The reply says how the visit was
+    sorted (status) and whether the Pi should send its clip for a manual check (clip_wanted)."""
     try:
         m = json.loads(meta)
     except json.JSONDecodeError:
@@ -725,10 +755,10 @@ async def station_detection(station_id: str, meta: str = Form(...), image: Uploa
     event_id = str(m.get("event_id") or "")
     with db() as c:
         if event_id:   # the Pi retries after network drops; don't double count
-            dup = c.execute("SELECT id FROM detections WHERE station_id=? AND event_id=?",
+            dup = c.execute("SELECT * FROM detections WHERE station_id=? AND event_id=?",
                             (station_id, event_id)).fetchone()
             if dup:
-                return {"ok": True, "id": dup["id"], "duplicate": True}
+                return {**visit_reply(dict(dup)), "duplicate": True}
     img_name = None
     if image is not None:
         img_name = f"{station_id}_{int(m.get('ts', time.time()) * 1000)}_{secrets.token_hex(3)}.jpg"
@@ -745,23 +775,56 @@ async def station_detection(station_id: str, meta: str = Form(...), image: Uploa
         source = "detector" if exit_angle is not None else None
         sigma = departure_sigma(straight)
     bearing = camera_bearing(st, exit_angle) if exit_angle is not None else None
+    try:
+        median = None if m.get("confidence_median") is None else float(m["confidence_median"])
+    except (TypeError, ValueError):
+        raise HTTPException(400, "confidence_median must be a number")
+    status = auto_review(median)
+    decided = status != "pending"
     with db() as c:
         cur = c.execute(
-            "INSERT INTO detections (source,station_id,ts,arrived_ts,species,confidence,exit_angle_img,"
-            "straightness,bearing_deg,bearing_sigma,track_json,image,event_id,heading_source) VALUES "
-            "('camera',?,?,?,?,?,?,?,?,?,?,?,?,?)",
+            "INSERT INTO detections (source,station_id,ts,arrived_ts,species,confidence,confidence_median,"
+            "exit_angle_img,straightness,bearing_deg,bearing_sigma,track_json,image,event_id,heading_source,"
+            "status,reviewed_at,reviewed_by) VALUES ('camera',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
             (station_id, m.get("ts", time.time()), m.get("arrived_ts"), m.get("species", "velutina"),
-             m.get("confidence"), exit_angle, straight, bearing,
+             m.get("confidence"), median, exit_angle, straight, bearing,
              sigma if bearing is not None else None,
              json.dumps(m.get("track")) if m.get("track") else None, img_name,
-             event_id or None, source))
+             event_id or None, source, status,
+             time.time() if decided else None, "auto" if decided else None))
         det = dict(c.execute("SELECT * FROM detections WHERE id=?", (cur.lastrowid,)).fetchone())
         c.execute("UPDATE stations SET last_seen=? WHERE id=?", (time.time(), station_id))
         stations = {s["id"]: dict(s) for s in c.execute("SELECT * FROM stations")}
-    await hub.send("detection", public_detection(det, stations))
-    if bearing is not None:
+    await hub.send("detection", {**public_detection(det, stations), "new": True})
+    if bearing is not None and status != "rejected":
         await push_state()
-    return {"ok": True, "id": det["id"], "bearing_deg": bearing}
+    return visit_reply(det)
+
+
+@app.post("/api/stations/{station_id}/detections/{event_id}/clip")
+async def station_clip(station_id: str, event_id: str, clip: UploadFile = File(...),
+                       st: dict = Depends(require_station)):
+    """The short video of a visit, sent when the visit's reply asked for it (clip_wanted).
+    MP4 or AVI, at most 20 MB. Kept private for the person checking the alert."""
+    with db() as c:
+        det = c.execute("SELECT id, clip FROM detections WHERE station_id=? AND event_id=?",
+                        (station_id, event_id)).fetchone()
+    if not det:
+        raise HTTPException(404, "No visit with that event_id from this station.")
+    raw = await clip.read(MAX_CLIP_BYTES + 1)
+    if len(raw) > MAX_CLIP_BYTES:
+        raise HTTPException(413, "That clip is too large (20 MB at most).")
+    ext = "mp4" if raw[4:8] == b"ftyp" else "avi" if raw[:4] == b"RIFF" and raw[8:12] == b"AVI " else None
+    if not ext:
+        raise HTTPException(415, "The clip must be an MP4 or AVI video.")
+    CLIPS.mkdir(parents=True, exist_ok=True)
+    name = f"{det['id']}.{ext}"
+    (CLIPS / name).write_bytes(raw)
+    if det["clip"] and det["clip"] != name:
+        (CLIPS / det["clip"]).unlink(missing_ok=True)
+    with db() as c:
+        c.execute("UPDATE detections SET clip=? WHERE id=?", (name, det["id"]))
+    return {"ok": True, "id": det["id"]}
 
 
 # ============================================================== DETECTIONS
@@ -788,7 +851,9 @@ async def review(det_id: int, r: Review):
     with db() as c:
         if not c.execute("SELECT 1 FROM detections WHERE id=?", (det_id,)).fetchone():
             raise HTTPException(404, "No such alert.")
-        c.execute("UPDATE detections SET status=?, reviewed_at=? WHERE id=?", (r.status, time.time(), det_id))
+        decided = r.status != "pending"
+        c.execute("UPDATE detections SET status=?, reviewed_at=?, reviewed_by=? WHERE id=?",
+                  (r.status, time.time() if decided else None, "manual" if decided else None, det_id))
         if r.species is not None:
             c.execute("UPDATE detections SET species=? WHERE id=?", (r.species, det_id))
         det = dict(c.execute("SELECT * FROM detections WHERE id=?", (det_id,)).fetchone())
@@ -796,6 +861,17 @@ async def review(det_id: int, r: Review):
     await hub.send("detection", public_detection(det, stations))
     await push_state()
     return public_detection(det, stations)
+
+
+@app.get("/api/admin/detections/{det_id}/clip", dependencies=[Depends(require_admin)])
+def detection_clip(det_id: int):
+    """The private clip of an alert that needed a manual check."""
+    with db() as c:
+        r = c.execute("SELECT clip FROM detections WHERE id=?", (det_id,)).fetchone()
+    if not r or not r["clip"] or not (CLIPS / r["clip"]).exists():
+        raise HTTPException(404, "No clip for that alert.")
+    kind = "video/mp4" if r["clip"].endswith(".mp4") else "video/x-msvideo"
+    return FileResponse(CLIPS / r["clip"], media_type=kind, filename=f"alert-{r['clip']}")
 
 
 # ---- correlating nest reports with the smart hives ------------------------------

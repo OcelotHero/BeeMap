@@ -22,7 +22,7 @@ beemap/
 │   ├── requirements.txt       Server dependencies (onnxruntime optional)
 │   ├── tests/                 Test suites (see testing.md)
 │   ├── models/                (optional) nest_classifier.onnx + .labels.txt: not included
-│   ├── data/                  (created at run time) database, photos, admin key: not in the repo
+│   ├── data/                  (created at run time) database, photos, visit clips, admin key: not in the repo
 │   ├── osm_data.json          (created at run time) cached OpenStreetMap data
 │   └── bloom_data.json        (created at run time) cached iNaturalist bloom months
 │
@@ -84,6 +84,7 @@ beemap/
 | Pollen-type weights for bees | `server/ecology.py` (`POLLEN_BEE_WEIGHT`) |
 | Nest-area maths | `server/triangulate.py` |
 | Smart-hive site planning | `server/triangulate.py` (planning section) |
+| Auto confirm / dismiss of camera alerts | `server/app.py` (`AUTO_CONFIRM`, `AUTO_DISMISS`, `auto_review`), or `BEEMAP_AUTO_*` |
 | Colony-health thresholds | `server/health.py` |
 | Nest-photo thresholds | `server/nest_classifier.py` (`MIN_*`, `AUTO_CONFIRM*`) |
 | Report-to-flight-line matching | `server/correlate.py` |

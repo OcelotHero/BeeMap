@@ -24,6 +24,7 @@
 | Foraging-distance model for smart-hive planning | `triangulate.FORAGE_SCALE_M` | Distances between real nests and the hives that saw them |
 | Bee Balance food weights per land use; verdicts by city quartiles | `pipeline/scripts/bee_balance.py` (`FORAGE_WEIGHT`, `THRESHOLDS`) | Compare verdicts with hive-scale weight gain; agree fixed thresholds with beekeepers |
 | Flight-hours rule factors, especially humidity | `pipeline/scripts/activity_model.py` (`factors`) | Weeks of continuous hive-camera footage |
+| 0.9 / 0.7 median-confidence thresholds for confirming and dismissing camera alerts | `BEEMAP_AUTO_CONFIRM`, `BEEMAP_AUTO_DISMISS` | Have people check a season's clips and snapshots blind, then set the thresholds from their verdicts |
 | 1 s frame interval of the hive recordings | `pipeline/scripts/common.py` (`FRAME_INTERVAL_S`) | Ask the organisers, or timestamp new recordings |
 
 ## Known gaps
@@ -38,6 +39,7 @@
 - **Two food models** (800 m flower model and 1.5 km Bee Balance) use different land-use sources and weights, and can disagree. They aren't reconciled yet.
 - **Pipeline output isn't checked automatically.** A rerun that writes odd numbers goes straight onto the map; review `findings.md` and the plots before committing new results.
 - **3D data** (`make lights`) is produced but not shown by the web page.
+- **Clips are slideshows on a Pi 4.** The model runs at about 1 frame a second there, and the clip only has the frames the model saw. No clip review on the website; the city watches them through `tools/admin.py clip`.
 - **Readings aren't de-duplicated.** Hive and SensoBox readings sent twice are stored twice; `make beemap` relies on its local state file to send each hour once.
 
 ## Roadmap

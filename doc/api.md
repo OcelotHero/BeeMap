@@ -56,13 +56,15 @@ At most 20 submissions per 10 minutes per address.
 | Method and path | Auth | Body |
 |---|---|---|
 | `POST /api/stations/{id}/heartbeat` | station | form: `status` (JSON), optional `image` (stored privately). Returns the station's heading calibration. |
-| `POST /api/stations/{id}/detections` | station | form: `meta` (JSON), optional `image` |
+| `POST /api/stations/{id}/detections` | station | form: `meta` (JSON), optional `image`. Returns `{id, bearing_deg, status, clip_wanted}`: `status` is how the visit was sorted by confidence; `clip_wanted` asks for its clip. A retry gets the same answer (with `duplicate`). |
+| `POST /api/stations/{id}/detections/{event_id}/clip` | station | form: `clip`, an MP4 or AVI of the visit, at most 20 MB. Stored privately. `404` for an unknown event, `415` for anything else than MP4/AVI. |
 | `POST /api/stations/{id}/hive` | station | `{"readings": [{ts, hive_temp_c, hive_humidity, activity, hive}]}`. `hive` (optional, up to 60 characters) names the colony when one station watches several. |
 | `POST /api/sensoboxes/{id}/readings` | box | `{"readings": [{ts, temp_c, humidity, pressure_hpa, lux, uv_index, pollen_total, pollen: {type: grains_m3}}]}` |
 
 **Detection `meta` fields**
 - `event_id`: a retried upload with the same ID isn't counted twice.
-- `ts`, `arrived_ts`, `confidence`, `track` (`[[t, x, y], …]`, image-normalised).
+- `ts`, `arrived_ts`, `confidence` (best box), `track` (`[[t, x, y], …]`, image-normalised).
+- `confidence_median`: median box confidence of the visit. At least `BEEMAP_AUTO_CONFIRM` (0.9) confirms the alert, below `BEEMAP_AUTO_DISMISS` (0.7) dismisses it, in between it waits for a person and the Pi is asked for a clip. Without it the alert waits for a person.
 - Two-camera stations: `heading_rel_deg`, `heading_sigma_deg`, `heading_source`.
 - Single-camera stations: `exit_angle_img`, `straightness`.
 
@@ -78,7 +80,8 @@ Readings may be sent one at a time or in batches of up to 20,000. Every field is
 | `PATCH /api/stations/{id}` | Name, position, heading calibration (past bearings are recomputed) |
 | `GET /api/stations/{id}/token` | Device token for the Pi config, and the station's `created` time |
 | `DELETE /api/stations/{id}` | Remove a station |
-| `POST /api/detections/{id}/review` | `{status: confirmed\|rejected\|pending, species?}` |
+| `POST /api/detections/{id}/review` | `{status: confirmed\|rejected\|pending, species?}`. Overrides an automatic decision; `reviewed_by` becomes `manual`. |
+| `GET /api/admin/detections/{id}/clip` | The private clip of an alert (`video/mp4` or `video/x-msvideo`); `404` if there's none |
 | `PATCH /api/nests/{id}` | `{status: suspected\|assigned\|removed, assigned_to?, place?}`. Removed areas stop counting their departures. |
 | `GET /api/admin/nest-reports` | All reports with exact position, note, photo path, photo check and match; flight-line-backed reports first |
 | `PATCH /api/admin/nest-reports/{id}` | `{status: pending\|asian_hornet\|other_species\|not_found\|removed, species?}`. Removing a matched report also closes its nest area. |
@@ -96,7 +99,7 @@ Messages are `{"type": …, "data": …}`:
 
 | Type | Sent when | Data |
 |---|---|---|
-| `detection` | A new or reviewed alert | The alert |
+| `detection` | A new or reviewed alert | The alert; `new: true` for a visit just arrived |
 | `station`, `station_deleted` | A hive changes, goes online or offline, or is removed | The station, or `{id}` |
 | `nests`, `lines` | Nest areas recomputed | All nest areas, or all flight lines |
 | `planning_changed` | Hives added or installed, or nest areas changed | none |

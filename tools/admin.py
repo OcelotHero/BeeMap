@@ -6,8 +6,9 @@ operations; changes are made here, with the admin key.
 The key: BEEMAP_ADMIN_KEY if you set one, otherwise the server generates one
 in server/data/admin_key.txt on first start (this tool reads it from there).
 
-  python3 tools/admin.py alerts                     # hornet alerts waiting for confirmation
+  python3 tools/admin.py alerts                     # hornet alerts waiting for a manual check (--all: every alert)
   python3 tools/admin.py confirm 12                 # confirm alert 12   (dismiss 12 = not a hornet)
+  python3 tools/admin.py clip 12                    # save alert 12's clip from the Pi (alert-12.mp4) to watch
   python3 tools/admin.py nests                      # suspected nest areas
   python3 tools/admin.py assign 3 "Feuerwehr Team 2"
   python3 tools/admin.py removed 3
@@ -76,6 +77,7 @@ def main(argv=None):
     sp.add_parser("alerts").add_argument("--all", action="store_true")
     for c in ("confirm", "dismiss"):
         sp.add_parser(c).add_argument("id", type=int)
+    a = sp.add_parser("clip"); a.add_argument("id", type=int); a.add_argument("--out", help="file to save it to")
     sp.add_parser("nests")
     a = sp.add_parser("assign"); a.add_argument("id", type=int); a.add_argument("team"); a.add_argument("--place", default="")
     sp.add_parser("removed").add_argument("id", type=int)
@@ -97,11 +99,24 @@ def main(argv=None):
     if a.cmd == "alerts":
         for d in api("GET", "/api/detections", params={"limit": 200, **({} if a.all else {"status": "pending"})}):
             b = "–" if d["bearing_deg"] is None else f"{d['bearing_deg']:.0f}°"
-            print(f"#{d['id']:<5} {when(d['ts'])}  {d['status']:<9} {d['place'][:30]:<30} flew {b:>5}  {d.get('image_url') or ''}")
+            conf = "  –  " if d.get("confidence_median") is None else f"{d['confidence_median']:.2f}"
+            how = {"auto": "auto", "manual": "by hand"}.get(d.get("reviewed_by"), "")
+            print(f"#{d['id']:<5} {when(d['ts'])}  {d['status']:<9} {how:<7} conf {conf}  {d['place'][:30]:<30} "
+                  f"flew {b:>5}  {d.get('image_url') or ''}{'  [clip]' if d.get('has_clip') else ''}")
     elif a.cmd in ("confirm", "dismiss"):
         api("POST", f"/api/detections/{a.id}/review", json={"status": "confirmed" if a.cmd == "confirm" else "rejected",
                                                             **({} if a.cmd == "confirm" else {"species": "not velutina"})})
         print(f"Alert {a.id} {'confirmed' if a.cmd == 'confirm' else 'dismissed'}.")
+    elif a.cmd == "clip":
+        try:
+            r = requests.get(f"{api.base}/api/admin/detections/{a.id}/clip", headers=api.h, timeout=60)
+        except requests.RequestException as e:
+            sys.exit(f"Can't reach the server at {api.base}: {e}")
+        if not r.ok:
+            sys.exit(f"No clip for alert {a.id} ({r.status_code}).")
+        out = Path(a.out or f"alert-{a.id}.{'mp4' if 'mp4' in r.headers.get('content-type', '') else 'avi'}")
+        out.write_bytes(r.content)
+        print(f"Saved {out} ({len(r.content) // 1024} KB).")
     elif a.cmd == "nests":
         for n in api("GET", "/api/nests", params={"include_removed": True}):
             print(f"#{n['id']:<4} {n['status']:<9} ±{n['radius_m']:.0f} m  {n['lat']:.5f},{n['lon']:.5f}  {n['n_departures']} departures  {n.get('assigned_to') or ''}")

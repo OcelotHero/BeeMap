@@ -24,7 +24,8 @@ BeeMap helps a city, its beekeepers and its residents look after **all** pollina
 Run on the server (it reads the admin key the server generates in `server/data/admin_key.txt`, or `BEEMAP_ADMIN_KEY`):
 
 ```bash
-python3 tools/admin.py alerts                 # alerts waiting for confirmation
+python3 tools/admin.py alerts                 # alerts the server couldn't decide by confidence
+python3 tools/admin.py clip 12                # watch the Pi's clip of alert 12
 python3 tools/admin.py confirm 12             # or: dismiss 12 (not an Asian hornet)
 python3 tools/admin.py nests                  # nest areas
 python3 tools/admin.py assign 3 "Feuerwehr Team 2"   # then: removed 3
@@ -180,6 +181,8 @@ cd server && python -m uvicorn app:app --port 8000
 python tools/demo.py --live          # second terminal, from the project folder
 ```
 
+Unlike `pitch.sh`, this keeps the last run's data: delete `server/data` first for a fresh demo. For a real Pi to reach the laptop, add `--host 0.0.0.0` to the server command (and allow it through the Windows firewall).
+
 Open **http://localhost:8000**: one public map, on a laptop or a phone. On the first start the server fetches OpenStreetMap land cover and iNaturalist bloom times in the background; a small note on the map shows the progress. The demo builds a sparse network in Heilbronn: 6 smart hives (one offline), one planned, and three hidden nests the hornets fly home to. Most heading cameras are sky-facing; Hive 4 has an outward camera aimed towards Sontheim, so hornets leaving behind it arrive without a direction. Simulated hornets run through the real Raspberry Pi code (both cameras, pairing, upload), not straight into the database. The demo also adds a few nest reports in different states.
 
 The map and fonts load from the internet. Everything else runs offline.
@@ -214,7 +217,7 @@ The map and fonts load from the internet. Everything else runs offline.
 
 Connecting a real Pi: register it with `python3 tools/admin.py station-add ID "Name" LAT LON --heading DEG`, where the heading is which way the heading camera faces (sky: the top edge of its picture; horizon: the centre of its picture). Copy the Pi config into `pi/beemap.ini`, set the `heading_*` lines (see `beemap.example.ini`), put the VespAI weights at `pi/models/vespai.pt`, then run `python3 beemap_agent.py --test` and install `beemap-agent.service`.
 
-**A real Pi during the pitch demo.** `pitch.sh` starts from an empty database, so a real Pi would be refused as "not registered". Copy `tools/real_stations.example.ini` to `tools/real_stations.ini` (not in git), and give each Pi its station ID, position, heading and a fixed token, the same one as in its `beemap.ini`. The demo then registers it next to the simulated hives. Its hornets appear live with the usual "Asian hornet seen" notice, on top of the simulated ones, and stay pending for a person to confirm. Point the Pi's `server` at the laptop's address (pitch.sh listens on all interfaces). Visits the Pi queued while it was refused are sent once it's registered. To show the real colonies' health as well, run `make beemap` in `pipeline/` after `pitch.sh` has started: it sends them into the same station, `hornet-pi`.
+**A real Pi during the pitch demo.** `pitch.sh` starts from an empty database, so a real Pi would be refused as "not registered". Copy `tools/real_stations.example.ini` to `tools/real_stations.ini` (not in git), and give each Pi its station ID, position, heading and a fixed token, the same one as in its `beemap.ini`. The demo then registers it next to the simulated hives. Its hornets appear live on top of the simulated ones and are sorted by confidence like every visit: clear ones are confirmed, weak ones dismissed, and unsure ones wait for a person, with a clip from the Pi (`tools/admin.py clip ID`). Point the Pi's `server` at the laptop's address (pitch.sh listens on all interfaces). Visits the Pi queued while it was refused are sent once it's registered. To show the real colonies' health as well, run `make beemap` in `pipeline/` after `pitch.sh` has started: it sends them into the same station, `hornet-pi`.
 
 **A Raspberry Pi 4 with a Camera Module 3** (the HornTrac station, tested 28 Oct 2026). These settings come from getting VespAI to run on that hardware:
 

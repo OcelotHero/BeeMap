@@ -73,6 +73,40 @@ def test_everything():
         c.post("/api/stations", headers=A, json={"id": "realpi", "name": "r", "lat": 49.146, "lon": 9.212, "token": fixed})
         again = c.get("/api/stations/realpi/token", headers=A).json()
         assert again["token"] == first["token"] == fixed and again["created"] > first["created"], (first, again)
+
+        # sorted by the visit's median confidence: confirmed, a person checks (with a clip), dismissed
+        def visit(eid, median):
+            meta = {"event_id": eid, "ts": time.time(), "confidence": 0.97, "confidence_median": median,
+                    "exit_angle_img": 30, "straightness": 0.9}
+            return c.post("/api/stations/realpi/detections", headers={"X-Station-Token": fixed},
+                          data={"meta": json.dumps(meta)}).json()
+        sure, unsure, weak = visit("conf-hi", 0.93), visit("conf-mid", 0.8), visit("conf-lo", 0.62)
+        assert (sure["status"], sure["clip_wanted"]) == ("confirmed", False), sure
+        assert (unsure["status"], unsure["clip_wanted"]) == ("pending", True), unsure
+        assert (weak["status"], weak["clip_wanted"]) == ("rejected", False), weak
+        assert visit("conf-mid", 0.8)["clip_wanted"] and visit("conf-mid", 0.8)["duplicate"]   # a retry still asks
+        by_id = {d["id"]: d for d in c.get("/api/detections?station_id=realpi").json()}
+        assert by_id[sure["id"]]["reviewed_by"] == "auto" and by_id[unsure["id"]]["reviewed_by"] is None
+        assert by_id[unsure["id"]]["confidence_median"] == 0.8
+        clip_url = "/api/stations/realpi/detections/conf-mid/clip"
+        mp4 = b"\x00\x00\x00\x18ftypisom" + b"\x00" * 2000
+        assert c.post(clip_url, files={"clip": ("c.mp4", mp4, "video/mp4")}).status_code == 401
+        assert c.post(clip_url, headers={"X-Station-Token": fixed},
+                      files={"clip": ("c.txt", b"not a video" * 200, "text/plain")}).status_code == 415
+        assert c.post("/api/stations/realpi/detections/nope/clip", headers={"X-Station-Token": fixed},
+                      files={"clip": ("c.mp4", mp4, "video/mp4")}).status_code == 404
+        assert c.post(clip_url, headers={"X-Station-Token": fixed},
+                      files={"clip": ("c.mp4", mp4, "video/mp4")}).status_code == 200
+        assert not visit("conf-mid", 0.8)["clip_wanted"]                     # got it
+        pub = [d for d in c.get("/api/detections?station_id=realpi").json() if d["id"] == unsure["id"]][0]
+        assert pub["has_clip"] and "clip" not in pub
+        assert c.get(f"/api/admin/detections/{unsure['id']}/clip").status_code == 401   # private
+        r = c.get(f"/api/admin/detections/{unsure['id']}/clip", headers=A)
+        assert r.status_code == 200 and r.content == mp4 and r.headers["content-type"] == "video/mp4"
+        assert c.get(f"/api/admin/detections/{sure['id']}/clip", headers=A).status_code == 404
+        r = c.post(f"/api/detections/{unsure['id']}/review", headers=A, json={"status": "confirmed"})
+        assert r.json()["reviewed_by"] == "manual"
+        assert not visit("conf-mid", 0.8)["clip_wanted"]
         c.delete("/api/stations/realpi", headers=A)
 
         # nest reports from the public: on by default, the city can switch them off

@@ -19,7 +19,7 @@
 4. **Test the connection:** `python3 beemap_agent.py --config beemap.ini --test`.
 5. **Start on boot:** copy `beemap-agent.service` to `/etc/systemd/system/`, then `systemctl enable --now beemap-agent`.
 
-`--simulate` runs without cameras or a model, sending fake hornets towards `sim_nest_bearing`.
+`--simulate` runs without cameras or a model, sending about `sim_rate_per_min` fake hornets a minute (default 2) towards `sim_nest_bearing`, as seen by a camera whose heading is `sim_heading`. Each fake visit has its own image quality: about 75% clear, 20% borderline and 5% weak, so all three outcomes below occur.
 
 ### How the Pi talks to the server
 
@@ -27,11 +27,28 @@ Plain HTTP(S) requests from the Pi to the server, each with the station's `X-Sta
 
 | What | Request | When |
 |---|---|---|
-| Hornet visit | `POST /api/stations/{id}/detections`: JSON `meta` plus the snapshot | When a tracked hornet leaves |
+| Hornet visit | `POST /api/stations/{id}/detections`: JSON `meta` plus the snapshot. The reply says how the visit was sorted and whether to send a clip. | When a tracked hornet leaves |
+| Visit clip | `POST /api/stations/{id}/detections/{event_id}/clip`: a short MP4 (or AVI) | Only when the server asked for it |
 | Heartbeat | `POST /api/stations/{id}/heartbeat`: status plus a private live frame; the reply carries the heading calibration | Every `heartbeat_s` (60 s) |
 | In-hive readings | `POST /api/stations/{id}/hive` | Every `hive_post_s` (300 s) |
 
-The server turns a visit into a compass bearing, stores it as a pending alert, recomputes the nest areas, and pushes `detection`, `nests` and `lines` over the WebSocket. Every open map shows an "Asian hornet seen at …" notice and redraws. A visit the server doesn't accept (network down, or the station unknown or its token wrong) is queued on the SD card and retried, oldest first, backing off from 10 s to 5 minutes. The event ID stops a retry being counted twice.
+The server turns a visit into a compass bearing and sorts it by the visit's median confidence (see [below](#confirmed-dismissed-or-checked-by-a-person)). It recomputes the nest areas and pushes `detection`, `nests` and `lines` over the WebSocket. Every open map shows a notice ("Asian hornet seen at …" when confirmed, "Possible Asian hornet at …: being checked" when a person has to look) and redraws; dismissed visits don't notify. A visit the server doesn't accept (network down, or the station unknown or its token wrong) is queued on the SD card and retried, oldest first, backing off from 10 s to 5 minutes. The event ID stops a retry being counted twice.
+
+### Confirmed, dismissed or checked by a person
+
+Each visit carries `confidence` (its best box) and `confidence_median` (the median of all its boxes, which one lucky frame can't lift). The server decides on the median:
+
+| Median confidence | Alert | Clip |
+|---|---|---|
+| ≥ 0.9 (`BEEMAP_AUTO_CONFIRM`) | Confirmed automatically | not needed |
+| 0.7 to 0.9 | Pending: a person checks it | the reply sets `clip_wanted`, and the Pi uploads the clip |
+| < 0.7 (`BEEMAP_AUTO_DISMISS`) | Dismissed automatically: it no longer counts for the nest search | not needed |
+
+The Pi keeps the frames of each visit while a hornet is in view: the last `clip_s` seconds (8) before it left, plus the moment it disappeared, at `clip_width` (640 px) with the model's boxes, confidences and the time drawn in. It only turns them into a video when the server asks (MP4, or Motion-JPEG AVI where OpenCV can't write MP4). The clip plays at the speed the frames were taken, so on a Pi 4 at about 1 frame a second it's a slideshow. If the server is unreachable, the clip waits on the SD card with the visit and is sent if the server wants it; a clip whose upload fails is retried with the queue, keeping at most `clip_queue_max` (50).
+
+Clips are private: the city fetches them with `python3 tools/admin.py clip ID` and then runs `confirm ID` or `dismiss ID`. Visits from older agents without `confidence_median` wait for a person, as before.
+
+**With `min_confidence = 0.8`** (the example config) the Pi drops every box below 0.8, so its visits are confirmed or checked, never dismissed. Lowering it lets weak visits reach the server and be recorded as dismissed instead of disappearing, at the cost of more uploads.
 
 ### A real Pi during the pitch demo
 
@@ -46,7 +63,7 @@ heading = 0
 token = <the same token as in the Pi's beemap.ini>
 ```
 
-`tools/demo.py` registers every station listed there with that fixed token, next to the simulated hives, which it leaves unchanged. The real Pi's hornets then arrive live on top of the simulated ones, feed the same nest search, and are **not** auto-confirmed like the older simulated alerts. If `token` is left empty, the server makes one and the demo prints it, but it changes at every start. Set the Pi's `server` to the laptop's address. Anything it queued while refused is sent within a few minutes of registration.
+`tools/demo.py` registers every station listed there with that fixed token, next to the simulated hives, which it leaves unchanged. The real Pi's hornets then arrive live on top of the simulated ones, feed the same nest search and are sorted by confidence like any visit. The demo's "the city already checked the older ones" step only touches simulated alerts, so a real visit that needs a person stays pending, with its clip. If `token` is left empty, the server makes one and the demo prints it, but it changes at every start. Set the Pi's `server` to the laptop's address. Anything it queued while refused is sent within a few minutes of registration.
 
 `hornet-pi` is also where `make beemap` puts the OpenSpace colonies' real sensor data (see [pipeline.md](pipeline.md#real-hive-data-into-beemap-make-beemap)). Start `pitch.sh` first, so the demo registers the station with the Pi's token, then run `make beemap`; it finds the station, sends into it, and notices the fresh database by the station's registration time.
 
@@ -87,11 +104,13 @@ To try the model on a laptop webcam or a video first, the data pipeline has a st
 | `entrance_roi` | `0,0.55,1,1` | Entrance area in the detection image (fractions), for activity counting |
 | `bee_blob_min_px`, `bee_blob_max_px` | 20, 3000 | Motion blob size for bees |
 | `hive_post_s`, `heartbeat_s` | 300, 60 | Upload intervals |
+| `clip_s`, `clip_width`, `clip_queue_max` | 8, 640, 50 | Seconds of video kept of a visit for a manual check (0 = no clips), its frame width, and how many clips may wait on the SD card |
 | `send_live_frame`, `queue_dir` | true, `queue` | Calibration frame with heartbeats; offline queue folder |
 
 ### What the Pi sends
 
-- **Detections:** snapshot, detection confidence, track, relative heading and its uncertainty (or the single-camera exit angle), and an event ID so retries aren't counted twice. Queued on disk when offline.
+- **Detections:** snapshot, best and median detection confidence, track, relative heading and its uncertainty (or the single-camera exit angle), and an event ID so retries aren't counted twice. Queued on disk when offline.
+- **Clips** of a visit, only when the server asks for one (a visit too unsure to decide by confidence).
 - **Heartbeat** every minute: status (fps, Pi temperature, queue length, heading-camera statistics), plus a frame kept privately on the server. The reply carries the current heading calibration.
 - **In-hive readings** every 5 minutes: average entrance activity (bees in view), hive temperature and humidity. Kept in memory and retried if sending fails. A station that watches several colonies can name each reading's `hive` (see [api.md](api.md)); the Pi agent itself reports one colony.
 

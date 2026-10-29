@@ -8,7 +8,7 @@ BeeMap is a public website without user accounts. These rules decide what is pub
 |---|---|---|
 | Smart hives | Name, position, online status, hornet visits | Beekeeper name, device token, live camera frames |
 | Registered apiaries | Position to ~100 m (3 decimal places), colony count | Owner, exact position |
-| Hornet alerts | Snapshot, time, flight direction, confirmed or not | none |
+| Hornet alerts | Snapshot, time, flight direction, confidence, confirmed or not (and whether automatically) | The clip sent for a manual check |
 | Nest reports | Position to ~100 m, details, status, how confirmed, match to flight lines | Exact position, free-text note, photo, model scores |
 | Plantings | Position, area, plant | none (anonymous; no names collected) |
 | Colony health | none | Everything (`tools/admin.py health`): it's the beekeepers' data |
@@ -20,13 +20,14 @@ BeeMap is a public website without user accounts. These rules decide what is pub
 - **Nest-report photos** are re-encoded on upload: metadata is stripped (phones store the GPS position, time and device model), the image is rotated upright and shrunk to at most 1600 px, and files that aren't images or are over 10 MB are refused.
 - They're stored outside the public `/images` folder.
 - **Detection snapshots** come from the hive cameras and are public, since they show hornets at a bait station. Place cameras so they don't capture people.
+- **Visit clips** (several seconds of video, only for alerts a person must check) are kept private in `server/data/clips/` and served only with the admin key: more footage means more chance of catching a hand or a passer-by.
 
 ## Authentication
 
 | Who | How | Scope |
 |---|---|---|
 | Public | none | Read the public API; add plantings and nest reports |
-| Smart hive | `X-Station-Token`, a random token per station | Its own heartbeats, detections and in-hive readings |
+| Smart hive | `X-Station-Token`, a random token per station | Its own heartbeats, detections, visit clips and in-hive readings |
 | SensoBox | `X-Box-Token`, a random token per box | Its own readings |
 | City staff | `X-Admin-Key`, generated on first start into `server/data/admin_key.txt` (or `BEEMAP_ADMIN_KEY`) | Everything else, via `tools/admin.py` |
 
@@ -36,7 +37,7 @@ Tokens and keys are compared in constant time. The website never asks for the ad
 
 - **Anonymous submissions** are limited to 20 per 10 minutes per address (in memory). They can still be spammed on a public deployment; add a captcha or proxy-level limits for a real launch.
 - **Nest reports can't fake a nest area:** reports only feed the camera-based nest search once the city confirms them. Automatic photo confirmation needs a confident model *and* good photo quality.
-- **Uploads:** at most 20,000 readings per request, photos at most 10 MB, and coordinates outside Heilbronn are refused for nest reports.
+- **Uploads:** at most 20,000 readings per request, photos at most 10 MB, clips at most 20 MB and only MP4 or AVI, and coordinates outside Heilbronn are refused for nest reports.
 
 ## Data pipeline and the public repository
 

@@ -54,7 +54,7 @@ flowchart LR
 - **Detection camera** at the entrance or bait station runs the VespAI YOLOv5 model and tracks each Asian hornet; a track ending means the hornet left.
 - **Heading camera** (external, sky-facing fisheye or outward-looking) tracks moving blobs. The heading track that starts within 3 s of the hornet leaving gives its flight direction. No AI is needed on this camera.
 - **Colony monitor**: in-hive temperature and humidity (BME280, SHT31 or DHT22), and entrance activity counted as moving blobs in a configurable entrance area.
-- **Uploads** go to the server with a per-hive **device token**: detections (with snapshot), a heartbeat every minute, and in-hive readings every 5 minutes. Uploads queue on the SD card when offline.
+- **Uploads** go to the server with a per-hive **device token**: detections (with snapshot and confidence), a heartbeat every minute, and in-hive readings every 5 minutes. A short clip of a visit follows when the server asks for one. Uploads queue on the SD card when offline.
 - A **single-camera fallback** (exit direction on the detection camera) and a `--simulate` mode exist.
 
 See [hardware.md](hardware.md).
@@ -97,7 +97,7 @@ See [pipeline.md](pipeline.md).
 A single page with no build step: `index.html`, `spa.js` and `spa.css`, plus Leaflet bundled locally in `web/vendor/`.
 
 - **Map first:** a search box, a panel with tabs (Overview, Hornets, Flowers, Hives, Sensors), a layers popover in which each layer has its own filters, and a **place card** for any clicked spot.
-- **City data from the pipeline:** the Bee Balance, Public sightings (GBIF) and Street heat layers; Bee Balance, sightings, flight-hours, street-heat and hive-camera cards on the tabs; Bee Balance and street heat in the place card. Each appears only when its data exists.
+- **City data from the pipeline:** the Bee Balance, Public sightings (GBIF) and Street heat layers; Bee Balance, sightings, flight-hours, street-heat and hive-camera cards on the tabs; Bee Balance and street heat in the place card. Cards appear only when their data exists; a layer without data says which `make` step to run.
 - **Read-only**, apart from two anonymous contributions: *I planted something* and *Report a nest*.
 - **Live updates** over `/ws`, with a 2-minute polling fallback.
 - **The view is in the URL** (map position, layers, tab, month, clicked spot, background map), so any view can be shared as a link.
@@ -105,7 +105,7 @@ A single page with no build step: `index.html`, `spa.js` and `spa.css`, plus Lea
 
 ### Admin tool: `tools/admin.py`
 
-City operations happen on the server, not on the website: confirming alerts and nest reports, nest status, stations, SensoBoxes, colony health, and switching reports on or off. It authenticates with the admin key the server generates on first start. See [operations.md](operations.md).
+City operations happen on the server, not on the website: checking the alerts the server couldn't decide by confidence (with the Pi's clip) and nest reports, nest status, stations, SensoBoxes, colony health, and switching reports on or off. It authenticates with the admin key the server generates on first start. See [operations.md](operations.md).
 
 ## Main data flows
 
@@ -121,8 +121,11 @@ sequenceDiagram
   D->>P: hornet tracked, then leaves
   H->>P: motion track starting at that moment
   P->>P: pair the two; direction relative to the heading camera
-  P->>S: POST /api/stations/{id}/detections (snapshot, heading, uncertainty)
+  P->>S: POST /api/stations/{id}/detections (snapshot, heading, uncertainty, confidence)
   S->>S: bearing = camera heading + relative heading
+  S->>S: median confidence: confirmed, dismissed, or for a person
+  S-->>P: status, clip_wanted
+  P->>S: POST …/detections/{event_id}/clip (only if wanted)
   S->>S: recompute nest areas (coalesced): lines → crossings → nest ellipses
   S-->>W: WebSocket "detection", "nests", "lines"
   W->>W: redraw alerts, flight lines, nest areas
@@ -166,6 +169,7 @@ Land cover (OpenStreetMap, or demo shapes) gives a monthly bloom profile on a 50
 | `server/data/images/` | Detection snapshots, served publicly at `/images` |
 | `server/data/reports/` | Nest-report photos, **private** |
 | `server/data/live/` | Latest heartbeat frame per hive, **private** |
+| `server/data/clips/` | Visit clips for alerts a person checks, **private** |
 | `server/data/admin_key.txt` | Generated admin key |
 | `server/osm_data.json` | Cached OpenStreetMap land cover (refreshed after 30 days) |
 | `server/bloom_data.json` | Cached iNaturalist bloom months (each plant re-checked after 90 days) |

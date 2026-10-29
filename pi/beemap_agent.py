@@ -9,8 +9,11 @@ What it does
   4. When a hornet leaves, works out the direction it left the frame
      (the "exit angle", clockwise from the top edge of the image) and how
      straight that exit was.
-  5. Sends the visit to the BeeMap server with the best snapshot. If the
-     network is down, the visit is queued on the SD card and sent later.
+  5. Sends the visit to the BeeMap server with the best snapshot and the
+     visit's median confidence. The server confirms or dismisses it by that
+     confidence, or asks for a short clip of the visit for a person to check.
+     If the network is down, the visit (and its clip) is queued on the SD card
+     and sent later.
   6. Sends a heartbeat (and a live frame for aiming the camera) every minute.
 
 The server turns the exit angle into a compass bearing using the station's
@@ -28,12 +31,15 @@ Already running VespAI's own script? Import the hook instead, see README:
 from __future__ import annotations
 
 import argparse
+import collections
 import configparser
 import json
 import logging
 import math
 import os
 import random
+import statistics
+import tempfile
 import threading
 import time
 import uuid
@@ -68,6 +74,9 @@ class Config:
     heartbeat_s: float = 60.0
     send_live_frame: bool = True
     queue_dir: str = "queue"
+    clip_s: float = 8.0                # video kept of the last seconds of a visit, for a manual check; 0 = none
+    clip_width: int = 640              # clip frame width in pixels
+    clip_queue_max: int = 50           # clips kept on the SD card while the server is unreachable
     # --- external heading camera (follows the hornet as it flies off) ---
     heading_camera: str = "none"       # picamera2:1 | opencv:1 | file:<path> | none (single-camera setup)
     heading_mode: str = "sky"          # sky = fisheye looking straight up | horizon = looking outward
@@ -128,6 +137,8 @@ class Track:
     best_frame: object = None
     best_box: Det | None = None
     last_t: float = 0.0
+    confs: list = field(default_factory=list)     # every box's confidence: the median sorts the visit
+    clip: list = field(default_factory=list)      # (t, jpeg) frames of the visit's last seconds
 
 
 def exit_vector(points: list[tuple[float, float, float]]) -> tuple[float | None, float]:
@@ -193,6 +204,7 @@ class Tracker:
             else:
                 free.pop(best.tid)
             best.points.append((t, d.x, d.y))
+            best.confs.append(d.conf)
             best.last_t = t
             if d.conf > best.best_conf:
                 best.best_conf, best.best_box = d.conf, d
@@ -412,52 +424,107 @@ class Uploader:
     def url(self, path: str) -> str:
         return f"{self.cfg.server}/api/stations/{self.cfg.station_id}/{path}"
 
-    def send_visit(self, meta: dict, jpeg: bytes | None):
-        if not self._post_visit(meta, jpeg):
+    def send_visit(self, meta: dict, jpeg: bytes | None, clip_frames: list | None = None):
+        reply = self._post_visit(meta, jpeg)
+        if reply is None:
             base = self.q / f"{int(meta['ts'] * 1000)}_{meta['event_id']}"
             if jpeg:
                 base.with_suffix(".jpg").write_bytes(jpeg)
+            clip = make_clip(clip_frames) if clip_frames else None
+            if clip:                                  # the server may want it once it has the visit
+                base.with_suffix("." + clip[1]).write_bytes(clip[0])
             base.with_suffix(".json").write_text(json.dumps(meta))
             log.warning("server unreachable, queued visit %s (%d waiting)", meta["event_id"], self.queued())
+        elif reply.get("clip_wanted") and clip_frames:
+            clip = make_clip(clip_frames)
+            if clip:
+                self._send_clip(meta["event_id"], *clip)
 
-    def _post_visit(self, meta: dict, jpeg: bytes | None) -> bool:
+    def _post_visit(self, meta: dict, jpeg: bytes | None) -> dict | None:
+        """The server's reply, or None if the visit has to wait in the queue."""
         files = {"image": ("hornet.jpg", jpeg, "image/jpeg")} if jpeg else None
         try:
             r = self.session.post(self.url("detections"), data={"meta": json.dumps(meta)},
                                   files=files, timeout=15)
         except requests.RequestException as e:
             log.debug("post failed: %s", e)
-            return False
+            return None
         if r.status_code in (401, 404):
             log.error("server refused this station (%s): %s", r.status_code, r.text[:200])
+            return None
+        if not r.ok:
+            return None
+        self.last_ok = time.time()
+        reply = r.json()
+        b = reply.get("bearing_deg")
+        log.info("sent visit %s -> bearing %s, %s", meta["event_id"], f"{b:.0f}°" if b is not None else "n/a",
+                 {"confirmed": "confirmed", "rejected": "dismissed"}.get(reply.get("status"), "to be checked"))
+        return reply
+
+    def _send_clip(self, event_id: str, data: bytes, ext: str):
+        """Upload a visit's clip; if that fails, keep it for the retry loop."""
+        if self._post_clip(event_id, data, ext):
+            return
+        waiting = self.q / "clips"
+        waiting.mkdir(exist_ok=True)
+        (waiting / f"{event_id}.{ext}").write_bytes(data)
+        old = sorted(waiting.iterdir(), key=lambda f: f.stat().st_mtime)
+        for f in old[:max(0, len(old) - self.cfg.clip_queue_max)]:
+            f.unlink(missing_ok=True)
+
+    def _post_clip(self, event_id: str, data: bytes, ext: str) -> bool:
+        kind = "video/mp4" if ext == "mp4" else "video/x-msvideo"
+        try:
+            r = self.session.post(self.url(f"detections/{event_id}/clip"),
+                                  files={"clip": (f"{event_id}.{ext}", data, kind)}, timeout=60)
+        except requests.RequestException as e:
+            log.debug("clip not sent: %s", e)
             return False
         if r.ok:
-            self.last_ok = time.time()
-            b = r.json().get("bearing_deg")
-            log.info("sent visit %s -> bearing %s", meta["event_id"], f"{b:.0f}°" if b is not None else "n/a")
+            log.info("sent clip of visit %s for a manual check (%d KB)", event_id, len(data) // 1024)
+        elif r.status_code in (404, 413, 415):         # the server won't take it; don't retry forever
+            log.error("clip of visit %s refused (%s): %s", event_id, r.status_code, r.text[:200])
+            return True
         return r.ok
 
     def queued(self) -> int:
         return len(list(self.q.glob("*.json")))
+
+    def clips_waiting(self) -> int:
+        d = self.q / "clips"
+        return len(list(d.iterdir())) if d.exists() else 0
 
     def _retry_loop(self):
         delay = 10
         while True:
             time.sleep(delay)
             pending = sorted(self.q.glob("*.json"))
-            if not pending:
+            clips = sorted((self.q / "clips").glob("*.*")) if (self.q / "clips").exists() else []
+            if not pending and not clips:
                 delay = 10
                 continue
             for meta_path in pending:
                 meta = json.loads(meta_path.read_text())
                 jpg = meta_path.with_suffix(".jpg")
-                if self._post_visit(meta, jpg.read_bytes() if jpg.exists() else None):
-                    meta_path.unlink(missing_ok=True)
-                    jpg.unlink(missing_ok=True)
-                    delay = 10
-                else:
+                reply = self._post_visit(meta, jpg.read_bytes() if jpg.exists() else None)
+                if reply is None:
                     delay = min(delay * 2, 300)
                     break
+                for clip in (meta_path.with_suffix(".mp4"), meta_path.with_suffix(".avi")):
+                    if clip.exists():
+                        if reply.get("clip_wanted"):
+                            self._send_clip(meta["event_id"], clip.read_bytes(), clip.suffix[1:])
+                        clip.unlink(missing_ok=True)
+                meta_path.unlink(missing_ok=True)
+                jpg.unlink(missing_ok=True)
+                delay = 10
+            else:
+                for clip in clips:                         # asked for, but the upload failed earlier
+                    if self._post_clip(clip.stem, clip.read_bytes(), clip.suffix[1:]):
+                        clip.unlink(missing_ok=True)
+                    else:
+                        delay = min(delay * 2, 300)
+                        break
 
     def post_hive(self, readings: list[dict]) -> bool:
         try:
@@ -523,6 +590,59 @@ def draw_track(frame, points):
     return frame
 
 
+def clip_frame(frame, boxes: list, cfg: Config, t: float) -> bytes | None:
+    """One small JPEG for the visit clip, with the boxes the tracker used and the time."""
+    try:
+        import cv2
+    except ImportError:
+        return None
+    img = frame.copy()
+    for x1, y1, x2, y2, conf, cls in boxes:
+        if conf >= cfg.min_confidence and cfg.target_class.lower() in str(cls).lower():
+            cv2.rectangle(img, (int(x1), int(y1)), (int(x2), int(y2)), (48, 194, 242), 2)
+            cv2.putText(img, f"{conf:.2f}", (int(x1), max(14, int(y1) - 6)), cv2.FONT_HERSHEY_SIMPLEX, 0.5,
+                        (48, 194, 242), 1)
+    if img.shape[1] > cfg.clip_width:
+        img = cv2.resize(img, (cfg.clip_width, int(img.shape[0] * cfg.clip_width / img.shape[1])))
+    cv2.putText(img, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(t)), (8, img.shape[0] - 8),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.45, (255, 255, 255), 1)
+    ok, buf = cv2.imencode(".jpg", img, [cv2.IMWRITE_JPEG_QUALITY, 75])
+    return buf.tobytes() if ok else None
+
+
+def make_clip(frames: list) -> tuple[bytes, str] | None:
+    """(t, jpeg) frames -> (video bytes, "mp4" | "avi"), played at the speed they were taken.
+    MP4 (mp4v) where OpenCV can write it, otherwise Motion-JPEG AVI."""
+    try:
+        import cv2
+        import numpy as np
+    except ImportError:
+        return None
+    imgs = [cv2.imdecode(np.frombuffer(j, np.uint8), cv2.IMREAD_COLOR) for _, j in frames]
+    imgs = [i for i in imgs if i is not None]
+    if len(imgs) < 2:
+        return None
+    span = frames[-1][0] - frames[0][0]
+    fps = min(30.0, max(1.0, (len(frames) - 1) / span)) if span > 0 else 10.0
+    h, w = imgs[0].shape[:2]
+    for ext, fourcc in (("mp4", "mp4v"), ("avi", "MJPG")):
+        fd, tmp = tempfile.mkstemp(suffix="." + ext)
+        os.close(fd)
+        try:
+            vw = cv2.VideoWriter(tmp, cv2.VideoWriter_fourcc(*fourcc), fps, (w, h))
+            if not vw.isOpened():
+                continue
+            for img in imgs:
+                vw.write(img if img.shape[:2] == (h, w) else cv2.resize(img, (w, h)))
+            vw.release()
+            data = Path(tmp).read_bytes()
+            if len(data) > 1000:
+                return data, ext
+        finally:
+            Path(tmp).unlink(missing_ok=True)
+    return None
+
+
 class BeeMapHook:
     """Use this from inside an existing VespAI loop:
 
@@ -549,6 +669,7 @@ class BeeMapHook:
         self.pending_lock = threading.Lock()
         self.matched = 0
         self.missed = 0
+        self.recent = collections.deque(maxlen=600)  # (t, jpeg) of the last seconds, for visit clips
         threading.Thread(target=self._heartbeat_loop, daemon=True).start()
         if self.heading_cam:
             threading.Thread(target=self._expire_loop, daemon=True).start()
@@ -600,6 +721,13 @@ class BeeMapHook:
             if conf < self.cfg.min_confidence or self.cfg.target_class.lower() not in str(cls).lower():
                 continue
             dets.append(Det(((x1 + x2) / 2) / w, ((y1 + y2) / 2) / h, (x2 - x1) / w, (y2 - y1) / h, float(conf)))
+        if self.cfg.clip_s > 0 and frame is not None and (dets or self.tracker.tracks):
+            keep = self.cfg.clip_s + self.cfg.lost_after_s + 2   # only frames while a hornet is in view
+            while self.recent and not (t - keep <= self.recent[0][0] <= t):
+                self.recent.popleft()                    # too old (or the clock jumped back)
+            jpeg = clip_frame(frame, boxes, self.cfg, t)
+            if jpeg:
+                self.recent.append((t, jpeg))
         self.tracker.update(t, dets, frame)
 
     def frame_size(self, boxes: list, t: float, size: tuple | None = None):
@@ -612,6 +740,9 @@ class BeeMapHook:
         self.tracker.update(t, dets, None)
 
     def _departure(self, tr: Track):
+        if self.cfg.clip_s > 0:
+            start = max(tr.points[0][0] - 1.0, tr.points[-1][0] - self.cfg.clip_s)
+            tr.clip = [(t, j) for t, j in self.recent if t >= start]
         if self.heading_cam:
             with self.pending_lock:
                 self.pending.append((tr, time.time()))
@@ -627,6 +758,7 @@ class BeeMapHook:
             "arrived_ts": tr.points[0][0],
             "species": "velutina",
             "confidence": round(tr.best_conf, 3),
+            "confidence_median": round(statistics.median(tr.confs), 3) if tr.confs else None,
             "straightness": round(straight, 2),
             "track": [[round(t - tr.points[0][0], 2), round(x, 4), round(y, 4)] for t, x, y in tr.points[-60:]],
         }
@@ -650,12 +782,12 @@ class BeeMapHook:
         jpeg = encode_jpeg(frame, tr.best_box, f"V. velutina {tr.best_conf:.2f}")
         log.info("hornet left: %s", f"heading camera {h['rel']:.0f}° ±{h['sigma']:.0f}" if h else
                  ("not seen by heading camera" if self.heading_cam else f"exit {angle}° on image"))
-        threading.Thread(target=self.up.send_visit, args=(meta, jpeg), daemon=True).start()
+        threading.Thread(target=self.up.send_visit, args=(meta, jpeg, tr.clip), daemon=True).start()
 
     def status(self) -> dict:
         st = {"uptime_s": int(time.time() - self.started), "frames": self.frames, "fps": round(self.fps, 1),
-              "visits": self.visits, "queued": self.up.queued(), "model": self.model_name,
-              "agent": "beemap-agent 1.1"}
+              "visits": self.visits, "queued": self.up.queued(), "clips_waiting": self.up.clips_waiting(),
+              "model": self.model_name, "agent": "beemap-agent 1.2"}
         if self.hive.last_reading:
             st["hive"] = self.hive.last_reading
         if self.heading_cam:
@@ -888,6 +1020,14 @@ def _sim_background():
     return img
 
 
+def _sim_quality(img_angle_deg: float, t: float) -> tuple[float, float]:
+    """Range of the model's confidence for one simulated visit: most are clear, some
+    borderline (a person checks the clip), a few weak (dismissed). Drawn from its own
+    generator, so a seeded demo's directions and timings stay the same."""
+    q = random.Random(f"{img_angle_deg:.6f}|{t:.3f}").random()
+    return (0.88, 0.98) if q < 0.75 else (0.74, 0.9) if q < 0.95 else (0.6, 0.74)
+
+
 def fake_visit(hook: "BeeMapHook", img_angle_deg: float, t: float, rng: random.Random,
                draw: bool = True) -> float:
     """Feed one fake hornet visit through the real tracking pipeline:
@@ -898,6 +1038,7 @@ def fake_visit(hook: "BeeMapHook", img_angle_deg: float, t: float, rng: random.R
     except ImportError:
         cv2 = None
     a = math.radians(img_angle_deg)
+    lo, hi = _sim_quality(img_angle_deg, t)
     x, y = 0.5 + rng.uniform(-0.05, 0.05), 0.5 + rng.uniform(-0.05, 0.05)
     steps = [(x + rng.gauss(0, 0.01), y + rng.gauss(0, 0.01)) for _ in range(rng.randint(15, 40))]
     loop_r = rng.uniform(0.06, 0.14)
@@ -921,7 +1062,8 @@ def fake_visit(hook: "BeeMapHook", img_angle_deg: float, t: float, rng: random.R
             if frame is not None and cv2 is not None:
                 cv2.ellipse(frame, (cx, cy), (14, 6), 0, 0, 360, (23, 26, 30), -1)
                 cv2.ellipse(frame, (cx + 4, cy), (4, 6), 0, 0, 360, (44, 154, 227), -1)
-            boxes = [(cx - 16, cy - 10, cx + 16, cy + 10, rng.uniform(0.8, 0.98), "Vespa velutina")]
+            conf = lo + (rng.uniform(0.8, 0.98) - 0.8) / 0.18 * (hi - lo)
+            boxes = [(cx - 16, cy - 10, cx + 16, cy + 10, conf, "Vespa velutina")]
         hook.frame(frame, boxes, t) if frame is not None else hook.frame_size(boxes, t)
     t += hook.cfg.lost_after_s + 0.1
     hook.frame(bg, [], t) if bg is not None else hook.frame_size([], t)   # let the track close

@@ -58,3 +58,6 @@ The server's 800 m monthly flower model and the pipeline's 1.5 km / 300 m Bee Ba
 
 **19. VespAI at its own field setting.**
 The Pi example config uses VespAI's own 0.8 confidence and the YOLOv5 version its weights were saved with. On a real Pi 4 with a Camera Module 3, lower thresholds boxed hair, flowers and bottles, and newer YOLOv5 code couldn't load the weights at all.
+
+**20. Camera alerts decided by confidence; a person sees the unsure ones on video.**
+Most VespAI visits are clear, and a city can't watch every one. The server confirms or dismisses a visit by its median confidence (one lucky frame can't lift a median) and leaves only the middle band to a person, who gets a short clip from the Pi rather than a single snapshot. The Pi sends the clip only when asked, to save its uplink. Dismissing is allowed here, unlike for nest reports (decision 6), because a wrongly dismissed visit costs one flight line among many, not a nest. The 0.9 / 0.7 thresholds are settings, not measured values.

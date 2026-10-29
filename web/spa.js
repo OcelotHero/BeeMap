@@ -404,7 +404,7 @@ function drawAll(keys = LAYERS.map((l) => l.key)) { keys.forEach(drawLayer); ren
 
 function detectionPopup(d) {
   return `<div class="pop">${d.image_url ? `<img src="${esc(d.image_url)}" alt="Camera snapshot of the hornet">` : ''}
-    <span class="eyebrow" style="color:#9A3612">${d.source === 'camera' ? 'Smart-hive camera' : 'Reported sighting'} · ${d.status === 'confirmed' ? 'confirmed' : 'not yet confirmed'}</span>
+    <span class="eyebrow" style="color:#9A3612">${d.source === 'camera' ? 'Smart-hive camera' : 'Reported sighting'} · ${d.status === 'confirmed' ? (d.reviewed_by === 'auto' ? 'confirmed by the camera' : 'confirmed') : 'not yet confirmed'}</span>
     <b>${d.source === 'sighting' ? 'Asian hornet reported here' : `Asian hornet at ${esc(d.place)}`}</b><span class="muted">${fmtTime(d.ts)}${d.bearing_deg != null ? ` · flew off ${dirWord(d.bearing_deg)} (${Math.round(d.bearing_deg)}°)` : ''}</span></div>`;
 }
 function monthBars(vals) {
@@ -545,7 +545,7 @@ const PANELS = {
         ${d.image_url ? `<img class="thumb" src="${esc(d.image_url)}" alt="" loading="lazy">` : '<span class="thumb"></span>'}
         <span class="body"><span class="row" style="justify-content:space-between"><b>${esc(d.place)}</b><span class="t">${fmtTime(d.ts)}</span></span>
         <span class="muted">${d.bearing_deg != null ? `Flew off ${dirWord(d.bearing_deg)} (${Math.round(d.bearing_deg)}°)` : 'Direction not seen'}</span>
-        ${d.status === 'confirmed' ? '<span class="badge green" style="align-self:flex-start">✓ Confirmed</span>' : '<span class="badge grey" style="align-self:flex-start">Not yet confirmed</span>'}</span></button>`).join('')
+        ${d.status === 'confirmed' ? `<span class="badge green" style="align-self:flex-start">✓ Confirmed${d.reviewed_by === 'auto' ? ' by the camera' : ''}</span>` : '<span class="badge grey" style="align-self:flex-start">Not yet confirmed</span>'}</span></button>`).join('')
         : '<div class="empty">No alerts in this period.</div>'}</div>
       <h3>Nest areas</h3>${chips('nests', 'status')}
       <div class="list">${nests.length ? nests.map((n) => `<button class="item" data-fly="${n.lat},${n.lon},16"><span class="body"><span class="row" style="justify-content:space-between"><b>${esc(nestPlace(n))}</b>${nestBadge(n)}</span>
@@ -928,7 +928,8 @@ function connect(delay = 1000) {
   ws.onmessage = (e) => {
     const { type, data } = JSON.parse(e.data);
     if (['detection', 'nests', 'lines', 'station', 'station_deleted', 'planning_changed'].includes(type)) refreshSoon(['hornets']);
-    if (type === 'detection' && data?.status === 'pending' && data?.source === 'camera') toast(`Asian hornet seen at ${data.place}`);
+    if (type === 'detection' && data?.new && data.source === 'camera' && data.status !== 'rejected')
+      toast(data.status === 'confirmed' ? `Asian hornet seen at ${data.place}` : `Possible Asian hornet at ${data.place}: being checked`);
     if (['eco_changed', 'settings'].includes(type)) refreshSoon(['eco']);
     if (type === 'nest_reports') refreshSoon(['reports']);
   };

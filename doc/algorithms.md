@@ -231,3 +231,13 @@ Flight hours rely on Open-Meteo, so it's compared against the hives' SenseCAP S2
 ### Public sightings (`hornet_sightings.py`)
 
 GBIF occurrence records with coordinates, status *present*, in the box 49.05–49.25 N, 9.05–9.35 E (about 22 km around Heilbronn), for the Asian hornet, the European hornet and the honey bee. Each record keeps its coordinate uncertainty (8–250 m for every Asian hornet record so far), source and licence. The source is the record's institution code, or else its publisher's name looked up on GBIF (Observation.org records carry only a publisher key). Licence URLs are shortened to names such as `CC BY-NC 4.0`. Counts per year for Baden-Württemberg come from a GBIF facet query. **Nothing is modelled:** these are what people reported, unchecked by the city, and they don't feed the nest search.
+
+## 13. Camera alerts sorted by confidence (`server/app.py`, `auto_review`)
+
+- **Score:** the median VespAI confidence over every box of the visit (`confidence_median`, sent by the Pi). The best box alone (`confidence`) is easily lifted by one lucky frame, for example a wasp turned the right way.
+- **Decision:**
+  - median ≥ **0.9** (`BEEMAP_AUTO_CONFIRM`): confirmed automatically;
+  - median < **0.7** (`BEEMAP_AUTO_DISMISS`): dismissed automatically, so it stops counting for the nest search (section 2);
+  - in between, or no median (older agents): pending. The server asks the Pi for a clip of the visit, and a person confirms or dismisses it.
+- **A person always wins:** a manual review replaces the automatic decision and is marked `manual`.
+- Unlike nest reports (section 9), camera alerts can be dismissed automatically: one dismissed departure only removes one flight line, while a missed nest report could hide a whole nest.

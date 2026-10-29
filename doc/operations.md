@@ -24,6 +24,8 @@ python3 tools/demo.py --live              # second terminal, from the project fo
 ```
 
 **Demo options:**
+- `--live`: keep sending a simulated hornet every ~20 s after setting up (what `pitch.sh` uses); without it the demo sets up the city and exits.
+- `--admin-key`: the admin key, if it isn't in `server/data/admin_key.txt` or `BEEMAP_ADMIN_KEY`.
 - `--grow`: install hives at the suggested sites and show the effect.
 - `--install-planned`: switch on planned hives (a live pitch moment).
 - `--seed N`: a different random demo.
@@ -42,6 +44,8 @@ python3 tools/demo.py --live              # second terminal, from the project fo
 | `BEEMAP_CARTO_KEY` | none | Enables the CARTO background maps |
 | `BEEMAP_NEST_MODEL` | `server/models/nest_classifier.onnx` | Nest-photo model path |
 | `BEEMAP_WINDOW_DAYS` | 14 | Departures counted for nest areas |
+| `BEEMAP_AUTO_CONFIRM` | 0.9 | Camera alerts with a median confidence at least this are confirmed automatically |
+| `BEEMAP_AUTO_DISMISS` | 0.7 | Camera alerts below this are dismissed automatically; in between a person checks them, with a clip from the Pi |
 | `BEEMAP_MAX_RANGE_M` | 3000 | Longest flight line considered |
 | `BEEMAP_M_PER_MIN` | 100 | Metres per minute for round-trip distance estimates |
 | `BEEMAP_WEB` | `web/` | Folder served as the website |
@@ -55,8 +59,9 @@ The data pipeline also reads `BEEMAP_NC_SHARE` and `BEEMAP_WALKS_SHARE` (private
 `tools/admin.py` runs on the server machine and reads the admin key automatically.
 
 ```bash
-python3 tools/admin.py alerts                       # alerts waiting for confirmation
-python3 tools/admin.py confirm 12                   # or: dismiss 12
+python3 tools/admin.py alerts [--all]               # alerts waiting for a person (--all: every alert, how it was decided)
+python3 tools/admin.py clip 12 [--out FILE]         # save alert 12's clip from the Pi to watch
+python3 tools/admin.py confirm 12                   # or: dismiss 12; overrides an automatic decision
 python3 tools/admin.py nests                        # nest areas
 python3 tools/admin.py assign 3 "Feuerwehr Team 2"  # then: removed 3
 python3 tools/admin.py nest-reports [--status pending]
@@ -69,6 +74,8 @@ python3 tools/admin.py box-add ID "Name" LAT LON [--station HIVE]
 python3 tools/admin.py box-token ID
 python3 tools/admin.py health [HIVE] [--hive NAME]  # colony health (private); --hive: one colony at a station with several
 ```
+
+Camera alerts are mostly decided by the server from the model's confidence (see [hardware.md](hardware.md#confirmed-dismissed-or-checked-by-a-person)). `alerts` lists the ones left for a person, with their median confidence and `[clip]` when the Pi has sent one.
 
 `health` without an ID lists every colony. A station with several colonies (such as `hornet-pi`, which gets the three OpenSpace hives from the data pipeline) shows one line per colony, named after the station and the colony, e.g. `OpenSpace hives · Beehive No.2`. `health hornet-pi` details every colony at that station; `health hornet-pi --hive "Beehive No.2"` details just one.
 
@@ -106,4 +113,5 @@ Check its accuracy on photos it never saw during training before relying on the 
 | Bee Balance, sightings or street heat layer says "run make …"; their cards are missing | `pipeline/output/` lacks that file, or `BEEMAP_PIPELINE_OUT` points elsewhere | `GET /api/city/status` lists what's there; restore the files from git, or run that pipeline step |
 | `make beemap` sends 0 new hive readings to a fresh server | Sync state from before registration times were tracked, or the server is older than the pipeline | Delete `pipeline/output/beemap_sync_state.json` (only for a fresh database, or readings are stored twice) and update the server |
 | `make beemap`: "hourly.csv missing" | The raw hive series are kept local, not in git | Run `make fetch analyse` on that machine first |
+| Alert waits without `[clip]` | The Pi has `clip_s = 0`, no OpenCV, an agent older than 1.2, or is offline (`clips_waiting` in its heartbeat status) | Check the Pi's log for "sent clip"; decide from the snapshot meanwhile |
 | Pi: VespAI weights won't load | Current YOLOv5 from GitHub | Set `yolov5_dir` to a checkout of commit `23701eac` (see [hardware.md](hardware.md)) |

@@ -22,7 +22,7 @@ They use temporary data folders, `BEEMAP_ONLINE=off` and the demo map, so they n
 | Suite | What it proves |
 |---|---|
 | `test_triangulate` | Nest accuracy and ellipse calibration on simulated departures (one nest, two nests sharing a hive, collinear hives plus a skewed line); single line plus distance; site planner success rate |
-| `test_api` | Device auth, a station registered with a fixed token (as the demo does for a real Pi) that gets a new `created` time when registered again, retry de-duplication, heading recalibration recomputing bearings, planned hive → installed on its first heartbeat, a lone corridor turned into a located nest by a planned hive, nest removal; nest reports on by default, public sees ~100 m without note or photo, photo kept private and clean |
+| `test_api` | Device auth, a station registered with a fixed token (as the demo does for a real Pi) that gets a new `created` time when registered again, visits confirmed / checked / dismissed by their median confidence, the clip asked for, uploaded (wrong token, wrong format and unknown visit refused), kept private and then no longer asked for, a manual review overriding the automatic one, retry de-duplication, heading recalibration recomputing bearings, planned hive → installed on its first heartbeat, a lone corridor turned into a located nest by a planned hive, nest removal; nest reports on by default, public sees ~100 m without note or photo, photo kept private and clean |
 | `test_eco` | Hive spot check (the design's Wertwiesenpark example comes out amber, with a green spot nearby); no owner names or tokens in public data; colony health admin-only; plant planner; plantings; grids |
 | `test_bloom` | iNaturalist histogram parsing against a mock API, fallback from Baden-Württemberg to Germany, no species substitution |
 | `test_sensors` | SensoBox pollen corrects the map near the box only; grass and birch count zero; untyped totals unused; weather-only boxes leave the map alone |
@@ -32,7 +32,7 @@ They use temporary data folders, `BEEMAP_ONLINE=off` and the demo map, so they n
 | `test_nest_reports` | Photo quality gate; real ONNX Runtime with tiny stand-in models; confident model confirms; "not Asian" never closes a report; recheck; manual check; public view hides photo, note and exact spot |
 | `test_correlate` | Reports at a triangulated nest match strongly and name the hives; 75% photo plus match confirms; located area leaves planning; removal closes the area; corridor matches; late small-nest flag |
 | `test_city` | Pipeline results on the map from small hand-made output files: endpoints answer `404` with a hint before any data exists, serve the data once it does, and pick up a rerun; readings from several colonies at one station are stored and reported separately |
-| `pi/test_agent` | Sky and horizon heading cameras recover directions within 3–4°; hornets outside the view become presence-only; flipped cameras |
+| `pi/test_agent` | Sky and horizon heading cameras recover directions within 3–4°; hornets outside the view become presence-only; flipped cameras; each visit's median confidence and a clip of its last seconds, encoded as video (needs OpenCV) |
 
 ## Limits of the tests
 

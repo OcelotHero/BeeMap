@@ -17,6 +17,7 @@ the simulated ones.
 from __future__ import annotations
 
 import argparse
+import collections
 import math
 import random
 import sys
@@ -385,12 +386,16 @@ def main():
         seed_sensoboxes(srv, H, rng)
         seed_hive_health(srv, H, rng, {sid: hooks[sid][0].cfg.token for sid in hooks})
 
-    # The city has already worked through the older simulated alerts (a real Pi's wait for a person)
+    # The server sorted each alert by its confidence; the city has already checked the
+    # older simulated ones that needed a person (a real Pi's wait for a person)
     simulated = {s[0] for s in STATIONS}
-    dets = sorted((d for d in requests.get(f"{srv}/api/detections?limit=5000").json() if d.get("station_id") in simulated),
-                  key=lambda d: d["ts"])
+    alerts = [d for d in requests.get(f"{srv}/api/detections?limit=5000").json() if d.get("station_id") in simulated]
+    dets = sorted((d for d in alerts if d["status"] == "pending"), key=lambda d: d["ts"])
     for d in dets[: int(len(dets) * 0.7)]:
         requests.post(f"{srv}/api/detections/{d['id']}/review", headers=H, json={"status": "confirmed"})
+    auto = collections.Counter(d["status"] for d in alerts if d.get("reviewed_by") == "auto")
+    print(f"Camera alerts by confidence: {auto['confirmed']} confirmed, {auto['rejected']} dismissed, "
+          f"{len(dets)} for a person to check ({int(len(dets) * 0.7)} already checked, the rest wait with their clip)")
 
     plan = report(srv, "Today's network:")
     for t in plan["targets"]:
