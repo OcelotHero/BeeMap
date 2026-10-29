@@ -76,7 +76,7 @@ Readings may be sent one at a time or in batches of up to 20,000. Every field is
 |---|---|
 | `POST /api/stations` | Register a smart hive (`planned` for a site not yet installed); returns its token. An optional `token` (16–128 letters, digits, `-`, `_`) fixes it instead of generating one, so a real Pi's config survives a fresh database. |
 | `PATCH /api/stations/{id}` | Name, position, heading calibration (past bearings are recomputed) |
-| `GET /api/stations/{id}/token` | Device token for the Pi config |
+| `GET /api/stations/{id}/token` | Device token for the Pi config, and the station's `created` time |
 | `DELETE /api/stations/{id}` | Remove a station |
 | `POST /api/detections/{id}/review` | `{status: confirmed\|rejected\|pending, species?}` |
 | `PATCH /api/nests/{id}` | `{status: suspected\|assigned\|removed, assigned_to?, place?}`. Removed areas stop counting their departures. |
@@ -85,7 +85,7 @@ Readings may be sent one at a time or in batches of up to 20,000. Every field is
 | `POST /api/admin/nest-reports/recheck` | Run the photo check again on waiting reports |
 | `PATCH /api/settings` | `{reports: bool}` |
 | `POST /api/sensoboxes` | Register a box (`station_id` links it to a hive); returns its token |
-| `GET /api/sensoboxes/{id}/token` | Device token |
+| `GET /api/sensoboxes/{id}/token` | Device token and `created` time |
 | `DELETE /api/sensoboxes/{id}` | Remove a box and its readings |
 | `GET /api/admin/health` | Colony health of all smart hives, one entry per colony |
 | `GET /api/admin/health/{station_id}` | One colony, with 30-day series. `?hive=<name>` picks a colony at a station with several; otherwise the first is returned. `hives` lists them all; an unknown name gives `404`. |

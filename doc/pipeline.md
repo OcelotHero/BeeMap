@@ -79,9 +79,11 @@ Every other file in `output/` (plots, `findings.md`, the validation tables, the 
 Details:
 
 - If the station or box doesn't exist yet, the script registers it at the hives' position (the station as *planned*, since it has no camera yet). It needs the admin key: `--admin-key`, `BEEMAP_ADMIN_KEY`, or `server/data/admin_key.txt`.
-- Only hours newer than the last sync are sent. Progress is kept per server and per device token in `output/beemap_sync_state.json`, so a reset BeeMap database gets everything again.
+- Only hours newer than the last sync are sent. Progress is kept in `output/beemap_sync_state.json` per server and per device registration (the `created` time from the token endpoint), so a reset BeeMap database gets everything again, even when `hornet-pi` keeps a fixed token across `pitch.sh` restarts. The server doesn't de-duplicate readings, so don't delete the state file while the server still holds the data: everything would be stored twice. A state file from before this change (keyed by token) is not recognised, so the first sync with it sends everything once more; delete the file or reset the database first.
 - `--temp body` (default) uses the Dragino S31 hive-body sensor, which has humidity. `--temp brood` uses the D23 brood-nest probes instead.
 - `--server` sets the address (or `make beemap BEEMAP=http://host:8000`); `--station` sets another station ID.
+
+**The real Pi shares the station.** `hornet-pi` is also the station of the HornTrac Pi at the hives (see [hardware.md](hardware.md#a-real-pi-during-the-pitch-demo)). The pipeline and the Pi never talk to each other: both send to the server, the pipeline its three named colonies, the Pi its hornet visits, heartbeats and any readings of its own (an unnamed fourth colony). If the sync registers the station first, the Pi needs that station's token (`tools/admin.py station-token hornet-pi`) and turns it from planned to installed on its first heartbeat. The stand-alone `make hornet-live` alarm sends nothing to the server; it only shares the Pi's VespAI weights and pinned YOLOv5.
 
 **It needs `output/hourly.csv`, which is not in git** (the organisers' raw series stay local). Run `make fetch analyse` on the machine first.
 

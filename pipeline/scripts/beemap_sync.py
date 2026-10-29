@@ -9,7 +9,8 @@ What goes where (through BeeMap's normal upload API, like a Pi or SensoBox would
 
 Input: output/hourly.csv from `make analyse`. Only hours newer than the last
 sync are sent; progress is kept in output/beemap_sync_state.json, per server
-and per device token, so a reset BeeMap database gets everything again.
+and per registration of each device, so a reset BeeMap database gets everything
+again (even when the station keeps a fixed token, as hornet-pi does in the pitch demo).
 
   python scripts/beemap_sync.py                      # http://127.0.0.1:8000, station hornet-pi
   python scripts/beemap_sync.py --server http://192.168.7.34:8000 --station hornet-pi
@@ -68,14 +69,20 @@ def ensure_devices(srv, station):
         srv.call("POST", "/api/stations", headers=srv.admin,
                  json={"id": station, "name": "OpenSpace hives", "lat": HIVE_LAT, "lon": HIVE_LON, "heading_deg": 0, "planned": True})
         r = srv.call("GET", f"/api/stations/{station}/token", headers=srv.admin)
-    st_token = r.json()["token"]
+    st = r.json()
     r = srv.call("GET", f"/api/sensoboxes/{BOX_ID}/token", ok=(200, 404), headers=srv.admin)
     if r.status_code == 404:
         print(f"adding SensoBox '{BOX_ID}' linked to {station}")
         srv.call("POST", "/api/sensoboxes", headers=srv.admin,
                  json={"id": BOX_ID, "name": BOX_NAME, "lat": HIVE_LAT, "lon": HIVE_LON, "station_id": station})
         r = srv.call("GET", f"/api/sensoboxes/{BOX_ID}/token", headers=srv.admin)
-    return st_token, r.json()["token"]
+    return st, r.json()
+
+
+def progress_key(srv, dev, *parts):
+    """Where the sync state remembers a device's progress: its registration time, so a fresh
+    database starts over even if the token is fixed. Older servers don't report it: token prefix."""
+    return "|".join([srv.base, f"@{dev['created']}" if dev.get("created") else dev["token"][:10], *parts])
 
 
 def num(v):
@@ -120,22 +127,22 @@ def main():
     a = ap.parse_args()
 
     srv = Server(a.server, admin_key(a.admin_key))
-    st_token, box_token = ensure_devices(srv, a.station)
+    st, box = ensure_devices(srv, a.station)
     hive_rows, weather = load_hours(a.temp)
 
     state = json.loads(STATE.read_text()) if STATE.exists() else {}
     sent = {}
     for h, rows in hive_rows.items():
-        key = f"{srv.base}|{st_token[:10]}|{h}|{a.temp}"
+        key = progress_key(srv, st, a.station, h, a.temp)
         new = [r for r in rows if r["ts"] > state.get(key, 0)]
         if new:
-            send(srv, f"/api/stations/{a.station}/hive", {"X-Station-Token": st_token}, new)
+            send(srv, f"/api/stations/{a.station}/hive", {"X-Station-Token": st["token"]}, new)
             state[key] = new[-1]["ts"]
         sent[h] = len(new)
-    key = f"{srv.base}|{box_token[:10]}|weather"
+    key = progress_key(srv, box, BOX_ID, "weather")
     new = [r for r in weather if r["ts"] > state.get(key, 0)]
     if new:
-        send(srv, f"/api/sensoboxes/{BOX_ID}/readings", {"X-Box-Token": box_token}, new)
+        send(srv, f"/api/sensoboxes/{BOX_ID}/readings", {"X-Box-Token": box["token"]}, new)
         state[key] = new[-1]["ts"]
     sent["weather station"] = len(new)
     STATE.write_text(json.dumps(state, indent=1))

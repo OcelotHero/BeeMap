@@ -104,5 +104,6 @@ Check its accuracy on photos it never saw during training before relying on the 
 | "Couldn't reach OpenStreetMap / iNaturalist" | Server has no internet, or the service is busy | Retries automatically every 10 minutes; built-in data meanwhile. `BEEMAP_ONLINE=off` to stop trying. |
 | Nest report photos "need a check by a person" | No model installed, or photo too small, blurry or dark | Expected without a model; see above |
 | Bee Balance, sightings or street heat layer says "run make …"; their cards are missing | `pipeline/output/` lacks that file, or `BEEMAP_PIPELINE_OUT` points elsewhere | `GET /api/city/status` lists what's there; restore the files from git, or run that pipeline step |
+| `make beemap` sends 0 new hive readings to a fresh server | Sync state from before registration times were tracked, or the server is older than the pipeline | Delete `pipeline/output/beemap_sync_state.json` (only for a fresh database, or readings are stored twice) and update the server |
 | `make beemap`: "hourly.csv missing" | The raw hive series are kept local, not in git | Run `make fetch analyse` on that machine first |
 | Pi: VespAI weights won't load | Current YOLOv5 from GitHub | Set `yolov5_dir` to a checkout of commit `23701eac` (see [hardware.md](hardware.md)) |

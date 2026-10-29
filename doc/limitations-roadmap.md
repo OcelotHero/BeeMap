@@ -38,6 +38,7 @@
 - **Two food models** (800 m flower model and 1.5 km Bee Balance) use different land-use sources and weights, and can disagree. They aren't reconciled yet.
 - **Pipeline output isn't checked automatically.** A rerun that writes odd numbers goes straight onto the map; review `findings.md` and the plots before committing new results.
 - **3D data** (`make lights`) is produced but not shown by the web page.
+- **Readings aren't de-duplicated.** Hive and SensoBox readings sent twice are stored twice; `make beemap` relies on its local state file to send each hour once.
 
 ## Roadmap
 

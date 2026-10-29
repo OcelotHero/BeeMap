@@ -676,7 +676,7 @@ def station_token(station_id: str):
         st = row(c.execute("SELECT * FROM stations WHERE id=?", (station_id,)).fetchone())
     if not st:
         raise HTTPException(404, "No such station.")
-    return {"id": station_id, "token": st["token"]}
+    return {"id": station_id, "token": st["token"], "created": st["created"]}
 
 
 @app.delete("/api/stations/{station_id}", dependencies=[Depends(require_admin)])
@@ -1349,10 +1349,10 @@ async def add_box(b: BoxIn):
 @app.get("/api/sensoboxes/{box_id}/token", dependencies=[Depends(require_admin)])
 def box_token(box_id: str):
     with db() as c:
-        r = c.execute("SELECT token FROM sensoboxes WHERE id=?", (box_id,)).fetchone()
+        r = c.execute("SELECT token, created FROM sensoboxes WHERE id=?", (box_id,)).fetchone()
     if not r:
         raise HTTPException(404, "No such SensoBox.")
-    return {"id": box_id, "token": r[0]}
+    return {"id": box_id, "token": r[0], "created": r[1]}
 
 
 @app.delete("/api/sensoboxes/{box_id}", dependencies=[Depends(require_admin)])

@@ -67,6 +67,12 @@ def test_everything():
         assert r.status_code == 200 and r.json()["token"] == fixed, r.text
         assert c.post("/api/stations/realpi/heartbeat", headers={"X-Station-Token": fixed}).status_code == 200
         assert depart(c, "realpi", fixed, 10, "real-e0").status_code == 200
+        # same token after re-registering, but a new created time (beemap_sync keys its progress on it)
+        first = c.get("/api/stations/realpi/token", headers=A).json()
+        c.delete("/api/stations/realpi", headers=A)
+        c.post("/api/stations", headers=A, json={"id": "realpi", "name": "r", "lat": 49.146, "lon": 9.212, "token": fixed})
+        again = c.get("/api/stations/realpi/token", headers=A).json()
+        assert again["token"] == first["token"] == fixed and again["created"] > first["created"], (first, again)
         c.delete("/api/stations/realpi", headers=A)
 
         # nest reports from the public: on by default, the city can switch them off

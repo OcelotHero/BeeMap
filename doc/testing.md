@@ -22,7 +22,7 @@ They use temporary data folders, `BEEMAP_ONLINE=off` and the demo map, so they n
 | Suite | What it proves |
 |---|---|
 | `test_triangulate` | Nest accuracy and ellipse calibration on simulated departures (one nest, two nests sharing a hive, collinear hives plus a skewed line); single line plus distance; site planner success rate |
-| `test_api` | Device auth, a station registered with a fixed token (as the demo does for a real Pi), retry de-duplication, heading recalibration recomputing bearings, planned hive → installed on its first heartbeat, a lone corridor turned into a located nest by a planned hive, nest removal; nest reports on by default, public sees ~100 m without note or photo, photo kept private and clean |
+| `test_api` | Device auth, a station registered with a fixed token (as the demo does for a real Pi) that gets a new `created` time when registered again, retry de-duplication, heading recalibration recomputing bearings, planned hive → installed on its first heartbeat, a lone corridor turned into a located nest by a planned hive, nest removal; nest reports on by default, public sees ~100 m without note or photo, photo kept private and clean |
 | `test_eco` | Hive spot check (the design's Wertwiesenpark example comes out amber, with a green spot nearby); no owner names or tokens in public data; colony health admin-only; plant planner; plantings; grids |
 | `test_bloom` | iNaturalist histogram parsing against a mock API, fallback from Baden-Württemberg to Germany, no species substitution |
 | `test_sensors` | SensoBox pollen corrects the map near the box only; grass and birch count zero; untyped totals unused; weather-only boxes leave the map alone |

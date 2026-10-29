@@ -48,6 +48,8 @@ token = <the same token as in the Pi's beemap.ini>
 
 `tools/demo.py` registers every station listed there with that fixed token, next to the simulated hives, which it leaves unchanged. The real Pi's hornets then arrive live on top of the simulated ones, feed the same nest search, and are **not** auto-confirmed like the older simulated alerts. If `token` is left empty, the server makes one and the demo prints it, but it changes at every start. Set the Pi's `server` to the laptop's address. Anything it queued while refused is sent within a few minutes of registration.
 
+`hornet-pi` is also where `make beemap` puts the OpenSpace colonies' real sensor data (see [pipeline.md](pipeline.md#real-hive-data-into-beemap-make-beemap)). Start `pitch.sh` first, so the demo registers the station with the Pi's token, then run `make beemap`; it finds the station, sends into it, and notices the fresh database by the station's registration time.
+
 ### Raspberry Pi 4 with a Camera Module 3
 
 Tested on 28 Oct 2026 (the HornTrac station). Getting VespAI running on this hardware needs:
