@@ -60,6 +60,15 @@ def test_everything():
         t1 = add(c, "h1", 49.1250, 9.1930, heading=40)
         assert depart(c, "h1", "wrong", 10, "e0").status_code == 401
 
+        # a real Pi with a fixed token (the pitch demo registers it on every fresh database)
+        fixed = "real-pi-token-0123456789"
+        assert c.post("/api/stations", headers=A, json={"id": "realpi", "name": "r", "token": "short"}).status_code == 422
+        r = c.post("/api/stations", headers=A, json={"id": "realpi", "name": "r", "lat": 49.146, "lon": 9.212, "token": fixed})
+        assert r.status_code == 200 and r.json()["token"] == fixed, r.text
+        assert c.post("/api/stations/realpi/heartbeat", headers={"X-Station-Token": fixed}).status_code == 200
+        assert depart(c, "realpi", fixed, 10, "real-e0").status_code == 200
+        c.delete("/api/stations/realpi", headers=A)
+
         # nest reports from the public: on by default, the city can switch them off
         assert c.get("/api/settings").json()["reports"] is True
         assert c.patch("/api/settings", json={"reports": False}).status_code == 401

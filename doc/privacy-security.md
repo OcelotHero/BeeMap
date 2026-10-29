@@ -57,3 +57,4 @@ The repository is public, so the pipeline commits only small, shareable results:
 - **Serve over HTTPS** (also required for phone geolocation and the compass).
 - **GDPR:** nest-report photos may show private property or people. Set a retention period and a privacy notice; colony health data needs beekeepers' consent.
 - **Store the admin key** in a secrets manager rather than a file. Rotate device tokens by re-registering.
+- **Fixed device tokens** (the optional `token` on registration, and `tools/real_stations.ini` for the demo) are as secret as the Pi's own config: keep the file out of git (it's ignored) and use random values.

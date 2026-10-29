@@ -604,6 +604,8 @@ class StationIn(BaseModel):
     heading_sigma_deg: float = 8
     mirrored: bool = False
     planned: bool = False
+    # optional fixed device token, so a real Pi's beemap.ini survives a fresh database (pitch demo)
+    token: str | None = Field(default=None, pattern=r"^[A-Za-z0-9_-]{16,128}$")
 
 
 class StationPatch(BaseModel):
@@ -625,7 +627,7 @@ def get_stations():
 
 @app.post("/api/stations", dependencies=[Depends(require_admin)])
 async def add_station(s: StationIn):
-    token = secrets.token_urlsafe(24)
+    token = s.token or secrets.token_urlsafe(24)
     with db() as c:
         if c.execute("SELECT 1 FROM stations WHERE id=?", (s.id,)).fetchone():
             raise HTTPException(409, f"A station called '{s.id}' already exists.")

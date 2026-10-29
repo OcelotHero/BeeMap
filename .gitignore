@@ -20,3 +20,5 @@ server/data/live/
 pipeline/output/hourly.csv
 pipeline/output/hive_health.csv
 pipeline/output/heat_walks_points.csv
+# real Pi tokens for the demo (copy of tools/real_stations.example.ini)
+tools/real_stations.ini

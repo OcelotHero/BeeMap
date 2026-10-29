@@ -74,7 +74,7 @@ Readings may be sent one at a time or in batches of up to 20,000. Every field is
 
 | Method and path | Purpose |
 |---|---|
-| `POST /api/stations` | Register a smart hive (`planned` for a site not yet installed); returns its token |
+| `POST /api/stations` | Register a smart hive (`planned` for a site not yet installed); returns its token. An optional `token` (16–128 letters, digits, `-`, `_`) fixes it instead of generating one, so a real Pi's config survives a fresh database. |
 | `PATCH /api/stations/{id}` | Name, position, heading calibration (past bearings are recomputed) |
 | `GET /api/stations/{id}/token` | Device token for the Pi config |
 | `DELETE /api/stations/{id}` | Remove a station |

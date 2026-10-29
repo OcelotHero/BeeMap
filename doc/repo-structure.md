@@ -62,7 +62,8 @@ beemap/
 ├── tools/                     Command-line tools
 │   ├── admin.py               City operations: alerts, nests, nest reports, stations, SensoBoxes, health
 │   ├── demo.py                Simulated city: hives, nests, hornets (through the real Pi code),
-│   │                          SensoBoxes, colony data, nest reports, plantings
+│   │                          SensoBoxes, colony data, nest reports, plantings; registers real Pis too
+│   ├── real_stations.example.ini  Real Pis for the demo (copy to real_stations.ini, not in git)
 │   ├── update_osm_data.py     Manual refresh of OpenStreetMap data (normally automatic)
 │   └── update_bloom_data.py   Manual refresh of iNaturalist bloom months (normally automatic)
 │

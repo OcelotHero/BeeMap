@@ -28,6 +28,7 @@ python3 tools/demo.py --live              # second terminal, from the project fo
 - `--install-planned`: switch on planned hives (a live pitch moment).
 - `--seed N`: a different random demo.
 - `--server`: another server address.
+- `--real-stations PATH`: real Pis to register next to the simulated hives, with fixed tokens (default `tools/real_stations.ini`, used by `pitch.sh` automatically when it exists). See [hardware.md](hardware.md#a-real-pi-during-the-pitch-demo).
 
 ## Configuration (environment variables)
 

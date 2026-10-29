@@ -9,6 +9,10 @@ the real Pi agent code (tracker -> exit angle -> upload).
     python3 tools/demo.py --server http://pi-server:8000 --admin-key secret
 
 At the end it prints how far each estimated nest is from the hidden truth.
+
+Real Pis listed in tools/real_stations.ini (copy real_stations.example.ini) are
+registered too, with their own tokens, so their hornets reach the map on top of
+the simulated ones.
 """
 from __future__ import annotations
 
@@ -80,6 +84,39 @@ def register(srv, H, sid, name, owner, lat, lon, heading, planned=False):
         return requests.get(f"{srv}/api/stations/{sid}/token", headers=H).json()["token"]
     r.raise_for_status()
     return r.json()["token"]
+
+
+def register_real(srv, H, path):
+    """Real Pis (tools/real_stations.ini) next to the simulated hives. Registered with
+    their own token, so the Pi's beemap.ini keeps working on pitch.sh's fresh database
+    and its hornets reach the map alongside the simulated ones."""
+    if not path.exists():
+        return set()
+    import configparser
+    cp = configparser.ConfigParser()
+    cp.read(path, encoding="utf-8")
+    simulated = {s[0] for s in STATIONS + PLANNED}
+    for sid in cp.sections():
+        if sid in simulated:
+            sys.exit(f"{path}: '{sid}' is one of the simulated hives; give the real Pi another station_id.")
+        s, want = cp[sid], cp[sid].get("token", "").strip()
+        body = {"id": sid, "name": s.get("name", sid), "owner": s.get("owner", ""), "lat": s.getfloat("lat"),
+                "lon": s.getfloat("lon"), "heading_deg": s.getfloat("heading", 0.0),
+                "heading_sigma_deg": s.getfloat("heading_sigma", 8.0)}
+        if want:
+            body["token"] = want
+        r = requests.post(f"{srv}/api/stations", headers=H, json=body)
+        if r.status_code == 409:
+            token = requests.get(f"{srv}/api/stations/{sid}/token", headers=H).json()["token"]
+            if want and token != want:
+                print(f"  ! real station {sid} is already registered with another token; the Pi needs: token = {token}")
+        elif r.ok:
+            token = r.json()["token"]
+        else:
+            sys.exit(f"Couldn't register the real station {sid} from {path} ({r.status_code}): {r.text[:300]}")
+        print(f"Real station {sid}: waiting for its Pi" + ("" if want else f". Put  token = {token}  in the Pi's beemap.ini"
+                                                           " (or set token= in real_stations.ini so it stays the same)"))
+    return set(cp.sections())
 
 
 def start_hook(srv, sid, token, rng, mode="sky"):
@@ -260,6 +297,8 @@ def main():
     ap.add_argument("--install-planned", action="store_true",
                     help="pitch step: switch on every planned hive and let hornets visit it")
     ap.add_argument("--seed", type=int, default=7)
+    ap.add_argument("--real-stations", type=Path, default=Path(__file__).resolve().parent / "real_stations.ini",
+                    help="real Pis to register next to the simulated hives (see real_stations.example.ini)")
     a = ap.parse_args()
     rng = random.Random(a.seed)
     sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -299,6 +338,7 @@ def main():
         time.sleep(3)
         return
 
+    register_real(srv, H, a.real_stations)
     hooks = {}
     for sid, name, owner, lat, lon, heading in STATIONS:
         token = register(srv, H, sid, name, owner, lat, lon, heading)
@@ -345,8 +385,10 @@ def main():
         seed_sensoboxes(srv, H, rng)
         seed_hive_health(srv, H, rng, {sid: hooks[sid][0].cfg.token for sid in hooks})
 
-    # The city has already worked through the older alerts
-    dets = sorted(requests.get(f"{srv}/api/detections?limit=5000").json(), key=lambda d: d["ts"])
+    # The city has already worked through the older simulated alerts (a real Pi's wait for a person)
+    simulated = {s[0] for s in STATIONS}
+    dets = sorted((d for d in requests.get(f"{srv}/api/detections?limit=5000").json() if d.get("station_id") in simulated),
+                  key=lambda d: d["ts"])
     for d in dets[: int(len(dets) * 0.7)]:
         requests.post(f"{srv}/api/detections/{d['id']}/review", headers=H, json={"status": "confirmed"})
 

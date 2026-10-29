@@ -21,6 +21,33 @@
 
 `--simulate` runs without cameras or a model, sending fake hornets towards `sim_nest_bearing`.
 
+### How the Pi talks to the server
+
+Plain HTTP(S) requests from the Pi to the server, each with the station's `X-Station-Token`; the server never connects to the Pi.
+
+| What | Request | When |
+|---|---|---|
+| Hornet visit | `POST /api/stations/{id}/detections`: JSON `meta` plus the snapshot | When a tracked hornet leaves |
+| Heartbeat | `POST /api/stations/{id}/heartbeat`: status plus a private live frame; the reply carries the heading calibration | Every `heartbeat_s` (60 s) |
+| In-hive readings | `POST /api/stations/{id}/hive` | Every `hive_post_s` (300 s) |
+
+The server turns a visit into a compass bearing, stores it as a pending alert, recomputes the nest areas, and pushes `detection`, `nests` and `lines` over the WebSocket. Every open map shows an "Asian hornet seen at …" notice and redraws. A visit the server doesn't accept (network down, or the station unknown or its token wrong) is queued on the SD card and retried, oldest first, backing off from 10 s to 5 minutes. The event ID stops a retry being counted twice.
+
+### A real Pi during the pitch demo
+
+`pitch.sh` deletes the database on every start, so a real Pi's station and token would be gone and its visits refused. List the Pi in `tools/real_stations.ini` (copy `real_stations.example.ini`; not in git):
+
+```ini
+[hornet-pi]
+name = HornTrac station, OpenSpace
+lat = 49.146
+lon = 9.212
+heading = 0
+token = <the same token as in the Pi's beemap.ini>
+```
+
+`tools/demo.py` registers every station listed there with that fixed token, next to the simulated hives, which it leaves unchanged. The real Pi's hornets then arrive live on top of the simulated ones, feed the same nest search, and are **not** auto-confirmed like the older simulated alerts. If `token` is left empty, the server makes one and the demo prints it, but it changes at every start. Set the Pi's `server` to the laptop's address. Anything it queued while refused is sent within a few minutes of registration.
+
 ### Raspberry Pi 4 with a Camera Module 3
 
 Tested on 28 Oct 2026 (the HornTrac station). Getting VespAI running on this hardware needs:
